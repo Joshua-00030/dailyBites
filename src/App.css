@@ -2,3 +2,35 @@ h1 {
     display: flex;
     justify-content: center;
   }
+  .MenuBar{
+    display: grid;
+    grid-template: 5em/1fr 1fr 10fr 1fr;
+    background-color: aqua;
+    margin-left: 1em;
+    margin-right: 1em;
+  }
+  .MenuButton{
+    background-color: aqua;
+  }
+  .MenuButton:hover{
+    filter: brightness(90%);
+  }
+  .CalorieBar{
+    display: grid;
+    grid-template: 1fr;
+    border: 2px solid;
+    margin-left: 4em;
+    margin-right: 4em;
+    border-color: black;
+    background-color: rgb(216, 190, 241);
+  }
+  .Dashboard{
+    display: grid;
+    min-height: 90vh;
+    grid-template: 1fr/9fr 1fr;
+    margin: 1em;
+  }
+  .ItemContainer{
+    background-color: bisque;
+    display: flex;
+  }
