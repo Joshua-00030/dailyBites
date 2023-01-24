@@ -27,10 +27,23 @@ h1 {
   .Dashboard{
     display: grid;
     min-height: 90vh;
-    grid-template: 1fr/9fr 1fr;
+    grid-template:  1fr 9fr 1fr/ 9fr 1fr;
     margin: 1em;
   }
   .ItemContainer{
     background-color: bisque;
     display: flex;
+  }
+  .UserItem{
+    display: flex;
+  }
+  .ItemBar{
+    background-color: brown;
+  }
+  .CalorieDisplay{
+    background-color: blue;
+    margin: 1em;
+  }
+  .UserItem{
+    background-color: blueviolet;
   }
