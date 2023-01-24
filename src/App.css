@@ -5,24 +5,25 @@ h1 {
   .MenuBar{
     display: grid;
     grid-template: 5em/1fr 1fr 10fr 1fr;
-    background-color: aqua;
+    background-color: #029AB6;
     margin-left: 1em;
     margin-right: 1em;
   }
   .MenuButton{
-    background-color: aqua;
+    background-color: #029AB6;
   }
   .MenuButton:hover{
     filter: brightness(90%);
   }
   .CalorieBar{
     display: grid;
-    grid-template: 1fr;
+    margin-left: 1em;
+    margin-right: 1em;
+    min-width: 4em;
+    justify-content: center;
     border: 2px solid;
-    margin-left: 4em;
-    margin-right: 4em;
     border-color: black;
-    background-color: rgb(216, 190, 241);
+    background-color: #20EE85;
   }
   .Dashboard{
     display: grid;
@@ -31,19 +32,28 @@ h1 {
     margin: 1em;
   }
   .ItemContainer{
-    background-color: bisque;
+    background-color: #00C661;
     display: flex;
-  }
-  .UserItem{
-    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
   }
   .ItemBar{
-    background-color: brown;
+    background-color: #4AE500;
   }
   .CalorieDisplay{
     background-color: blue;
-    margin: 1em;
+    margin: .2em;
   }
   .UserItem{
+    display: flex;
+    flex: 1 0 calc(20% - 10px);
+    max-width: calc(24% - 10px);
+    flex-direction: column;
+    align-content: center;
+    text-align: center;
     background-color: blueviolet;
+    padding: .5em;
+    margin: .5em;
+    max-height: 6em;
+    width: 6em;
   }
