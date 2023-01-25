@@ -9,9 +9,9 @@ const DashBoard = () => {
     return (
         <div className="Dashboard">
             <ItemBar></ItemBar>
-      <CalorieDisplay></CalorieDisplay>
-      <ItemContainer></ItemContainer>
-      <CalorieBar></CalorieBar>
+            <CalorieDisplay></CalorieDisplay>
+            <ItemContainer></ItemContainer>
+            <CalorieBar></CalorieBar>
         </div>
     )
   }
