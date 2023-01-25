@@ -1,3 +1,5 @@
+import './UserItem.css';
+
 const UserItem = ({item}) => {
     return (
         <div className="UserItem">

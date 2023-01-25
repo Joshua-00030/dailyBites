@@ -1,0 +1,13 @@
+.UserItem{
+    display: flex;
+    flex: 1 0 calc(20% - 10px);
+    max-width: calc(24% - 10px);
+    flex-direction: column;
+    align-content: center;
+    text-align: center;
+    background-color: blueviolet;
+    padding: .5em;
+    margin: .5em;
+    max-height: 6em;
+    width: 6em;
+  }

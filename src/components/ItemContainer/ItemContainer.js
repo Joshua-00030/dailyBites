@@ -1,4 +1,5 @@
-import UserItem from "./UserItem"
+import UserItem from "../UserItem/UserItem"
+import './ItemContainer.css';
 
 const ItemContainer = () => {
     const exampleItems = [{name:'hamburger', calories:350, tags:['lunch']}, {name:'Oatmeal', calories:150, tags:['breakfast', 'low cal']}, {name:'hamburger', calories:350, tags:['lunch']}, {name:'Oatmeal', calories:150, tags:['breakfast', 'low cal']}, {name:'hamburger', calories:350, tags:['lunch']}, {name:'Oatmeal', calories:150, tags:['breakfast', 'low cal']}, {name:'hamburger', calories:350, tags:['lunch']}, {name:'Oatmeal', calories:150, tags:['breakfast', 'low cal']}, {name:'hamburger', calories:350, tags:['lunch']}, {name:'Oatmeal', calories:150, tags:['breakfast', 'low cal']}, {name:'hamburger', calories:350, tags:['lunch']}, {name:'Oatmeal', calories:150, tags:['breakfast', 'low cal']}, {name:'hamburger', calories:350, tags:['lunch']}, {name:'Oatmeal', calories:150, tags:['breakfast', 'low cal']}, {name:'hamburger', calories:350, tags:['lunch']}]

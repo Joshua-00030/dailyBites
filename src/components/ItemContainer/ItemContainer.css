@@ -1,0 +1,6 @@
+.ItemContainer{
+    background-color: #00C661;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+  }

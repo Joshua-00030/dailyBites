@@ -1,0 +1,6 @@
+.Dashboard{
+    display: grid;
+    min-height: 90vh;
+    grid-template:  1fr 9fr 1fr/ 9fr 1fr;
+    margin: 1em;
+  }

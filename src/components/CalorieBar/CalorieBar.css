@@ -1,0 +1,10 @@
+.CalorieBar{
+    display: grid;
+    margin-left: 1em;
+    margin-right: 1em;
+    min-width: 4em;
+    justify-content: center;
+    border: 2px solid;
+    border-color: black;
+    background-color: #20EE85;
+  }

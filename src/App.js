@@ -1,19 +1,20 @@
 import './App.css';
-import CalorieBar from './components/CalorieBar';
-import CalorieDisplay from './components/CalorieDisplay';
-import ItemBar from './components/ItemBar';
-import ItemContainer from './components/ItemContainer';
-import MenuBar from './components/MenuBar';
+
+import { Routes, Route } from "react-router-dom";
+import MenuBar from './components/MenuBar/MenuBar';
+import DashBoard from './components/DashBoard/DashBoard';
+import CalorieLog from './components/CalorieLog/CalorieLog';
+import Account from './components/Account/Account';
+
 function App() {
   return (
   <>
     <MenuBar></MenuBar>
-    <div className='Dashboard'>
-      <ItemBar></ItemBar>
-      <CalorieDisplay></CalorieDisplay>
-      <ItemContainer></ItemContainer>
-      <CalorieBar></CalorieBar>
-    </div>
+    <Routes>
+      <Route path="/" element={<DashBoard />} />
+      <Route path="/log" element={<CalorieLog />} />
+      <Route path="/account" element={<Account />} />
+    </Routes>
   </>
   );
 }
