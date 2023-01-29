@@ -33,3 +33,15 @@
     background-color: #F7F5EB; /* Green */
     width: 12em;
 }
+
+.password-container {
+  position: relative;
+}
+
+.eyeIcon {
+  position: absolute;
+  cursor: pointer;
+  color: lightgray;
+  top: 30%;
+  left: 53.8%
+}
