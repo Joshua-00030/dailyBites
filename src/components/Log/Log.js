@@ -1,4 +1,4 @@
-import './CalorieLog.css';
+import './Log.css';
 
 const CalorieLog = () => {
     return (

@@ -3,3 +3,7 @@ h1 {
     justify-content: center;
   }
 
+.app-container {
+  margin: 0;
+}
+
