@@ -1,0 +1,59 @@
+.account-container {
+    display: grid;
+    min-height: 95vh;
+    grid-template:  1fr / 1fr 6fr;
+}
+
+.sidebar {
+    background-color: rgb(52, 80, 207);
+    color: white;
+  }
+
+.infoArea {
+    color: white;
+}
+  
+.SidebarList {
+    height: auto;
+    padding: 0;
+    width: 100%;
+}
+
+.SidebarList .row {
+    width: 100%;
+    height: 60px;
+    background-color: rgb(52, 80, 207);
+    list-style-type: none;
+    margin: 0%;
+    display: flex;
+    flex-direction: row;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-decoration: none;
+}
+
+.SidebarList .row a {
+    text-decoration: none;
+}
+
+.SidebarList .row:active {
+    background-color: rgb(5, 40, 194);
+}
+
+.SidebarList .row:hover {
+    cursor: pointer;
+    background-color: rgb(23, 60, 226);
+}
+
+
+.row #icon {
+    flex: 30%;
+    display: grid;
+    place-items: center;
+}
+
+.row #title {
+    flex: 70%
+}

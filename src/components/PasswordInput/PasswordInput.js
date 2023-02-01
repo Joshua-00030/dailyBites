@@ -25,7 +25,8 @@ const PasswordInput = (props) => {
                 <FontAwesomeIcon 
                     onClick={() => {setShowPassword(!showPasword)}} 
                     icon={faEye} 
-                    className="eyeIcon">
+                    className="eyeIcon"
+                    title="Show Password">
                 </FontAwesomeIcon>
                 </div>
   )

@@ -14,9 +14,6 @@ const Navbar = (props) => {
                 <ul>
                     <CustomLink to="/account">My Account</CustomLink>
                 </ul>
-                <ul>
-                    <CustomLink onClick={props.logout} to="/login">Logout</CustomLink>
-                </ul>
         </nav>
     )
   }
