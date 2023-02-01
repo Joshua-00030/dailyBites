@@ -1,5 +1,5 @@
 import './App.css';
-import { Routes, Route, Link, Navigate} from "react-router-dom";
+import { Routes, Route, Link, Navigate, useNavigate} from "react-router-dom";
 import Navbar from './components/Navbar/Navbar';
 import Home from './components/Home/Home';
 import Log from './components/Log/Log';
@@ -12,6 +12,7 @@ import PageNotFound from './components/PageNotFound/PageNotFound';
 
 function App() {
 
+  const Navigate = useNavigate()
   const [user, setUser] = useState(
     {name: "", 
     password: "", 
@@ -33,25 +34,24 @@ function App() {
   if (user.name === "") {
     return <LoginForm Login={login}/>
   } else {
-    <Navigate to="/log"  replace={true}/>
+ 
+    return (
+    <>
+      <Navbar logout={logout}/>
+      <div className='app-container'>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/log" element={<Log />} />
+        <Route path="/account" element={<Account logout={logout} user={user}/>}>
+          <Route index element={<AccountInfo />}/>
+          <Route path="info" element={<AccountInfo />}/>
+          <Route path="settings" element={<AccountSettings />} />
+        </Route>
+      </Routes>
+      </div>
+    </>
+    )
   }
-
-  return (
-  <>
-    <Navbar logout={logout}/>
-    <div className='app-container'>
-    <Routes>
-      <Route exact path="/" element={<Home />} />
-      <Route path="/log" element={<Log />} />
-      <Route path="/account" element={<Account logout={logout} user={user}/>}>
-        <Route index element={<AccountInfo />}/>
-        <Route path="info" element={<AccountInfo />}/>
-        <Route path="settings" element={<AccountSettings />} />
-      </Route>
-    </Routes>
-    </div>
-  </>
-  )
 }
 
 export default App;

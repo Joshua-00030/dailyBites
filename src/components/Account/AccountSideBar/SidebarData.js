@@ -16,6 +16,6 @@ export const SidebarData = [
     {
         title: "Logout",
         icon: <FontAwesomeIcon icon={faEye}/> ,
-        link: "/login",
+        link: "/",
     }
 ]
