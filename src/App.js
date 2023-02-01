@@ -9,13 +9,11 @@ function App() {
   return (
   <>
     <Navbar />
-    <div className="app-container">
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/log" element={<Log />} />
       <Route path="/account" element={<Account />} />
     </Routes>
-    </div>
   </>
   )
 }

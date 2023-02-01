@@ -1,4 +1,4 @@
-.UserItem{
+/*.UserItem{
     display: flex;
     flex: 1 0 calc(20% - 10px);
     max-width: calc(24% - 10px);
@@ -11,3 +11,22 @@
     max-height: 6em;
     width: 6em;
   }
+  */
+.card {
+  border: 1px solid black;
+  background-color: white;
+  padding: .5rem;
+}
+
+.header {
+  margin-bottom: .25rem;
+}
+
+.body {
+  font-size: .8rem;
+  color: #777;
+}
+
+.hide {
+  display: none;
+}

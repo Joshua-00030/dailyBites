@@ -1,6 +1,19 @@
-.ItemContainer{
+/*.ItemContainer{
     background-color: #00C661;
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
   }
+*/
+.entry-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: .25rem;
+  margin-top: 1rem;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.entry-cards::-webkit-scrollbar {
+  display: none;
+}

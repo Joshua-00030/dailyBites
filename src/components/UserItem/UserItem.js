@@ -2,9 +2,9 @@ import './UserItem.css';
 
 const UserItem = ({item}) => {
     return (
-        <div className="UserItem">
-            <p>{item.name}</p>
-            <p>{item.calories}</p>
+        <div className="card">
+            <div className="header">{item.name}</div>
+            <div className="body">{item.calories}</div>
         </div>
     )
   }

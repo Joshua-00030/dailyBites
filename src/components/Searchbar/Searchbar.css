@@ -1,0 +1,17 @@
+.search-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+    max-width: 350px;
+    margin-bottom: .5rem;
+}
+
+.search-wrapper label {
+    font-size: 1.5rem;
+    display: block;
+}
+
+.search-wrapper input {
+    font-size: 1.25rem;
+}
+
