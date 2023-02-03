@@ -21,13 +21,13 @@ const PasswordInput = (props) => {
                     value={props.value}
                     type={showPasword ? null : "password"}
                     required
-                />
-                <FontAwesomeIcon 
-                    onClick={() => {setShowPassword(!showPasword)}} 
-                    icon={faEye} 
-                    className="eyeIcon"
-                    title="Show Password">
-                </FontAwesomeIcon>
+                /> 
+                    <FontAwesomeIcon 
+                        onClick={() => {setShowPassword(!showPasword)}} 
+                        icon={faEye} 
+                        className="eyeIcon"
+                        title="Show Password">
+                    </FontAwesomeIcon>
                 </div>
   )
 }

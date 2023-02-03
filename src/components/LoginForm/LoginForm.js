@@ -37,7 +37,8 @@ const LoginForm = (props) => {
 
     return (
     <div className='container'>
-        <h1> Welcome {formDetails.username} </h1>
+        <h1>Daily Bites</h1>
+        <h2> Welcome {formDetails.username} </h2>
         <form onSubmit={submitHandler}>
             {input ? 
             <div>
@@ -45,8 +46,8 @@ const LoginForm = (props) => {
                 <PasswordInput placeholder="Password" name="password" handleChange={handleInputChange} value={formDetails.password} />
             </div> : null} 
 
-            <button type="button" onClick={createNewAccount}>Create New Account</button>
-            <button type="button" onClick={forgotPassChange}>Forgot Password?</button>
+            <button type="button" className="button" onClick={createNewAccount}>Create New Account</button>
+            <button type="button" className="button" onClick={forgotPassChange}>Forgot Password?</button>
 
             {newAccount ?
                 <div>
@@ -54,7 +55,7 @@ const LoginForm = (props) => {
                     <LoginInput placeholder="Email Address" name="email" handleChange={handleInputChange} value={formDetails.email} />
                 </div> : null}
 
-            <input type="submit" value="SUBMIT"></input>
+            <input type="submit" className="submit"  value="Submit"></input>
         </form>
     </div>
     ) 

@@ -47,7 +47,6 @@
 
 
 .nav-text {
-    display: flex;
     justify-content: start;
     align-items: center;
     list-style: none;
