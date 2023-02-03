@@ -1,4 +1,6 @@
 import './Searchbar.css'
+import SearchIcon from '@mui/icons-material/Search';
+import Tag from '../Tag/Tag'
 //import { useState } from 'react'
 
 const Searchbar = ({items, setFilteredItems}) => {
@@ -15,13 +17,22 @@ const Searchbar = ({items, setFilteredItems}) => {
     }
     
     return (
-        <div className="search-wrapper">
+        <div className="search">
+            <div className="searchInputs">
             <input 
             type="search" 
             id="search" 
-            placeholder="Search items"
+            placeholder="Search tags"
             onChange={handleFilter}/>
+            <div className="searchIcon">
+                <SearchIcon/>
+            </div>
+            <button 
+            className="add-button"
+            type="button">new item</button>
+            </div>
         </div>
+        
     )
 }
 

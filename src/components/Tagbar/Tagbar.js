@@ -1,9 +1,16 @@
 import './Tagbar.css';
+import Tag from '../Tag/Tag'
 
 const Tagbar = () => {
+//<Tag type="add" label="add"></Tag>
     return (
         <div className="tag-container">
-            <button className="add-button">Add Item</button>
+            <Tag type="tag-bar" label="oatmeal"></Tag>
+            <Tag type="tag-bar" label="breakfast"></Tag>
+            <Tag type="tag-bar" label="lunch"></Tag>
+            <Tag type="tag-bar" label="hamburger"></Tag>
+            <Tag type="tag-bar" label="snacks"></Tag>
+            <Tag type="tag-bar" label="exercise"></Tag>
         </div>
     )
   }

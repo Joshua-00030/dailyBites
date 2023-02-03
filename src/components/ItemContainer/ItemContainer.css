@@ -7,13 +7,18 @@
 */
 .entry-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
   gap: .25rem;
-  margin-top: 1rem;
   overflow: hidden;
   overflow-y: auto;
 }
 
 .entry-cards::-webkit-scrollbar {
   display: none;
+}
+
+.item-grid-container {
+  margin-left: 2rem;
+  margin-right: 2rem;
+
 }

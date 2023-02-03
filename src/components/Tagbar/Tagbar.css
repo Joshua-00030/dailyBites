@@ -1,9 +1,22 @@
 .tag-container{
-    background-color:crimson;
-    border: 1px solid black;
+
+    /*
+    background-color: #1F2022;
+    border-radius: 4px;
+    height: 40px;
+    margin-bottom: 10px;
+    */
+
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
     grid-column: 1;
   }
 
-  .add-button {
-    
+  .tag-container button:hover {
+    cursor: pointer;
+    /*
+    filter: brightness(90%);
+    filter: brightness(150%);
+    */
   }

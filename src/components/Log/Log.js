@@ -1,6 +1,5 @@
 import './Log.css';
 import CalorieBar from '../CalorieBar/CalorieBar';
-import CalorieDisplay from '../CalorieDisplay/CalorieDisplay';
 import Tagbar from '../Tagbar/Tagbar';
 import ItemContainer from '../ItemContainer/ItemContainer';
 import Searchbar from '../Searchbar/Searchbar';
@@ -30,11 +29,9 @@ const Log = () => {
      
     return (
         <>
-            <h1>Daily Log</h1>
             <div className="log-container">
                 <Searchbar items={exampleItems} setFilteredItems={setFilteredItems}/>
                 <Tagbar />
-                <CalorieDisplay />
                 <ItemContainer items={filteredItems}/>
                 <CalorieBar />
             </div>
