@@ -1,59 +1,92 @@
 .account-container {
     display: grid;
-    min-height: 95vh;
-    grid-template:  1fr / 1fr 6fr;
+    height: 90vh;
+    grid-template-columns: 1fr 9fr;
+}
+
+.accountNav {
+    background-color: #060b26;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    align-items: center;
+    left: -75%;
+    transition: 850ms;
+}
+
+.accountNav.active {
+    left: 0%;
+    transition: 350ms;
+}
+
+.menu-bars {
+    position: sticky;
+    left: 14px;
+    align-items: center;
+    margin-left: 2rem;
+    font-size: 2rem;
+    color: white
 }
 
 .sidebar {
-    background-color: rgb(52, 80, 207);
+    background-color: #060b26;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 0;
+    left: -75%;
+    transition: 850ms;
+}
+
+.sidebar.active {
+    left: 0%;
+    transition: 350ms;
+}
+
+
+.nav-text {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    list-style: none;
+    height: 60px;
+    width: 100%;
+}
+
+.nav-text a {
+    text-decoration: none;
     color: white;
+    font-size: 18px;
+    width: 80%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    border-radius: 4px;
+    justify-content: center;
+   
+}
+
+.disabled {
+    pointer-events: none;
+    cursor: default;
+    opacity: 0.9;
   }
 
-.infoArea {
-    color: white;
+.nav-text a:hover {
+    background-color: #1a83ff;
 }
-  
-.SidebarList {
-    height: auto;
+
+.side-menu-items {
     padding: 0;
-    width: 100%;
+    margin: 0;
 }
 
-.SidebarList .row {
-    width: 100%;
-    height: 60px;
-    background-color: rgb(52, 80, 207);
-    list-style-type: none;
-    margin: 0%;
-    display: flex;
-    flex-direction: row;
-    color: white;
-    justify-content: center;
-    align-items: center;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    text-decoration: none;
-}
-
-.SidebarList .row a {
-    text-decoration: none;
-}
-
-.SidebarList .row:active {
-    background-color: rgb(5, 40, 194);
-}
-
-.SidebarList .row:hover {
-    cursor: pointer;
-    background-color: rgb(23, 60, 226);
+span {
+    margin-left: 16px;
 }
 
 
-.row #icon {
-    flex: 30%;
-    display: grid;
-    place-items: center;
-}
 
-.row #title {
-    flex: 70%
-}

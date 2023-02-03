@@ -1,38 +1,62 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "../Account.css"
 import { SidebarData } from './SidebarData'
 import { Link, useMatch, useResolvedPath} from "react-router-dom";
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBars} from '@fortawesome/free-solid-svg-icons'
 
 const AccountSideBar = (props) => {
-  console.log(props.user)
+
   return (
+
     <div>
-        <ul className='SidebarList'>
+        <ul className='side-menu-items'>
+          {SidebarData.map((val, key) => {
+            return ( 
+              <li key={key} className={val.cName}>
+                <Link 
+                  to={val.link} 
+                  onClick={(val.title === "Logout") ? props.logout 
+                    : (() => {
+                      props.toggle()
+                    })}>
+                  {val.icon}
+                  <span>{val.title}</span>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+        {/* <ul className='SidebarList'>
         {SidebarData.map((val, key) => {
             return (
-              <Link 
+              <CustomLink 
                 key={key}
                 to={val.link} 
-                style={{ textDecoration: 'none' }}>
-                <li 
-                  key={key} 
-                  className="row"
-                  onClick={(val.title === "Logout") ? props.logout : null}> 
-                    <div id="icon">{val.icon}</div>
-                    <div id="title">{val.title}</div>
-                </li>
-                </Link>
+                style={{ textDecoration: 'none' }}
+                className="row"
+                onClick={(val.title === "Logout") ? props.logout : null}> 
+                <div id="icon">{val.icon}</div>
+                <div id="title">{val.title}</div>
+                </CustomLink>
             )
         })}
-        </ul>
+        </ul> */}
     </div>
   )
 }
 
-{/* <ul>
-<CustomLink onClick={props.logout} to="/login">Logout</CustomLink>
-</ul> */}
+const CustomLink = ({to, children, ...props}) => {
+  const resolvedPath = useResolvedPath(to)
+  const isActive = useMatch( {path: resolvedPath.pathname, end: true})
 
+  return (
+      <li className={isActive ? "SideBarList text" : ""}>
+          <Link to={to} {...props}>
+              {children}
+          </Link>
+      </li>
+  )
+}
 
 export default AccountSideBar
