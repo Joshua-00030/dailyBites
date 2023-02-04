@@ -18,7 +18,7 @@ const Account = (props) => {
       <>
       <div className='account-container'>
         <div>
-          <div className={isOpen ? 'accountNav active' : 'accountNav'}>
+          <div className={isOpen ? 'bars active' : 'bars'}>
               <Link to="#" className='menu-bars'>
                 <FontAwesomeIcon icon={faBars} onClick={toggleSideBar}/>
               </Link>

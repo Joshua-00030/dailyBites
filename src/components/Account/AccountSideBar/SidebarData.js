@@ -4,7 +4,7 @@ import { faEye, faGears, faRightFromBracket} from '@fortawesome/free-solid-svg-i
 
 export const SidebarData = [
     {
-        title: "Account Information",
+        title: "My Account",
         icon: <FontAwesomeIcon icon={faEye}/> ,
         link: "/account/info",
         cName: 'nav-text'
