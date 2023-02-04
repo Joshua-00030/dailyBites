@@ -1,6 +1,24 @@
-.ItemContainer{
+/*.ItemContainer{
     background-color: #00C661;
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
   }
+*/
+.entry-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: .25rem;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.entry-cards::-webkit-scrollbar {
+  display: none;
+}
+
+.item-grid-container {
+  margin-left: 2rem;
+  margin-right: 2rem;
+
+}
