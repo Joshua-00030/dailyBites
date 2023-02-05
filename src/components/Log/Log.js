@@ -19,19 +19,20 @@ const exampleItems = [
     { name: 'hamburger', calories: 350, tags: ['lunch'], id: 11 }, 
     { name: 'oatmeal', calories: 150, tags: ['breakfast', 'low cal'], id: 12 }, 
     { name: 'hamburger', calories: 350, tags: ['lunch'], id: 13 }, 
-    { name: 'oatmeal', calories: 150, tags: ['breakfast', 'low cal'], id: 14 }, 
+    { name: 'brown sugar oatmeal', calories: 150, tags: ['breakfast', 'low cal', 'oatmeal'], id: 14 }, 
     { name: 'hamburger', calories: 350, tags: ['lunch'], id: 15 }
 ]
 
 const Log = () => {
 
     const [filteredItems, setFilteredItems] = useState(exampleItems)
+    const [activeTags, setActiveTags] = useState([]);
      
     return (
         <>
             <div className="log-container">
-                <Searchbar items={exampleItems} setFilteredItems={setFilteredItems}/>
-                <Tagbar />
+                <Searchbar items={exampleItems} setFilteredItems={setFilteredItems} filteredItems={filteredItems} activeTags={activeTags}/>
+                <Tagbar activeTags={activeTags} setActiveTags={setActiveTags}/>
                 <ItemContainer items={filteredItems}/>
                 <CalorieBar />
             </div>
