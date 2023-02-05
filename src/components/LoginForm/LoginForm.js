@@ -36,7 +36,7 @@ const LoginForm = (props) => {
     }
 
     return (
-    <div className='container'>
+    <div className='login-form-container'>
         <h1> Welcome {formDetails.username} </h1>
         <form onSubmit={submitHandler}>
             {input ? 

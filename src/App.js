@@ -20,11 +20,11 @@ function App() {
   function logout() {
     setUser({...user, name: ""});
   }
-
+/*
   if (user.name === "") {
     return <LoginForm Login={login}/>
   }
-
+*/
   return (
   <>
     <Navbar logout={logout}/>
@@ -32,6 +32,7 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/log" element={<Log />} />
       <Route path="/account" element={<Account />} />
+      {user.name === "" && <Route path='/login' element={<LoginForm Login={login} />} /> }
     </Routes>
   </>
   )
