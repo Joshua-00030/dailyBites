@@ -1,0 +1,64 @@
+/*
+.tag-button {
+    padding: 8px 16px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: none;
+    background-color: #4D4DFF;
+}
+
+.add-tag {
+  background-color: #AC4FC6;
+  align-self: stretch;
+}
+
+.active-tag {
+  align-self: stretch;
+}
+
+.nonactive-tag {
+  align-self: center;
+}
+*/
+.tag-button {
+  font-size: 12px;
+  border: none;
+  border-radius: 16px;
+  background-color: #F5F5F5;
+  display: flex;
+  justify-content: left;
+  height: 30px;
+  padding-left: 16px;
+  align-items: center;
+}
+.tag-button:hover {
+  filter: brightness(95%);
+}
+/*
+  opacity: .8;
+*/
+
+.add-tag {
+
+background-color: #91D8E4;
+
+
+}
+
+.add-tag button:hover {
+  cursor: pointer;
+}
+
+.active-tag {
+  /*
+  background-color: #C9D6DF;
+  border-radius: 4px;
+  filter: brightness(150%);
+}
+
+.nonactive-tag:hover {
+  /*
+  filter: brightness(150%);
+  border-radius: 4px;
+  */
+}
