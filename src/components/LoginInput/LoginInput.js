@@ -1,4 +1,5 @@
 import React from 'react'
+import LoginCSS from "../LoginForm/LoginForm.module.css"
 
 const LoginInput = (props) => {
 
@@ -14,6 +15,7 @@ const LoginInput = (props) => {
         <input 
             name={props.name}
             placeholder={props.placeholder}
+            className={LoginCSS.logininput}
             onChange={handleChange} 
             value={props.value} 
             autoFocus/>

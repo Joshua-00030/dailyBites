@@ -1,5 +1,5 @@
 import './App.css';
-import { Routes, Route, Link, Navigate, useNavigate} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Navbar from './components/Navbar/Navbar';
 import Home from './components/Home/Home';
 import Log from './components/Log/Log';
@@ -12,7 +12,6 @@ import PageNotFound from './components/PageNotFound/PageNotFound';
 
 function App() {
 
-  const Navigate = useNavigate()
   const [user, setUser] = useState(
     {name: "", 
     password: "", 
@@ -37,7 +36,7 @@ function App() {
  
     return (
     <>
-      <Navbar logout={logout}/>
+      <Navbar />
       <div className='app-container'>
       <Routes>
         <Route path="/" element={<Home />} />

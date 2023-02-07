@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye } from '@fortawesome/free-solid-svg-icons';
+import LoginCSS from "../LoginForm/LoginForm.module.css"
 
 const PasswordInput = (props) => {
 
@@ -14,8 +15,10 @@ const PasswordInput = (props) => {
       };
 
   return (
-    <div className="password-container">
-                <input name={props.name} 
+    <div className={LoginCSS.passwordcontainer}>
+                <input 
+                    name={props.name} 
+                    className={LoginCSS.logininput}
                     placeholder={props.placeholder}
                     onChange={handleChange}
                     value={props.value}
@@ -25,7 +28,7 @@ const PasswordInput = (props) => {
                     <FontAwesomeIcon 
                         onClick={() => {setShowPassword(!showPasword)}} 
                         icon={faEye} 
-                        className="eyeIcon"
+                        className={LoginCSS.eyeIcon}
                         title="Show Password">
                     </FontAwesomeIcon>
                 </div>
