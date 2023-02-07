@@ -1,0 +1,98 @@
+.loginh1 {
+    color: white;
+    padding: 5px;
+    font-size: 60px;
+    font-weight: bold;
+    font-family: 'Mochiy Pop One', sans-serif;
+    font-display: bold;
+  }
+
+  .loginh2 {
+    color: #645CBB;
+    padding: 5px;
+    font-size: 40px;
+    font-weight: 200;
+    font-family: 'Mochiy Pop One', sans-serif;
+  }
+  
+  .container {
+    margin: 10% auto;
+    text-align: center;
+    height: 100%;
+    background-color: #82AAE3;
+  }
+
+  .logininput {
+    padding: 10px 15px;
+    display: block;
+    text-align: center;
+    margin: 5px auto;
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+    border: 1px solid lightgrey;
+    position: relative;
+  }
+
+  .button {
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+    text-align: center;
+    margin: 10px auto;
+    padding: 8px 10px;
+    background-color: #F7F5EB; /* Green */
+    width: 12em;
+    margin-right:5px;
+    box-shadow: 1px 4px 4px rgb(124, 121, 121);
+    border-style: solid; 
+  }
+
+
+.button:hover {
+    cursor: pointer;
+    filter: brightness(95%);
+}
+
+.passwordcontainer {
+  position: relative;
+}
+
+.eyeIcon {
+  position: absolute;
+  color: lightgray;
+  top: 30%;
+  left: 53.8%;
+  margin: auto;
+}
+
+.eyeIcon:hover {
+  cursor: pointer;
+  filter: brightness(95%);
+  color: rgb(194, 177, 177);
+}
+
+.submit {
+  margin: 10px auto;
+  color: rgb(0, 0, 0);
+  border-style: solid black; 
+  box-shadow: 1px 4px 4px rgb(124, 121, 121);
+  padding: 10px 15px;
+  display: block;
+  text-align: center;
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+  border: 1px solid lightgrey;
+  position: relative;
+
+}
+
+.submit:hover {
+  margin: 10px auto;
+  cursor: pointer;
+  filter: brightness(95%);
+}

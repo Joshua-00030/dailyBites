@@ -1,7 +1,7 @@
 import './Navbar.css';
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
 
-const Navbar = (props) => {
+const Navbar = () => {
     return (
         <nav className="nav">
             <Link to="/" className="site-title">
@@ -13,9 +13,6 @@ const Navbar = (props) => {
                 </ul>
                 <ul>
                     <CustomLink to="/account">My Account</CustomLink>
-                </ul>
-                <ul>
-                    <CustomLink onClick={props.logout} to="/login">Logout</CustomLink>
                 </ul>
         </nav>
     )

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PasswordInput from '../PasswordInput/PasswordInput';
 import LoginInput from '../LoginInput/LoginInput';
-import "./LoginForm.css"
+import LoginCSS from "./LoginForm.module.css"
 
 const LoginForm = (props) => {
 
@@ -36,27 +36,28 @@ const LoginForm = (props) => {
     }
 
     return (
-    <div className='container'>
-        <h1> Welcome {formDetails.username} </h1>
-        <form onSubmit={submitHandler}>
-            {input ? 
-            <div>
-                <LoginInput placeholder="Username" name="username" handleChange={handleInputChange} value={formDetails.name} />
-                <PasswordInput placeholder="Password" name="password" handleChange={handleInputChange} value={formDetails.password} />
-            </div> : null} 
-
-            <button type="button" onClick={createNewAccount}>Create New Account</button>
-            <button type="button" onClick={forgotPassChange}>Forgot Password?</button>
-
-            {newAccount ?
+        <div className={LoginCSS.container}>
+            <h1 className={LoginCSS.loginh1}>Daily Bites</h1>
+            <h2 className={LoginCSS.loginh2}> Welcome {formDetails.username} </h2>
+            <form onSubmit={submitHandler}>
+                {input ? 
                 <div>
-                    <PasswordInput placeholder="Confirm Password" name="cPassword" handleChange={handleInputChange} value={FormData.cPassword} />
-                    <LoginInput placeholder="Email Address" name="email" handleChange={handleInputChange} value={formDetails.email} />
-                </div> : null}
+                    <LoginInput placeholder="Username" name="username" handleChange={handleInputChange} value={formDetails.name} />
+                    <PasswordInput placeholder="Password" name="password" handleChange={handleInputChange} value={formDetails.password} />
+                </div> : null} 
 
-            <input type="submit" value="SUBMIT"></input>
-        </form>
-    </div>
+                <button type="button" className={LoginCSS.button} onClick={createNewAccount}>Create New Account</button>
+                <button type="button" className={LoginCSS.button} onClick={forgotPassChange}>Forgot Password?</button>
+
+                {newAccount ?
+                    <div>
+                        <PasswordInput placeholder="Confirm Password" name="cPassword" handleChange={handleInputChange} value={FormData.cPassword} />
+                        <LoginInput placeholder="Email Address" name="email" handleChange={handleInputChange} value={formDetails.email} />
+                    </div> : null}
+
+                <input type="submit" className={LoginCSS.submit} value="Submit"></input>
+            </form>
+        </div>
     ) 
 }
 
