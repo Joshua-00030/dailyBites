@@ -1,6 +1,5 @@
 .loginh1 {
     color: white;
-    padding: 5px;
     font-size: 60px;
     font-weight: bold;
     font-family: 'Mochiy Pop One', sans-serif;
@@ -16,9 +15,9 @@
   }
   
   .container {
-    margin: 10% auto;
+    display: grid; 
+    grid-template-rows: 2fr 1fr 4fr;
     text-align: center;
-    height: 100%;
     background-color: #82AAE3;
   }
 
