@@ -19,11 +19,11 @@ const Account = (props) => {
       <div className='account-container'>
         <div>
           <div className={isOpen ? 'bars active' : 'bars'}>
-              <Link to="#" className='menu-bars'>
+              <Link to="#" className={isOpen ? 'menu-bars active' : 'menu-bars'}>
                 <FontAwesomeIcon icon={faBars} onClick={toggleSideBar}/>
               </Link>
           </div>
-          <div className={isOpen ? 'sidebar active' : "sidebar disabled"}>
+          <div className={isOpen ? 'sidebar active' : "sidebar disabled "}>
                 <AccountSideBar logout={props.logout} toggle={toggleSideBar}/>
           </div>
         </div>
