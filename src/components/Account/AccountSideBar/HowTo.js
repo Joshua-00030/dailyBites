@@ -1,4 +1,3 @@
-import { fontWeight } from '@mui/system'
 import React from 'react'
 import HowToCss from "./HowTo.module.css"
 import FeedbackForm from '../../FeedbackForm/FeedbackForm'
