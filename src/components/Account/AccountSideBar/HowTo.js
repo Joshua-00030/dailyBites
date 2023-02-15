@@ -1,6 +1,7 @@
 import { fontWeight } from '@mui/system'
 import React from 'react'
 import HowToCss from "./HowTo.module.css"
+import FeedbackForm from '../../FeedbackForm/FeedbackForm'
 
 const HowTo = (props) => {
   return (
@@ -70,6 +71,7 @@ const HowTo = (props) => {
             </div>
           </div>
         </div>
+        <FeedbackForm />
     </div>
   )
 }

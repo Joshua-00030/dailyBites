@@ -1,6 +1,7 @@
 import React from 'react'
 import FAQCSS from "./FAQs.module.css"
 import { FAQSData } from './FAQSData'
+import FeedbackForm from '../../FeedbackForm/FeedbackForm'
 
 function FAQs() {
   return (
@@ -30,6 +31,7 @@ function FAQs() {
             );
             })}
         </div>
+        <FeedbackForm />
     </div>
   )
 }
