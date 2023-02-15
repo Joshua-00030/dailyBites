@@ -7,9 +7,7 @@ import { Link } from "react-router-dom";
 const AccountSideBar = (props) => {
 
   return (
-
-    <div>
-        <ul className='side-menu-items'>
+    <div className='side-menu-items'>
           {SidebarData.map((val, key) => {
             return ( 
               <li key={key} className={val.cName}>
@@ -25,7 +23,6 @@ const AccountSideBar = (props) => {
               </li>
             );
           })}
-        </ul>
     </div>
   )
 }

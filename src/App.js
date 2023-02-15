@@ -9,6 +9,8 @@ import AccountSettings from './components/Account/AccountSideBar/AccountSettings
 import { useState } from 'react';
 import LoginForm from './components/LoginForm/LoginForm';
 import PageNotFound from './components/PageNotFound/PageNotFound';
+import HowTo from './components/Account/AccountSideBar/HowTo';
+import FAQs from './components/Account/AccountSideBar/FAQs';
 
 function App() {
 
@@ -42,8 +44,10 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/log" element={<Log />} />
         <Route path="/account" element={<Account logout={logout} user={user}/>}>
-          <Route index element={<AccountInfo />}/>
-          <Route path="info" element={<AccountInfo />}/>
+          <Route index element={<AccountInfo user={user.name} email={user.email} />}/>
+          <Route path="info" element={<AccountInfo user={user.name} email={user.email}/> } />
+          <Route path="howto" element={<HowTo />}/>
+          <Route path="faqs" element={<FAQs />} />
           <Route path="settings" element={<AccountSettings />} />
         </Route>
       </Routes>
