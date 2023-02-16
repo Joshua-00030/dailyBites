@@ -8,38 +8,44 @@
     background-color: #060b26;
     position: relative;
     left: -75%;
-    transition: 850ms;
+    transition: 500ms;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     padding-top: 5px;
+    padding-bottom: 10px;
 }
 
 .bars.active {
     position: relative;
     left: 0%;
-    transition: 350ms;
+    transition: 500ms;
     background-color: #060b26;
-    display: flex;
-    justify-content: center;
     padding-top: 5px;
+    top: 0px;
+    justify-content: center;
+    padding-bottom: 10px;
 }
 
 .menu-bars {
-    position: sticky;
-    left: 14px;
-    margin-left: 2rem;
+    /* left: 14px;
+    margin-left: 2rem; */
     font-size: 2rem;
     color: white;
     padding-top: 5px;
     padding-right: 6px;
+    top: 0px;
+    transition: 1000ms;
+    justify-content: center;
 }
 
 .menu-bars.active {
-    position: sticky;
+    padding-right: 0px;
     font-size: 2rem;
     color: white;
     transition: 1000ms;
     padding-top: 5px;
+    justify-content: center;
+    top: 0px;
 }
 
 .sidebar {
@@ -48,14 +54,13 @@
     position: relative;
     top: 0;
     left: -75%;
-    transition: 850ms;
+    transition: 500ms;
     color: transparent
-
 }
 
 .sidebar.active {
     left: 0%;
-    transition: 350ms;
+    transition: 500ms;
 }
 
 .nav-text {
@@ -82,11 +87,14 @@
     border-bottom-right-radius: 8px;
     user-select: none;
     width: 100%;
+    transition: .10s;
+
 }
 
 .nav-text a:active {
     color: black;
     background-color: black;
+    transition: .10s;
 
 }
 
@@ -98,12 +106,16 @@
 
 .disabled a {
     color: transparent;
-    transition: .5s;
+    transition: .10s;
     user-select: none;
 }
 
 .nav-text a:hover {
     background-color: #1a83ff;
+}
+
+.nav-text svg {
+    padding-right: 5px;
 }
 
 .side-menu-items {
@@ -117,7 +129,6 @@
 }
 
 span {
-    margin-left: 8px;
     text-align: center;
 }
 
