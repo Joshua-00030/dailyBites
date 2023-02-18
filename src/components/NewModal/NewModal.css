@@ -3,10 +3,14 @@ body.active-modal {
 }
 
 .btn-modal {
-  
+
     height: 35px;
     padding: .5rem;
-    filter: brightness(90%);
+    background-color: inherit;
+    border-color: #167990;
+    font-size: 15px;
+    color: #167990;
+    border-style: solid;
     /*
     filter: brightness(60%);
     border-radius: 4px;
@@ -15,15 +19,20 @@ body.active-modal {
     font-size: 18px;
     display: block;
     */
-    
+
 }
-.btn-modal:hover{
-   
+
+.btn-modal:hover {
+    color: white;
+    background-color: #167990;
+    cursor: pointer;
 }
+
 /*
  filter: brightness(75%);
 */
-.modal, .overlay {
+.modal,
+.overlay {
     width: 100vw;
     height: 100vh;
     top: 0;
@@ -34,8 +43,9 @@ body.active-modal {
 }
 
 .overlay {
-    background: rgba(49,49,49,0.8);
+    background: rgba(49, 49, 49, 0.8);
 }
+
 .modal-content {
     position: absolute;
     top: 40%;
@@ -43,12 +53,13 @@ body.active-modal {
     transform: translate(-50%, -50%);
     line-height: 1.4;
     background: #f1f1f1;
-    padding: 14px 14px;
+    padding: 12px 12px;
     border-radius: 3px;
     max-width: 600px;
     min-width: 300px;
-    background-color: silver;
+    background-color: #212529;
 }
+
 /*
 padding: 14px 28px;
 */
@@ -71,9 +82,18 @@ padding: 14px 28px;
 
 .close-modal {
     float: right;
+    font-size: 15px;
+    border: none;
+    color: #167990;
+    background-color: #212529;
 }
-      
-    /*
+.close-modal:hover {
+    color: #fff;
+    background-color: #167990;
+    cursor: pointer;
+
+}
+/*
     
     border: none;
     background-color: #ADA2FF;
@@ -83,19 +103,32 @@ padding: 14px 28px;
     filter: brightness(80%);
     */
 
-
-.add-button:hover {
-    cursor: pointer;
-    filter: brightness(95%);
-}
-
 .form-input {
     margin-bottom: .25rem;
     height: 35px;
-
+    border: 2px solid #167990;
+    background-color: inherit;
+    font-size: 1rem;
+    color: #167990;
 }
 
+.form-input::placeholder {
+    color: #167990;
+    opacity: 1;
+}
 
+.form-input:focus::placeholder {
+    color: transparent;
+}
+
+.form-input:focus {
+    outline: none;
+}
+
+.modal h2,
+h3 {
+    color: white;
+}
 
 .entered-tags-container {
     display: grid;
@@ -111,6 +144,7 @@ padding: 14px 28px;
     justify-content: space-between;
 
 }
+
 /*
 .entered-tags-container::-webkit-scrollbar {
     display: none;
@@ -122,4 +156,9 @@ padding: 14px 28px;
     max-width: 300px;
     flex-wrap: wrap;
 */
-  
+.word-icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: .25rem;
+}

@@ -60,7 +60,7 @@ const Searchbar = ({ items, setFilteredItems, filteredItems, activeTags }) => {
                     className="search-input"
                     type="search"
                     id="search"
-                    placeholder="Search tags"
+                    placeholder="Entry name / Tag"
                     onChange={handleFilter} />
                 <div className="searchIcon">
                     <SearchIcon />
