@@ -1,0 +1,125 @@
+body.active-modal {
+    overflow-y: hidden;
+}
+
+.btn-modal {
+  
+    height: 35px;
+    padding: .5rem;
+    filter: brightness(90%);
+    /*
+    filter: brightness(60%);
+    border-radius: 4px;
+    margin: 100px auto 0;
+    padding: 10px 20px;
+    font-size: 18px;
+    display: block;
+    */
+    
+}
+.btn-modal:hover{
+   
+}
+/*
+ filter: brightness(75%);
+*/
+.modal, .overlay {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+}
+
+.overlay {
+    background: rgba(49,49,49,0.8);
+}
+.modal-content {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1.4;
+    background: #f1f1f1;
+    padding: 14px 14px;
+    border-radius: 3px;
+    max-width: 600px;
+    min-width: 300px;
+    background-color: silver;
+}
+/*
+padding: 14px 28px;
+*/
+
+.form {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.submit-modal {
+    /*
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 7px;
+    */
+    float: right;
+}
+
+.close-modal {
+    float: right;
+}
+      
+    /*
+    
+    border: none;
+    background-color: #ADA2FF;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    filter: brightness(80%);
+    */
+
+
+.add-button:hover {
+    cursor: pointer;
+    filter: brightness(95%);
+}
+
+.form-input {
+    margin-bottom: .25rem;
+    height: 35px;
+
+}
+
+
+
+.entered-tags-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: .25rem;
+    overflow: hidden;
+    overflow-y: auto;
+    margin-bottom: .25rem;
+}
+
+.tag-div {
+    display: flex;
+    justify-content: space-between;
+
+}
+/*
+.entered-tags-container::-webkit-scrollbar {
+    display: none;
+  }
+  */
+/*
+    display: flex;
+    justify-content: flex-start;
+    max-width: 300px;
+    flex-wrap: wrap;
+*/
+  

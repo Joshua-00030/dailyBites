@@ -2,6 +2,7 @@ import './Searchbar.css'
 import SearchIcon from '@mui/icons-material/Search';
 //import Tag from '../Tag/Tag'
 import { useEffect, useState } from 'react';
+import NewModal from '../NewModal/NewModal';
 
 const Searchbar = ({ items, setFilteredItems, filteredItems, activeTags }) => {
 
@@ -52,9 +53,11 @@ const Searchbar = ({ items, setFilteredItems, filteredItems, activeTags }) => {
     }, [activeTags, searchQuery])
 
     return (
+        <>
         <div className="search">
             <div className="searchInputs">
                 <input
+                    className="search-input"
                     type="search"
                     id="search"
                     placeholder="Search tags"
@@ -62,12 +65,10 @@ const Searchbar = ({ items, setFilteredItems, filteredItems, activeTags }) => {
                 <div className="searchIcon">
                     <SearchIcon />
                 </div>
-                <button
-                    className="add-button"
-                    type="button">new item</button>
+                <NewModal></NewModal>
             </div>
         </div>
-
+        </>
     )
 }
 

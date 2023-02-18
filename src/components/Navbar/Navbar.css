@@ -1,5 +1,5 @@
 .nav {
-  background-color: #82AAE3;
+  background-color: navy;
   color: white;
   display: flex;
   align-items: stretch;
@@ -10,7 +10,7 @@
 
 .site-title {
   font-size: 1.25rem;
-  font-family: 'Mochiy Pop One', sans-serif;
+  font-family: 'Saira Stencil One', cursive;
 }
 .nav ul {
   padding: 0;
