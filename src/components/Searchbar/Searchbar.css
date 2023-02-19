@@ -1,51 +1,15 @@
-/*
-.search-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: .25rem;
-    max-width: 500px;
-    margin-bottom: .5rem;
-}
 
-.search-wrapper input {
-    font-size: 1rem;
-    padding: .5rem;
-    border: 1px gray solid;
-    border-radius: 16px;
-}
-*/
 .searchIcon {
-    
     display: grid;
     place-items: center;
     padding-right: 8px;
     padding-left: 8px;
     background-color: inherit;
-    border: 2px solid  #167990;
+    border: 2px solid #167990;
     border-left: none;
-    
-    margin-right: .25rem;
     color: #167990;
-    /*
-    border-top-right-radius: 16px;
-    border-bottom-right-radius: 16px;
-    border: 1px solid gray;
-    background-color: white;
-    */
 }
-/*
-.searchIcon:hover {
-    cursor: pointer;
-    color: white;
-    background-color: #167990;
-}
-*/
 
-/*
-.searchIcon svg {
-    font-size: 35px;
-}
-*/
 .searchInputs {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -54,32 +18,35 @@
 }
 
 .search-input {
-    padding: 15px;
-    height: 35px;
+    padding-left: 15px;
     border: 2px solid #167990;
     border-right: none;
     background-color: inherit;
     font-size: 1rem;
     color: #167990;
 }
-    /*
-    background-color: inherit;
-    */
-    /*
-    font-size: 14px;
-    border: 1px solid gray;
-    border-top-left-radius: 16px;
-    border-bottom-left-radius: 16px;
-    border: 0;
-    */
-    .search-input:focus::placeholder {
-        color: transparent;
-      }
 
-      .search-input:focus {
-        outline: none;
-    }
-    
+.search-input:focus::placeholder {
+    color: transparent;
+}
+
+.search-hover-border {
+    display: flex;
+    justify-content: center;
+    margin-right: .25rem;
+    border: 2px solid transparent;
+}
+
+.search-hover-border:hover, 
+.search-hover-border:focus-within{
+    border: 2px solid aqua;
+    border-radius: 3px;
+}
+
+.search-input:focus {
+    outline: none;
+}
+
 .search-input::placeholder {
     color: #167990;
     opacity: 1;
@@ -87,5 +54,7 @@
 
 .search {
     grid-column: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-

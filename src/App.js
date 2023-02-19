@@ -6,7 +6,7 @@ import Log from './components/Log/Log';
 import Account from './components/Account/Account';
 import { useState } from 'react';
 import LoginForm from './components/LoginForm/LoginForm';
-import PageNotFound from './components/PageNotFound/PageNotFound';
+//import PageNotFound from './components/PageNotFound/PageNotFound';
 
 function App() {
 
@@ -20,11 +20,7 @@ function App() {
   function logout() {
     setUser({...user, name: ""});
   }
-/*
-  if (user.name === "") {
-    return <LoginForm Login={login}/>
-  }
-*/
+
   return (
   <>
     <Navbar logout={logout}/>

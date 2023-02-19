@@ -1,5 +1,5 @@
 import './EnteredTag.css';
-import { FaTimes, FaUser, FaUtensils, FaSignOutAlt, FaPen, FaMarker, FaHamburger, FaExpandArrowsAlt, FaEraser, FaChartPie, FaCarrot, FaUserCircle, FaWindowClose, FaRegWindowClose, FaSignInAlt, FaPlusSquare, FaPlus, FaPortrait, FaHome, FaEdit, FaSearch } from 'react-icons/fa';
+import { FaRegWindowClose } from 'react-icons/fa';
 import { IconContext } from "react-icons";
 
 const EnteredTag = ({ label, enteredTags, setEnteredTags }) => {

@@ -1,5 +1,5 @@
 import './Tag.css'
-const Tag = ({ type, label, activeTags, setActiveTags}) => {
+const Tag = ({ type, label, activeTags, setActiveTags }) => {
 
     const handleClick = (e) => {
         //make active to nonactive
@@ -12,7 +12,7 @@ const Tag = ({ type, label, activeTags, setActiveTags}) => {
             setActiveTags(filterTags)
 
 
-            //make nonactive to active
+        //make nonactive to active
         } else {
             e.target.classList.add("active-tag")
             e.target.classList.remove("nonactive-tag")

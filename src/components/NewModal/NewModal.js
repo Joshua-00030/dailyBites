@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import './NewModal.css';
 import EnteredTag from '../EnteredTag/EnteredTag';
-import { FaTimes, FaUser, FaUtensils, FaSignOutAlt, FaPen, FaMarker, FaHamburger, FaExpandArrowsAlt, FaEraser, FaChartPie, FaCarrot, FaUserCircle, FaWindowClose, FaRegWindowClose, FaSignInAlt, FaPlusSquare, FaPlus, FaPortrait, FaHome, FaEdit, FaSearch } from 'react-icons/fa';
 import { IconContext } from "react-icons";
+import { FaPlusSquare, FaRegWindowClose } from 'react-icons/fa';
+//import { FaTimes, FaUser, FaUtensils, FaSignOutAlt, FaPen, FaMarker, FaHamburger, FaExpandArrowsAlt, FaEraser, FaChartPie, FaCarrot, FaUserCircle, FaWindowClose, FaRegWindowClose, FaSignInAlt, FaPlusSquare, FaPlus, FaPortrait, FaHome, FaEdit, FaSearch } from 'react-icons/fa';
 
 const NewModal = () => {
 
@@ -36,7 +37,7 @@ const NewModal = () => {
                 onClick={toggleModal}>
                 <div className="word-icon-container">
                     New
-                    <IconContext.Provider value={{ size: ".9rem", className: "" }}>
+                    <IconContext.Provider value={{ size: "1em" }}>
                         <FaPlusSquare />
                     </IconContext.Provider>
                 </div>
@@ -52,8 +53,8 @@ const NewModal = () => {
                             className="close-modal"
                             onClick={toggleModal}>
                             <div className="word-icon-container">
-                                
-                                <IconContext.Provider value={{ size: "2.25rem", className: "" }}>
+
+                                <IconContext.Provider value={{ size: "2.5em", className: "" }}>
                                     <FaRegWindowClose />
                                 </IconContext.Provider>
                             </div>

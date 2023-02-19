@@ -2,7 +2,7 @@ import './Tagbar.css';
 import Tag from '../Tag/Tag'
 
 const Tagbar = ({activeTags, setActiveTags}) => {
-//<Tag type="add" label="add"></Tag>
+
     return (
         <div className="tag-container">
             <Tag type="tag-bar" label="oatmeal" activeTags={activeTags} setActiveTags={setActiveTags}></Tag>

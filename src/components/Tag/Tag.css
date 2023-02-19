@@ -9,22 +9,11 @@
   padding-left: 16px;
   align-items: center;
 }
-/*
-border-radius: 16px;
-*/
 
 .tag-button:hover {
   filter: brightness(87%);
 }
-/*
-filter: brightness(95%);
-*/
 
 .active-tag {
 background-color: #ADA2FF;
 }
-
-  .nonactive-tag {
-
-  }
-
