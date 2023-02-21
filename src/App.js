@@ -33,7 +33,7 @@ function App() {
   }
 
   if (user.name === "") {
-    return <LoginForm Login={login}/>
+    return <LoginForm Login={login} setUser={setUser}/>
   } else {
  
     return (
@@ -42,7 +42,7 @@ function App() {
       <div className='app-container'>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/log" element={<Log />} />
+        <Route path="/log" element={<Log user={user}/>} />
         <Route path="/account" element={<Account logout={logout} user={user}/>}>
           <Route index element={<AccountInfo user={user.name} email={user.email} />}/>
           <Route path="info" element={<AccountInfo user={user.name} email={user.email}/> } />

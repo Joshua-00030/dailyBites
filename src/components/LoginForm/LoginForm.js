@@ -17,19 +17,22 @@ const LoginForm = (props) => {
     })
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
-    const [user, setUser] = useState(null)
 
+    /*
     useEffect(() => {
         const loggedUserJSON = window.localStorage.getItem('loggedDietappUser')
         if (loggedUserJSON) {
           const user = JSON.parse(loggedUserJSON)
-          setUser(user)
+          props.setUser(user)
           userItemService.setToken(user.token)
         }
-      }, [])
+      }, [props])
+      */
     
     function handleInputChange({text, inputName}) {
             setFormDetails({...formDetails, [inputName]: text})
+            setUsername(formDetails.username)
+            setPassword(formDetails.password)
     }
 
     function createNewAccount(event) {
@@ -61,7 +64,8 @@ const LoginForm = (props) => {
             window.localStorage.setItem(
                 'loggedDietappUser', JSON.stringify(user)
             )
-            setUser(user)
+            userItemService.setToken(user.token)
+            props.setUser(user)
             setUsername('')
             setPassword('')
         } catch (exception) {
@@ -70,7 +74,7 @@ const LoginForm = (props) => {
                 //setErrorMessage(null)
             }, 5000)
         }
-        props.Login(formDetails)
+        //props.Login(formDetails)
     }
 
     return (

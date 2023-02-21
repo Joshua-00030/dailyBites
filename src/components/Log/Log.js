@@ -24,18 +24,19 @@ const exampleItems = [
     { name: 'hamburger', calories: 350, tags: ['lunch'], id: 15 }
 ]
 
-const Log = () => {
+const Log = (props) => {
 
     const [userItems, setUserItems] = useState([])
     const [filteredItems, setFilteredItems] = useState(exampleItems)
 
     useEffect(() => {
+        userItemService.setToken(props.user.token)
         userItemService
             .getAll()
             .then(initialItems => {
                 setUserItems(initialItems)
             })
-    }, [])
+    }, [props])
 
 
     return (
