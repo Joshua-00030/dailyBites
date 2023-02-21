@@ -15,8 +15,6 @@ const LoginForm = (props) => {
         cPassword: "", 
         email: ""
     })
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
 
     /*
     useEffect(() => {
@@ -31,8 +29,6 @@ const LoginForm = (props) => {
     
     function handleInputChange({text, inputName}) {
             setFormDetails({...formDetails, [inputName]: text})
-            setUsername(formDetails.username)
-            setPassword(formDetails.password)
     }
 
     function createNewAccount(event) {
@@ -47,37 +43,32 @@ const LoginForm = (props) => {
         setNewAccount(true)
     }
 
-    function submitHandler(event) {
-        event.preventDefault()
-        props.Login(formDetails)
-    }
-
     const handleLogin = async (event) => {
         event.preventDefault()
-        setUsername(formDetails.username)
-        setPassword(formDetails.password)
         try {
-            const user = await loginService.login({
-                username, password,
-            })
+            const loginInfo = {
+                username: formDetails.username,
+                password: formDetails.password,
+                cPassword: formDetails.cPassword,
+                email: formDetails.email
+            }
+            const user = await loginService.login(loginInfo)
             userItemService.setToken(user.token)
             window.localStorage.setItem(
                 'loggedDietappUser', JSON.stringify(user)
             )
             userItemService.setToken(user.token)
             props.setUser(user)
-            setUsername('')
-            setPassword('')
         } catch (exception) {
             //setErrorMessage('wrong credentials')
             setTimeout(() => {
                 //setErrorMessage(null)
             }, 5000)
         }
-        //props.Login(formDetails)
     }
 
     return (
+        //<div className='login-form-container'> from allisons
         <div className={LoginCSS.container}>
             <h1 className={LoginCSS.loginh1}>Daily Bites</h1>
             <h2 className={LoginCSS.loginh2}> Welcome {formDetails.username} </h2>

@@ -1,0 +1,25 @@
+
+.entered-tag-body {
+    border: 2px solid black;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    background-color: #167990;
+    gap: .5rem;
+    padding: .25rem;
+
+}
+
+.entered-tag-delete {
+    color: red;
+    display: flex;
+    align-items: center;
+}
+.entered-tag-delete:hover {
+    cursor: pointer;
+}
+
+.entered-tag-label {
+    font-size: 15px;
+    color: white;
+}

@@ -1,0 +1,121 @@
+body.active-modal {
+    overflow-y: hidden;
+}
+
+.btn-modal {
+
+    height: 35px;
+    padding: .5rem;
+    background-color: inherit;
+    border-color: #167990;
+    font-size: 15px;
+    color: #167990;
+    border-style: solid;
+    margin: 2px;
+}
+
+.btn-modal:hover {
+    color: white;
+    background-color: #167990;
+    cursor: pointer;
+}
+
+.modal,
+.overlay {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+}
+
+.overlay {
+    background: rgba(49, 49, 49, 0.8);
+}
+
+.modal-content {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1.4;
+    background: #f1f1f1;
+    padding: 12px 12px;
+    border-radius: 3px;
+    max-width: 600px;
+    min-width: 300px;
+    background-color: #212529;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.submit-modal {
+    float: right;
+}
+
+.close-modal {
+    float: right;
+    font-size: 15px;
+    border: none;
+    color: #167990;
+    background-color: #212529;
+}
+
+.close-modal:hover {
+    color: #fff;
+    background-color: #167990;
+    cursor: pointer;
+}
+
+.form-input {
+    margin-bottom: .25rem;
+    height: 35px;
+    border: 2px solid #167990;
+    background-color: inherit;
+    font-size: 1rem;
+    color: #167990;
+}
+
+.form-input::placeholder {
+    color: #167990;
+    opacity: 1;
+}
+
+.form-input:focus::placeholder {
+    color: transparent;
+}
+
+.form-input:focus {
+    outline: none;
+}
+
+.modal h2,
+h3 {
+    color: white;
+}
+
+.entered-tags-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: .25rem;
+    overflow: hidden;
+    overflow-y: auto;
+    margin-bottom: .25rem;
+}
+
+.tag-div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.word-icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: .25rem;
+}

@@ -1,22 +1,52 @@
 import './Searchbar.css'
-import SearchIcon from '@mui/icons-material/Search';
-import Tag from '../Tag/Tag'
+import { useEffect, useState } from 'react';
+import NewModal from '../NewModal/NewModal';
 import userItemService from '../../services/userItem';
-//import { useState } from 'react'
+import { IconContext } from "react-icons";
+import { FaSearch } from 'react-icons/fa';
 
-const Searchbar = ({items, setFilteredItems}) => {
+const Searchbar = ({ items, setFilteredItems, filteredItems, activeTags }) => {
 
-    //const [searchQuery, setSearchQuery] = useState([])
+    const [searchQuery, setSearchQuery] = useState("")
 
     const handleFilter = (e) => {
         const searchWord = e.target.value
-        console.log(searchWord)
-        const newFilter = items.filter((value) => {
-            return value.name.toLowerCase().includes(searchWord.toLowerCase());
-        });
-        setFilteredItems(newFilter)
+        setSearchQuery(searchWord)
     }
-    const handleClick = () =>{
+
+    useEffect(() => {
+        let currentFilteredItems = items
+        let newFilter = []
+
+        if (searchQuery) {
+            newFilter = currentFilteredItems.filter((value) => {
+                for (let x in value.tags) {
+                    if (value.tags[x].toLowerCase().includes(searchQuery.toLowerCase()) || value.name.toLowerCase().includes(searchQuery.toLowerCase()))
+                        return true
+                }
+                return false
+            });
+            setFilteredItems(newFilter)
+            currentFilteredItems = newFilter
+        }
+        if (activeTags) {
+            for (let i in activeTags) {
+                newFilter = currentFilteredItems.filter((value) => {
+                    for (let j in value.tags) {
+                        if (value.tags[j].toLowerCase().includes(activeTags[i].toLowerCase()))
+                            return true
+                    }
+                    return false
+                });
+                setFilteredItems(newFilter)
+                currentFilteredItems = newFilter
+            }
+        }
+        setFilteredItems(currentFilteredItems)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [activeTags, searchQuery])
+
+    const handleClick = () => {
         const userItemObject = {
             name: 'coffee',
             nutrition: [
@@ -30,24 +60,28 @@ const Searchbar = ({items, setFilteredItems}) => {
         userItemService.create(userItemObject)
         console.log(userItemObject)
     }
-    
     return (
-        <div className="search">
-            <div className="searchInputs">
-            <input 
-            type="search" 
-            id="search" 
-            placeholder="Search tags"
-            onChange={handleFilter}/>
-            <div className="searchIcon">
-                <SearchIcon/>
+        <>
+            <div className="search">
+                <div className="searchInputs">
+                <div className="search-hover-border">
+                
+                    <input
+                        className="search-input"
+                        type="search"
+                        id="search"
+                        placeholder="Entry name / Tag"
+                        onChange={handleFilter} />
+                    <div className="searchIcon">
+                        <IconContext.Provider value={{size: "1em"}}>
+                            <FaSearch />
+                        </IconContext.Provider>
+                    </div>
+                        </div>
+                    <NewModal></NewModal>
+                </div>
             </div>
-            <button 
-            className="add-button"
-            type="button" onClick={handleClick}>new item</button>
-            </div>
-        </div>
-        
+        </>
     )
 }
 

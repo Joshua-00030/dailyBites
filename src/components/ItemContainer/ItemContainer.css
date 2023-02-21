@@ -1,10 +1,3 @@
-/*.ItemContainer{
-    background-color: #00C661;
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-  }
-*/
 .entry-cards {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
