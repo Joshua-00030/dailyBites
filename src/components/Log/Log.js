@@ -26,6 +26,7 @@ const exampleItems = [
 
 const Log = (props) => {
 
+    const [currentCals, setCurrentCals] = useState(0)
     const [userItems, setUserItems] = useState([])
     const [filteredItems, setFilteredItems] = useState(exampleItems)
 
@@ -45,8 +46,8 @@ const Log = (props) => {
             <div className="log-container">
                 <Searchbar items={exampleItems} setFilteredItems={setFilteredItems} filteredItems={filteredItems} activeTags={activeTags}/>
                 <Tagbar activeTags={activeTags} setActiveTags={setActiveTags}/>
-                <ItemContainer items={filteredItems}/>
-                <CalorieBar />
+                <ItemContainer items={filteredItems} currentCals={currentCals} setCurrentCals={setCurrentCals}/>
+                <CalorieBar currentCals={currentCals}/>
             </div>
         </>
     )

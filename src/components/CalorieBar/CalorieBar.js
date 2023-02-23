@@ -1,10 +1,10 @@
 import './CalorieBar.css';
 
-const CalorieBar = () => {
+const CalorieBar = ({currentCals}) => {
     return (
         <div className="bar-grid">
             <div className="CalorieDisplay">
-                1300/1500
+                {currentCals}
             </div>
             <div className="CalorieBar">
             </div>

@@ -12,7 +12,7 @@
     width: 6em;
   }
   */
-.card {
+/* .card {
   border: 1px solid gray;
   background-color: white;
   padding: .5rem;
@@ -30,4 +30,42 @@
 
 .hide {
   display: none;
-}
+} */
+
+
+.card {
+  /*  border: 1px solid gray;
+   background-color: white; */
+   display: flex;
+   flex-direction: column;
+   background-color: #F5F5F5;
+   border-radius: .5em;
+   overflow: hidden;
+   white-space: nowrap;
+   text-overflow: ellipsis;
+ }
+ 
+ .card:hover{
+   background-color: lightgreen;
+ }
+ 
+ .header {
+   color: lightskyblue;
+   font-size: 1em;
+   font-weight:bold;
+   align-self: flex-start;
+   margin: auto;
+   margin-left: .25em;
+   margin-bottom: .25em;
+ }
+ 
+ .body {
+   display: block;
+   color: lightsalmon;
+   font-weight: bold;
+   align-self:flex-end;
+ }
+ 
+ .hide {
+   display: none;
+ }
