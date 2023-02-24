@@ -1,19 +1,47 @@
+/*
+#563c5c **good2
+#602f6b **brighter
+#6c3082
+
+#13327a; complimentary blue
+#4D565F; gray
+
+#172a79; tag-button background-color
+#060b26; tag-button:hover background-color
+*/
 
 .tag-button {
-  font-size: 12px;
-  border: none;
-  background-color: #F5F5F5;
+  font-size: 18px;
   display: flex;
-  justify-content: left;
+  justify-content: space-between;
   height: 30px;
-  padding-left: 16px;
+  padding-left: .5rem;
+  padding-right: .5rem;
   align-items: center;
+  color: white;
+  gap: .5em;
+  background-color: #563c5c;
 }
 
 .tag-button:hover {
-  filter: brightness(87%);
+  background-color: #4D565F;
+  cursor: pointer;
 }
 
-.active-tag {
-background-color: #ADA2FF;
+.check-wrapper {
+  color: #1a83ff;
 }
+
+.tag-label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 80%;
+}
+
+.tag-check-icon {
+}
+
+/*
+background-color: #474E68; dark purple
+*/

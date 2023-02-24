@@ -67,7 +67,7 @@ const NewModal = () => {
                             <div className="tag-div">
                                 <input className="form-input" id="tag-input" type="text" name="tags" placeholder="Enter tags" />
                                 <button
-                                    className="add-tag-button btn-modal"
+                                    className="btn-modal"
                                     onClick={handleAddTag}>Add tag</button>
                             </div>
                             <h3 className="tags-header">Tags:</h3>

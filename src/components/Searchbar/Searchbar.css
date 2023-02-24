@@ -11,10 +11,9 @@
 }
 
 .searchInputs {
-    margin-top: 10px;
-    margin-bottom: 10px;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .search-input {
@@ -22,8 +21,10 @@
     border: 2px solid #167990;
     border-right: none;
     background-color: inherit;
-    font-size: 1rem;
+    font-size: 18px;
     color: #167990;
+    height: 35px;
+ 
 }
 
 .search-input:focus::placeholder {

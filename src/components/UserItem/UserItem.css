@@ -32,21 +32,26 @@
   display: none;
 } */
 
-
+/*
+//background-color:#212529; black
+//background-color:#167990; blue
+*/
 .card {
   /*  border: 1px solid gray;
    background-color: white; */
    display: flex;
    flex-direction: column;
-   background-color: #F5F5F5;
+   background-color: #fff;
    border-radius: .5em;
    overflow: hidden;
    white-space: nowrap;
    text-overflow: ellipsis;
+   border: 3px solid #167990;
  }
  
  .card:hover{
-   background-color: lightgreen;
+   filter:brightness(85%);
+   cursor: pointer;
  }
  
  .header {
@@ -69,3 +74,12 @@
  .hide {
    display: none;
  }
+/*
+ .card-hover-border {
+  border: 2px solid transparent;
+ }
+ .card-hover-border:hover {
+    border: 2px solid aqua;
+    border-radius: .5em;
+ }
+ */
