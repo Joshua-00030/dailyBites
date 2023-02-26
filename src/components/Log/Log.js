@@ -5,49 +5,76 @@ import ItemContainer from '../ItemContainer/ItemContainer';
 import Searchbar from '../Searchbar/Searchbar';
 import { useState, useEffect } from 'react';
 import userItemService from '../../services/userItem';
-
+/*
 const exampleItems = [
-    { name: 'hamburger', calories: 350, tags: ['lunch'], id: 1 }, 
-    { name: 'oatmeal', calories: 150, tags: ['breakfast', 'low cal'], id: 2 }, 
-    { name: 'hamburger', calories: 350, tags: ['lunch'], id: 3 }, 
-    { name: 'oatmeal', calories: 150, tags: ['breakfast', 'low cal'], id: 4 }, 
-    { name: 'hamburger', calories: 350, tags: ['lunch'], id: 5 }, 
-    { name: 'oatmeal', calories: 150, tags: ['breakfast', 'low cal'], id: 6 }, 
-    { name: 'hamburger', calories: 350, tags: ['lunch'], id: 7 }, 
-    { name: 'oatmeal', calories: 150, tags: ['breakfast', 'low cal'], id: 8 }, 
-    { name: 'hamburger', calories: 350, tags: ['lunch'], id: 9 }, 
-    { name: 'oatmeal', calories: 150, tags: ['breakfast', 'low cal'], id: 10 }, 
-    { name: 'hamburger', calories: 350, tags: ['lunch'], id: 11 }, 
-    { name: 'oatmeal', calories: 150, tags: ['breakfast', 'low cal'], id: 12 }, 
-    { name: 'hamburger', calories: 350, tags: ['lunch'], id: 13 }, 
-    { name: 'brown sugar oatmeal', calories: 150, tags: ['breakfast', 'low cal', 'oatmeal'], id: 14 }, 
+    { name: 'hamburger', calories: 350, tags: ['lunch'], id: 1 },
+    { name: 'oatmeal', calories: 150, tags: ['breakfast', 'low cal'], id: 2 },
+    { name: 'hamburger', calories: 350, tags: ['lunch'], id: 3 },
+    { name: 'oatmeal', calories: 150, tags: ['breakfast', 'low cal'], id: 4 },
+    { name: 'hamburger', calories: 350, tags: ['lunch'], id: 5 },
+    { name: 'oatmeal', calories: 150, tags: ['breakfast', 'low cal'], id: 6 },
+    { name: 'hamburger', calories: 350, tags: ['lunch'], id: 7 },
+    { name: 'oatmeal', calories: 150, tags: ['breakfast', 'low cal'], id: 8 },
+    { name: 'hamburger', calories: 350, tags: ['lunch'], id: 9 },
+    { name: 'oatmeal', calories: 150, tags: ['breakfast', 'low cal'], id: 10 },
+    { name: 'hamburger', calories: 350, tags: ['lunch'], id: 11 },
+    { name: 'oatmeal', calories: 150, tags: ['breakfast', 'low cal'], id: 12 },
+    { name: 'hamburger', calories: 350, tags: ['lunch'], id: 13 },
+    { name: 'brown sugar oatmeal', calories: 150, tags: ['breakfast', 'low cal', 'oatmeal'], id: 14 },
     { name: 'hamburger', calories: 350, tags: ['lunch'], id: 15 }
 ]
+*/
 
 const Log = (props) => {
 
     const [currentCals, setCurrentCals] = useState(0)
     const [userItems, setUserItems] = useState([])
-    const [filteredItems, setFilteredItems] = useState(exampleItems)
+    const [activeTags, setActiveTags] = useState([]);
+    const [filteredItems, setFilteredItems] = useState([]);
+    const [favoriteTags, setFavoriteTags] = useState([]);
+
+    const setTagBar = (items) => {
+
+        let tag_array = [];
+        let tag_dict = {};
+        let count = 0;
+        let i = 0;
+        let j = 0;
+        let x = 0;
+
+        for (i = 0; i < items.length; i++) {
+            for (j = 0; j < items[i].tags.length; j++) {
+                if (!(items[i].tags[j] in tag_dict))
+                    tag_dict[count] = items[i].tags[j];
+                count++;
+            }
+        }
+
+        for (x = 0; x < count; x++) {
+            tag_array.push(tag_dict[x]);
+        }
+        setFavoriteTags(favoriteTags.concat(tag_array));
+    }
 
     useEffect(() => {
         userItemService.setToken(props.user.token)
         userItemService
             .getAll()
             .then(initialItems => {
-                setUserItems(initialItems)
+                setUserItems(initialItems);
+                setTagBar(initialItems);
+                setFilteredItems(initialItems);
             })
-    }, [props])
-
-    const [activeTags, setActiveTags] = useState([]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     return (
         <>
             <div className="log-container">
-                <Searchbar items={exampleItems} setFilteredItems={setFilteredItems} filteredItems={filteredItems} activeTags={activeTags}/>
-                <Tagbar activeTags={activeTags} setActiveTags={setActiveTags}/>
-                <ItemContainer items={filteredItems} currentCals={currentCals} setCurrentCals={setCurrentCals}/>
-                <CalorieBar currentCals={currentCals}/>
+                <Searchbar items={userItems} setFilteredItems={setFilteredItems} filteredItems={filteredItems} activeTags={activeTags} />
+                <Tagbar favoriteTags={favoriteTags} activeTags={activeTags} setActiveTags={setActiveTags} />
+                <ItemContainer items={filteredItems} currentCals={currentCals} setCurrentCals={setCurrentCals} />
+                <CalorieBar currentCals={currentCals} />
             </div>
         </>
     )

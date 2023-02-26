@@ -5,7 +5,7 @@ const UserItem = ({item, onClick}) => {
         <div className="card-hover-border">
         <div className="card" onClick={onClick}>
             <div className="header">{item.name}</div>
-            <div className="body">{item.calories}</div>
+            <div className="body">{item.nutrition[0].value}</div>
         </div>
         </div>
     )

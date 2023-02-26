@@ -8,7 +8,7 @@ const ItemContainer = ({items, currentCals, setCurrentCals}) => {
         console.log("Item " + name + " has been clicked!\nThis food has " + value + " calories.");
         console.log("Current Calory Total is: " + (currentCals + value));
     }
-
+    
     return (
         <div className="item-grid-container">
             <div className="entry-cards">

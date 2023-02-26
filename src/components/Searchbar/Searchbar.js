@@ -1,7 +1,6 @@
 import './Searchbar.css'
 import { useEffect, useState } from 'react';
 import NewModal from '../NewModal/NewModal';
-import userItemService from '../../services/userItem';
 import { IconContext } from "react-icons";
 import { FaSearch } from 'react-icons/fa';
 
@@ -29,7 +28,7 @@ const Searchbar = ({ items, setFilteredItems, filteredItems, activeTags }) => {
             setFilteredItems(newFilter)
             currentFilteredItems = newFilter
         }
-        if (activeTags) {
+        if (activeTags[0]) {
             for (let i in activeTags) {
                 newFilter = currentFilteredItems.filter((value) => {
                     for (let j in value.tags) {
@@ -46,38 +45,24 @@ const Searchbar = ({ items, setFilteredItems, filteredItems, activeTags }) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [activeTags, searchQuery])
 
-    const handleClick = () => {
-        const userItemObject = {
-            name: 'coffee',
-            nutrition: [
-                {
-                    name: 'calories',
-                    value: 100
-                }
-            ],
-            tags: ['breakfast', 'drink'],
-        }
-        userItemService.create(userItemObject)
-        console.log(userItemObject)
-    }
     return (
         <>
             <div className="search">
                 <div className="searchInputs">
-                <div className="search-hover-border">
-                
-                    <input
-                        className="search-input"
-                        type="search"
-                        id="search"
-                        placeholder="Entry name / Tag"
-                        onChange={handleFilter} />
-                    <div className="searchIcon">
-                        <IconContext.Provider value={{size: "1em"}}>
-                            <FaSearch />
-                        </IconContext.Provider>
-                    </div>
+                    <div className="search-hover-border">
+
+                        <input
+                            className="search-input"
+                            type="search"
+                            id="search"
+                            placeholder="Entry name / Tag"
+                            onChange={handleFilter} />
+                        <div className="searchIcon">
+                            <IconContext.Provider value={{ size: "1em" }}>
+                                <FaSearch />
+                            </IconContext.Provider>
                         </div>
+                    </div>
                     <NewModal></NewModal>
                 </div>
             </div>

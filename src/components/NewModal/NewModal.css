@@ -3,15 +3,11 @@ body.active-modal {
 }
 
 .btn-modal {
-
-    height: 35px;
-    
     background-color: inherit;
-    border-color: #167990;
     font-size: 18px;
     color: #167990;
-    border-style: solid;
-
+    border: 2px solid #167990;
+    height: 35px;
 }
 
 .btn-modal:hover {
@@ -46,7 +42,7 @@ body.active-modal {
     border-radius: 3px;
     max-width: 600px;
     min-width: 300px;
-    background-color: #212529;
+    background-color: #181818;
 }
 
 .form {

@@ -1,6 +1,6 @@
 .nav {
   background-color: #13667a;
-  color: #fff;
+  color: #c8eef7;
   display: flex;
   align-items: stretch;
   gap: 2rem;
@@ -11,6 +11,7 @@
 .site-title {
   font-size: 1.25rem;
   font-weight: bold;
+  color: #fff!important;
 }
 
 .nav ul {
@@ -36,6 +37,7 @@
 
 .nav li:hover {
   text-decoration: underline;
+  color: #fff;
 }
 
 .nav-icon {

@@ -11,8 +11,6 @@
     grid-column: 1;
   }
 
-
-
   .tag-container button:hover {
     cursor: pointer;
     /*
@@ -26,6 +24,5 @@
     display: flex;
     flex-direction: column; 
     max-height: 500px;
-    border: 3px solid black;
-    overflow-y: scroll;
+    overflow-y: auto;
   }

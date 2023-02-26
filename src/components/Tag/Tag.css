@@ -8,40 +8,32 @@
 
 #172a79; tag-button background-color
 #060b26; tag-button:hover background-color
+
+*cool blue #305670;
+background-color: #474E68; dark purple
 */
 
 .tag-button {
   font-size: 18px;
   display: flex;
-  justify-content: space-between;
+  justify-content:space-between;
   height: 30px;
   padding-left: .5rem;
   padding-right: .5rem;
   align-items: center;
-  color: white;
-  gap: .5em;
-  background-color: #563c5c;
+  color: #e2d9f3;
+  gap: .25em;
+  background-color: #432874;
 }
 
 .tag-button:hover {
-  background-color: #4D565F;
+  background-color: #59359a;
   cursor: pointer;
-}
-
-.check-wrapper {
-  color: #1a83ff;
 }
 
 .tag-label {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 80%;
 }
 
-.tag-check-icon {
-}
-
-/*
-background-color: #474E68; dark purple
-*/
