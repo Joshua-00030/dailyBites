@@ -6,7 +6,7 @@ import { FaPlusSquare, FaRegWindowClose } from 'react-icons/fa';
 import userItemService from '../../services/userItem';
 //import { FaTimes, FaUser, FaUtensils, FaSignOutAlt, FaPen, FaMarker, FaHamburger, FaExpandArrowsAlt, FaEraser, FaChartPie, FaCarrot, FaUserCircle, FaWindowClose, FaRegWindowClose, FaSignInAlt, FaPlusSquare, FaPlus, FaPortrait, FaHome, FaEdit, FaSearch } from 'react-icons/fa';
 
-const NewModal = () => {
+const NewModal = ({toggleIsAddItem}) => {
 
     const [modal, setModal] = useState(false);
     const [enteredTags, setEnteredTags] = useState([]);
@@ -35,6 +35,7 @@ const NewModal = () => {
         userItemService.create(userItemObject)
 
        setEnteredTags([]);
+       toggleIsAddItem();
        toggleModal();
     }
 
