@@ -2,6 +2,7 @@ Post http://141.148.175.82:3001/api/users
 Content-Type: application/json
 
 {
-    "username": "joshua",
-    "password": "password"
+    "username": "Roberto",
+    "password": "password",
+    "email" : "testEmail@blank.com"
 }

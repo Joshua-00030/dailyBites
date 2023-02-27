@@ -31,7 +31,7 @@ const LoginForm = (props) => {
             setFormDetails({...formDetails, [inputName]: text})
     }
 
-    function createNewAccount(event) {
+    const createNewAccount = async (event) => {
         event.preventDefault()
             setNewAccount(true)
             setInputs(true)
@@ -43,7 +43,7 @@ const LoginForm = (props) => {
         setNewAccount(true)
     }
 
-    const handleLogin = async (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault()
         try {
             const loginInfo = {
@@ -51,6 +51,14 @@ const LoginForm = (props) => {
                 password: formDetails.password,
                 cPassword: formDetails.cPassword,
                 email: formDetails.email
+            }
+            if(newAccount){
+                if(formDetails.password === formDetails.cPassword){
+                    await loginService.createUser(loginInfo)
+                }else{
+                    console.log("password mismatch")
+                    return
+                }
             }
             const user = await loginService.login(loginInfo)
             userItemService.setToken(user.token)
@@ -72,7 +80,7 @@ const LoginForm = (props) => {
         <div className={LoginCSS.container}>
             <h1 className={LoginCSS.loginh1}>Daily Bites</h1>
             <h2 className={LoginCSS.loginh2}> Welcome {formDetails.username} </h2>
-            <form onSubmit={handleLogin}>
+            <form onSubmit={handleSubmit}>
                 {input ? 
                 <div>
                     <LoginInput placeholder="Username" name="username" handleChange={handleInputChange} value={formDetails.name} />
