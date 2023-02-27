@@ -26,11 +26,5 @@ export const SidebarData = [
         icon: <FontAwesomeIcon icon={faGears}/> ,
         link: "/account/settings",
         cName: 'nav-text'
-    },
-    {
-        title: "Logout",
-        icon: <FontAwesomeIcon icon={faRightFromBracket}/> ,
-        link: "/",
-        cName: 'nav-text'
     }
 ]

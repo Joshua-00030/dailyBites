@@ -10,15 +10,15 @@ const AccountInfo = (props) => {
       <div className={AcctInfo.infoblock}>
         <label className={AcctInfo.label}>My Username</label>
         <input 
-              name={props.name}
-              value={props.user}
+              name={props.user.username}
+              value={props.user.username}
               className={AcctInfo.input}
               disabled
               autoFocus />
         <label className={AcctInfo.label} >My Email Address</label>
         <input 
-            name={props.email}
-            value={props.email}
+            name={props.user.email}
+            value={props.user.email}
             className={AcctInfo.input}
             disabled
             autoFocus />
