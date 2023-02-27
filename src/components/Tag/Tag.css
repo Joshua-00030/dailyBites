@@ -1,19 +1,39 @@
+/*
+#563c5c **good2
+#602f6b **brighter
+#6c3082
+
+#13327a; complimentary blue
+#4D565F; gray
+
+#172a79; tag-button background-color
+#060b26; tag-button:hover background-color
+
+*cool blue #305670;
+background-color: #474E68; dark purple
+*/
 
 .tag-button {
-  font-size: 12px;
-  border: none;
-  background-color: #F5F5F5;
+  font-size: 18px;
   display: flex;
-  justify-content: left;
+  justify-content:space-between;
   height: 30px;
-  padding-left: 16px;
+  padding-left: .5rem;
+  padding-right: .5rem;
   align-items: center;
+  color: #e2d9f3;
+  gap: .25em;
+  background-color: #432874;
 }
 
 .tag-button:hover {
-  filter: brightness(87%);
+  background-color: #59359a;
+  cursor: pointer;
 }
 
-.active-tag {
-background-color: #ADA2FF;
+.tag-label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
+

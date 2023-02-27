@@ -16,4 +16,6 @@
   .bar-grid {
     display: grid;
     grid-template-rows: .5fr 8fr;
+    grid-row: span 3;
+
   }
