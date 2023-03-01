@@ -3,6 +3,7 @@ import PasswordInput from '../PasswordInput/PasswordInput';
 import LoginInput from '../LoginInput/LoginInput';
 import LoginCSS from "./LoginForm.module.css"
 import userItemService from "../../services/userItem"
+import userService from '../../services/users';
 import loginService from "../../services/login"
 
 const LoginForm = (props) => {
@@ -66,6 +67,7 @@ const LoginForm = (props) => {
                 'loggedDietappUser', JSON.stringify(user)
             )
             userItemService.setToken(user.token)
+            userService.setToken(user.token)
             props.setUser(user)
         } catch (exception) {
             //setErrorMessage('wrong credentials')

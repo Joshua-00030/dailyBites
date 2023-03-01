@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './NewModal.css';
 import EnteredTag from '../EnteredTag/EnteredTag';
 import userItemService from '../../services/userItem';
+import userService from '../../services/users';
 import AddNutientBox from '../AddNutrientBox.js/addNutrientBox.js'
 import NutrientBox from '../NutrientBox/nutrientBox';
 import { IconContext } from "react-icons";
@@ -39,13 +40,17 @@ const NewModal = ({ toggleIsAddItem }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        
+
         const userItemObject = {
             name: e.target[0].value,
             nutrition: trackedNutrients,
             tags: enteredTags,
         }
         userItemService.create(userItemObject)
+
+        const nutrientObject = trackedNutrients
+        userService.updateNutrients(nutrientObject)
+        
 
         setEnteredTags([]);
         toggleIsAddItem();
