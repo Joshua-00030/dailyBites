@@ -15,44 +15,46 @@ import FAQs from './components/Account/AccountSideBar/FAQs';
 function App() {
 
   const [user, setUser] = useState(
-    {name: "", 
-    password: "", 
-    cPassword: "", 
-    email: ""
-  })
+    {
+      name: "",
+      password: "",
+      cPassword: "",
+      email: ""
+    })
 
   function login(details) {
     console.log(details)
-    setUser({name: details.username, email: details.email});
-    
+    setUser({ name: details.username, email: details.email });
+
   }
 
   function logout() {
     // <Navigate to="/" replace={true} />
-    setUser({...user, name: ""});
+    setUser({ ...user, name: "" });
   }
 
   if (user.name === "") {
-    return <LoginForm Login={login} setUser={setUser}/>
+    return <LoginForm Login={login} setUser={setUser} />
   } else {
- 
+
     return (
-    <>
-      <Navbar logout={logout} />
-      <div className='app-container'>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/log" element={<Log user={user}/>} />
-        <Route path="/account" element={<Account logout={logout} user={user}/>}>
-          <Route index element={<AccountInfo user={user.name} email={user.email} />}/>
-          <Route path="info" element={<AccountInfo user={user.name} email={user.email}/> } />
-          <Route path="howto" element={<HowTo />}/>
-          <Route path="faqs" element={<FAQs />} />
-          <Route path="settings" element={<AccountSettings />} />
-        </Route>
-      </Routes>
-      </div>
-    </>
+      <>
+        <Navbar logout={logout} />
+        <div className='app-container'>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/log" element={<Log user={user} />} />
+            <Route path="/account" element={<Account logout={logout} user={user} />}>
+              <Route index element={<AccountInfo user={user.name} email={user.email} />} />
+              <Route path="info" element={<AccountInfo user={user.name} email={user.email} />} />
+              <Route path="howto" element={<HowTo />} />
+              <Route path="faqs" element={<FAQs />} />
+              <Route path="settings" element={<AccountSettings />} />
+            </Route>
+            <Route path="*" element={<PageNotFound />} />
+          </Routes>
+        </div>
+      </>
     )
   }
 }
