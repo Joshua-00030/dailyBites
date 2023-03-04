@@ -21,7 +21,8 @@ const NewModal = ({ toggleIsAddItem }) => {
     const [trackedNutrients, setTrackedNutrients] = useState([
         {
             name: 'calories',
-            value: 0
+            value: 0,
+            measurement: 'g'
         }
     ]);
 
