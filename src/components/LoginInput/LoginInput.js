@@ -18,7 +18,8 @@ const LoginInput = (props) => {
             className={LoginCSS.logininput}
             onChange={handleChange} 
             value={props.value} 
-            autoFocus/>
+            autoFocus
+            required/>
         </div>
   )
 }
