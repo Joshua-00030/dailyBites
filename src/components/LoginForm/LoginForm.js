@@ -15,9 +15,7 @@ const LoginForm = (props) => {
         cPassword: "", 
         email: ""
     })
-    const [shortPassLen, setshortPassLen] = useState(false)
-    const [passMismatch, setPassMissmatch] = useState(false)
-    const [invalidAcc, setInvalidAcc] = useState(false)
+    const [errMsg, setErrMsg] = useState(null)
 
     /*
     useEffect(() => {
@@ -58,17 +56,15 @@ const LoginForm = (props) => {
             if(newAccount && input == true){
                 if(formDetails.password === formDetails.cPassword) {
                     if (formDetails.password.length < 10) {
-                        setInvalidAcc(false)
-                        setPassMissmatch(false)
-                        setshortPassLen(true)
-
+                        setErrMsg("Sorry, passwords must be at least 10 characters long.  Please try again.")
                         return 
                     }
+                    console.log("what")
                     await loginService.createUser(loginInfo)
+                    console.log("232")
+
                 }else {
-                    setInvalidAcc(false)
-                    setshortPassLen(false)
-                    setPassMissmatch(true)
+                    setErrMsg("Passwords do not match.")
                     return
                 }
             }
@@ -80,11 +76,11 @@ const LoginForm = (props) => {
             )
             userItemService.setToken(user.token)
             props.setUser(user)
-            console.log(user)
         } catch (exception) {
-            setshortPassLen(false)
-            setPassMissmatch(false)
-            setInvalidAcc(true)
+            if (exception.response.status == 400)
+                setErrMsg("Username already taken. Please try again.")
+            else if (exception.response.status == 401)
+                setErrMsg("Invalid Username or Password. Please try again.")
             setTimeout(() => {
             }, 5000)
         }
@@ -112,12 +108,8 @@ const LoginForm = (props) => {
                     </div> : null}
 
                 <input type="submit" className={LoginCSS.submit} value="Submit"></input>
-                {shortPassLen ? 
-                <p style={{"color" : "white"}} >Sorry, passwords must be at least 10 characters long.  Please try again.</p> : null}
-                {passMismatch ? 
-                <p style={{"color" : "white"}} >Passwords do not match.</p> : null}
-                {invalidAcc ? 
-                <p style={{"color" : "white"}} >Credentials not valid. Please try again.</p> : null}
+                {setErrMsg ? 
+                <p style={{"color" : "white"}} >{errMsg}</p> : null}
             </form>
         </div>
     ) 
