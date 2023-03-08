@@ -15,6 +15,9 @@ const LoginForm = (props) => {
         cPassword: "", 
         email: ""
     })
+    const [shortPassLen, setshortPassLen] = useState(false)
+    const [passMismatch, setPassMissmatch] = useState(false)
+    const [invalidAcc, setInvalidAcc] = useState(false)
 
     /*
     useEffect(() => {
@@ -33,7 +36,7 @@ const LoginForm = (props) => {
 
     const createNewAccount = async (event) => {
         event.preventDefault()
-            setNewAccount(true)
+            setNewAccount(!newAccount)
             setInputs(true)
     }
 
@@ -52,25 +55,37 @@ const LoginForm = (props) => {
                 cPassword: formDetails.cPassword,
                 email: formDetails.email
             }
-            if(newAccount){
-                if(formDetails.password === formDetails.cPassword){
+            if(newAccount && input == true){
+                if(formDetails.password === formDetails.cPassword) {
+                    if (formDetails.password.length < 10) {
+                        setInvalidAcc(false)
+                        setPassMissmatch(false)
+                        setshortPassLen(true)
+
+                        return 
+                    }
                     await loginService.createUser(loginInfo)
-                }else{
-                    console.log("password mismatch")
+                }else {
+                    setInvalidAcc(false)
+                    setshortPassLen(false)
+                    setPassMissmatch(true)
                     return
                 }
             }
             const user = await loginService.login(loginInfo)
+            
             userItemService.setToken(user.token)
             window.localStorage.setItem(
                 'loggedDietappUser', JSON.stringify(user)
             )
             userItemService.setToken(user.token)
             props.setUser(user)
+            console.log(user)
         } catch (exception) {
-            //setErrorMessage('wrong credentials')
+            setshortPassLen(false)
+            setPassMissmatch(false)
+            setInvalidAcc(true)
             setTimeout(() => {
-                //setErrorMessage(null)
             }, 5000)
         }
     }
@@ -83,7 +98,7 @@ const LoginForm = (props) => {
             <form onSubmit={handleSubmit}>
                 {input ? 
                 <div>
-                    <LoginInput placeholder="Username" name="username" handleChange={handleInputChange} value={formDetails.name} />
+                    <LoginInput type="text" placeholder="Username" name="username" handleChange={handleInputChange} value={formDetails.name} />
                     <PasswordInput placeholder="Password" name="password" handleChange={handleInputChange} value={formDetails.password} />
                 </div> : null} 
 
@@ -97,6 +112,12 @@ const LoginForm = (props) => {
                     </div> : null}
 
                 <input type="submit" className={LoginCSS.submit} value="Submit"></input>
+                {shortPassLen ? 
+                <p style={{"color" : "white"}} >Sorry, passwords must be at least 10 characters long.  Please try again.</p> : null}
+                {passMismatch ? 
+                <p style={{"color" : "white"}} >Passwords do not match.</p> : null}
+                {invalidAcc ? 
+                <p style={{"color" : "white"}} >Credentials not valid. Please try again.</p> : null}
             </form>
         </div>
     ) 
