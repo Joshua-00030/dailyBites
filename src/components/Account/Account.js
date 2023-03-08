@@ -5,8 +5,7 @@ import { Link, Outlet } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars} from '@fortawesome/free-solid-svg-icons'
 
-const Account = (props) => {
-    console.log(props.user)
+const Account = () => {
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -24,7 +23,7 @@ const Account = (props) => {
               </Link>
           </div>
           <div className={isOpen ? 'sidebar active' : "sidebar disabled "}>
-                <AccountSideBar logout={props.logout} toggle={toggleSideBar}/>
+                <AccountSideBar toggle={toggleSideBar}/>
           </div>
         </div>
         <div>

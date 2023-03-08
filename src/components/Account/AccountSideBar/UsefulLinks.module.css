@@ -1,6 +1,6 @@
 .h1 {
     display: flex;
-    padding-bottom: 30px;
+    padding-bottom: 0px;
     font-weight: 500;
     text-align: center;
     color: white
@@ -15,7 +15,7 @@
     align-items: center;
 }
 
-.infoQuestion {
+.infoLink {
     border: 1px solid black;
     font-weight: 500;
     border-radius: 10px;
@@ -31,7 +31,7 @@
     height: 100%;
 }
 
-.infoAnswer {
+.infoDescription {
     border: 1px solid black;
     border-radius: 10px;
     display: flex;
@@ -44,3 +44,36 @@
     grid-column-start: 3;
     height: 100%;
 }
+
+.pCSS { 
+    color: white;
+    display: flex;
+    width: 50%;
+    margin: auto;
+    padding-top: 0;
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+.linka:link {
+    color: blue;
+    text-decoration: none;
+  }
+  
+  /* visited link */
+.linka:visited {
+    color: purple;
+    text-decoration: none;
+  }
+  
+  /* mouse over link */
+.linka:hover {
+    color: black;
+    text-decoration: none;
+  }
+  
+  /* selected link */
+.linka:active {
+    color: blue;
+    text-decoration: none;
+  }

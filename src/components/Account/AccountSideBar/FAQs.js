@@ -10,12 +10,7 @@ function FAQs() {
             Frequently Asked Questions
         </h1>
         <div className={FAQCSS.infoblock}>
-        {FAQSData.map((val, key) => {
-            return (
-               <>
-               </>
-            );
-            })}
+        
         {FAQSData.map((val, key) => {
             return (
                 <>
@@ -24,12 +19,7 @@ function FAQs() {
                 </>
             );
             })}
-           {FAQSData.map((val, key) => {
-            return (
-                <>
-                </>
-            );
-            })}
+           
         </div>
         <FeedbackForm />
     </div>
