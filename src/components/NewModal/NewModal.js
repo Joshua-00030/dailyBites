@@ -41,11 +41,12 @@ const NewModal = ({ toggleIsAddItem }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
+        const time = new Date().toLocaleDateString()
         const userItemObject = {
             name: e.target[0].value,
             nutrition: trackedNutrients,
             tags: enteredTags,
+            date: time
         }
         userItemService.create(userItemObject)
 
