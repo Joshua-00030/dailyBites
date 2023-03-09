@@ -3,17 +3,29 @@ body.active-modal {
 }
 
 .btn-modal {
+    /*
     background-color: inherit;
     font-size: 18px;
     color: #167990;
     border: 2px solid #167990;
     height: 35px;
+*/
+    margin-left: .25rem;
+    background-color: #167990;
+    font-size: 18px;
+    color: black;
+    border: none;
+    height: 35px;
+    border: none;
 }
 
 .btn-modal:hover {
-    color: white;
-    background-color: #167990;
+    background-color: #0f5464;
     cursor: pointer;
+    /*
+    background-color: #136C81;
+    cursor: pointer;
+    */
 }
 
 .modal,
@@ -41,7 +53,7 @@ body.active-modal {
     padding: 12px 12px;
     border-radius: 3px;
     max-width: 600px;
-    min-width: 300px;
+    min-width: 375px;
     background-color: #181818;
 }
 
@@ -52,11 +64,12 @@ body.active-modal {
 
 .submit-modal {
     float: right;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .close-modal {
     float: right;
-    font-size: 15px;
     border: none;
     color: #167990;
     background-color: #212529;
@@ -66,6 +79,23 @@ body.active-modal {
     color: #fff;
     background-color: #167990;
     cursor: pointer;
+}
+
+.nutrient-btn {
+    margin-bottom: .25rem;
+    height: 35px;
+    border: none;
+    background-color: #59359a;
+    font-size: 18px;
+    color: inherit;
+    border: none;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.nutrient-btn:hover {
+    cursor: pointer;
+    background-color: #502F8A;
 }
 
 .form-input {
@@ -96,17 +126,16 @@ h3 {
 }
 
 .entered-tags-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
     gap: .25rem;
-    overflow: hidden;
-    overflow-y: auto;
-    margin-bottom: .25rem;
+    display: flex;
+    margin-bottom: 1rem;
+    
 }
 
 .tag-div {
     display: flex;
     justify-content: space-between;
+    
 }
 
 .word-icon-container {
@@ -114,4 +143,62 @@ h3 {
     align-items: center;
     justify-content: space-evenly;
     gap: .25rem;
+}
+
+.nutrient-container {
+    background-color: #e2d9f3;
+    margin-bottom: .25rem;
+    padding-top: .25rem;
+    padding-right: .25rem;
+    padding-left: .25rem;
+}
+
+.nutrient-input-div {
+    display: flex;
+    gap: .25rem;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+.measurement-select {
+    height: 35px;
+    background-color: #59359a;
+    border: none;
+    font-size: 18px;
+    margin-left: .25rem;
+}
+.measurement-label {
+    font-size: 18px;
+    margin-left: .5rem;
+}
+
+.nutrient-name-input {
+    width: 50%;
+}
+.nutrients-header {
+    color: black;
+    padding: 0;
+    margin: 0;
+    margin-bottom: .25rem;
+}
+.tags-header {
+    padding: 0;
+    margin: 0;
+    margin-bottom: .25rem;
+}
+.nutrient-delete-icon {
+    color: red;
+    cursor: pointer;
+}
+.nutrient-edit-icon {
+    color: darkgoldenrod;
+    cursor: pointer;
+}
+.icons-div {
+    display: flex;
+    gap: 1rem;
+}
+.new-nutrient-flexbox {
+display: flex;
+justify-content: space-between;
 }

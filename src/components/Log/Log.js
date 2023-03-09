@@ -5,6 +5,7 @@ import ItemContainer from '../ItemContainer/ItemContainer';
 import Searchbar from '../Searchbar/Searchbar';
 import { useState, useEffect } from 'react';
 import userItemService from '../../services/userItem';
+import userService from '../../services/users';
 /*
 const exampleItems = [
     { name: 'hamburger', calories: 350, tags: ['lunch'], id: 1 },
@@ -29,6 +30,7 @@ const Log = (props) => {
 
     const [currentCals, setCurrentCals] = useState(0)
     const [userItems, setUserItems] = useState([])
+    const [todaysItems, setTodaysItems] = useState([])
     const [activeTags, setActiveTags] = useState([]);
     const [filteredItems, setFilteredItems] = useState([]);
     const [favoriteTags, setFavoriteTags] = useState([]);
@@ -73,6 +75,21 @@ const Log = (props) => {
                 setTagBar(initialItems);
                 setFilteredItems(initialItems);
             })
+            
+        const sdate = new Date()
+        sdate.setHours(0,0,0,0)
+        const edate = new Date()
+        edate.setHours(23, 59, 59, 999)
+        userService.getHistory({sdate:new Date(sdate), edate:new Date(edate)})
+        .then(newItems => {
+            setTodaysItems(newItems)
+            var total = 0
+            //cals should always be index 0. may need to look at if that changes
+            newItems.map((item) =>
+                total += item.nutrition[0].value
+            )
+            setCurrentCals(total)
+        })
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isAddItem])
 
@@ -81,7 +98,7 @@ const Log = (props) => {
             <div className="log-container">
                 <Searchbar toggleIsAddItem={toggleIsAddItem} items={userItems} setIsAddItem={setIsAddItem} setFilteredItems={setFilteredItems} filteredItems={filteredItems} activeTags={activeTags} />
                 <Tagbar favoriteTags={favoriteTags} activeTags={activeTags} setActiveTags={setActiveTags} />
-                <ItemContainer items={filteredItems} currentCals={currentCals} setCurrentCals={setCurrentCals} />
+                <ItemContainer items={filteredItems} currentCals={currentCals} setCurrentCals={setCurrentCals} token={props.user.token} />
                 <CalorieBar currentCals={currentCals} />
             </div>
         </>

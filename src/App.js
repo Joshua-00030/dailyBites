@@ -14,27 +14,28 @@ import UsefulLinks from './components/Account/AccountSideBar/UsefulLinks';
 function App() {
 
   const [user, setUser] = useState(
-    {name: "", 
-    password: "", 
-    cPassword: "", 
-    email: ""
-  })
+    {
+      name: "",
+      password: "",
+      cPassword: "",
+      email: ""
+    })
 
   function login(details) {
     console.log(details)
-    setUser({name: details.username, email: details.email});
-    
+    setUser({ name: details.username, email: details.email });
+
   }
 
   function logout() {
     // <Navigate to="/" replace={true} />
-    setUser({...user, name: ""});
+    setUser({ ...user, name: "" });
   }
 
   if (user.name === "") {
-    return <LoginForm Login={login} setUser={setUser}/>
+    return <LoginForm Login={login} setUser={setUser} />
   } else {
- 
+
     return (
     <>
       <Navbar logout={logout} />
