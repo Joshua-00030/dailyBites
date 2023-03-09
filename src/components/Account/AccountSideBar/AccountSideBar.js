@@ -12,9 +12,13 @@ const AccountSideBar = (props) => {
             return ( 
               <li key={key} className={val.cName}>
                 <Link 
-                  to={val.link} >
+                  to={val.link} 
+                  onClick={() => {
+                    props.toggle()
+                  }}>
                   {val.icon}
-                  <span>{val.title}</span>
+                  <span>{val.title}</span
+                 >
                 </Link>
               </li>
             );

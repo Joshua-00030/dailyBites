@@ -5,6 +5,8 @@ import ItemContainer from '../ItemContainer/ItemContainer';
 import Searchbar from '../Searchbar/Searchbar';
 import { useState, useEffect } from 'react';
 import userItemService from '../../services/userItem';
+import userService from '../../services/user'
+
 /*
 const exampleItems = [
     { name: 'hamburger', calories: 350, tags: ['lunch'], id: 1 },
@@ -28,6 +30,7 @@ const exampleItems = [
 const Log = (props) => {
 
     const [currentCals, setCurrentCals] = useState(0)
+    const [totalCals, setTotalCals] = useState(0)
     const [userItems, setUserItems] = useState([])
     const [activeTags, setActiveTags] = useState([]);
     const [filteredItems, setFilteredItems] = useState([]);
@@ -73,6 +76,10 @@ const Log = (props) => {
                 setTagBar(initialItems);
                 setFilteredItems(initialItems);
             })
+            userService.setToken(props.user.token)
+            userService.getCalorieTotal(props.user.username).then(res => { 
+                setTotalCals(res)
+            })
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isAddItem])
 
@@ -82,7 +89,7 @@ const Log = (props) => {
                 <Searchbar toggleIsAddItem={toggleIsAddItem} items={userItems} setIsAddItem={setIsAddItem} setFilteredItems={setFilteredItems} filteredItems={filteredItems} activeTags={activeTags} />
                 <Tagbar favoriteTags={favoriteTags} activeTags={activeTags} setActiveTags={setActiveTags} />
                 <ItemContainer items={filteredItems} currentCals={currentCals} setCurrentCals={setCurrentCals} />
-                <CalorieBar currentCals={currentCals} />
+                <CalorieBar currentCals={currentCals} totalCals={totalCals}/>
             </div>
         </>
     )
