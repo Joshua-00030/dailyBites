@@ -16,6 +16,7 @@ const LoginForm = (props) => {
         cPassword: "", 
         email: ""
     })
+    const [errMsg, setErrMsg] = useState(null)
 
     /*
     useEffect(() => {
@@ -34,7 +35,7 @@ const LoginForm = (props) => {
 
     const createNewAccount = async (event) => {
         event.preventDefault()
-            setNewAccount(true)
+            setNewAccount(!newAccount)
             setInputs(true)
     }
 
@@ -53,15 +54,23 @@ const LoginForm = (props) => {
                 cPassword: formDetails.cPassword,
                 email: formDetails.email
             }
-            if(newAccount){
-                if(formDetails.password === formDetails.cPassword){
+            if(newAccount && input == true){
+                if(formDetails.password === formDetails.cPassword) {
+                    if (formDetails.password.length < 10) {
+                        setErrMsg("Sorry, passwords must be at least 10 characters long.  Please try again.")
+                        return 
+                    }
+                    console.log("what")
                     await loginService.createUser(loginInfo)
-                }else{
-                    console.log("password mismatch")
+                    console.log("232")
+
+                }else {
+                    setErrMsg("Passwords do not match.")
                     return
                 }
             }
             const user = await loginService.login(loginInfo)
+            
             userItemService.setToken(user.token)
             window.localStorage.setItem(
                 'loggedDietappUser', JSON.stringify(user)
@@ -70,9 +79,11 @@ const LoginForm = (props) => {
             userService.setToken(user.token)
             props.setUser(user)
         } catch (exception) {
-            //setErrorMessage('wrong credentials')
+            if (exception.response.status == 400)
+                setErrMsg("Username already taken. Please try again.")
+            else if (exception.response.status == 401)
+                setErrMsg("Invalid Username or Password. Please try again.")
             setTimeout(() => {
-                //setErrorMessage(null)
             }, 5000)
         }
     }
@@ -85,7 +96,7 @@ const LoginForm = (props) => {
             <form onSubmit={handleSubmit}>
                 {input ? 
                 <div>
-                    <LoginInput placeholder="Username" name="username" handleChange={handleInputChange} value={formDetails.name} />
+                    <LoginInput type="text" placeholder="Username" name="username" handleChange={handleInputChange} value={formDetails.name} />
                     <PasswordInput placeholder="Password" name="password" handleChange={handleInputChange} value={formDetails.password} />
                 </div> : null} 
 
@@ -99,6 +110,8 @@ const LoginForm = (props) => {
                     </div> : null}
 
                 <input type="submit" className={LoginCSS.submit} value="Submit"></input>
+                {setErrMsg ? 
+                <p style={{"color" : "white"}} >{errMsg}</p> : null}
             </form>
         </div>
     ) 

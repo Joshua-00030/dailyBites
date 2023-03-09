@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
     padding-bottom: 25px;
+    color: white
 }
 
 .infoblock {
@@ -20,9 +21,22 @@
     text-align: center;
     padding: 10px;
     justify-content: center;
+    color: white
 }
 
 .label {
     text-align: center;
-    float: left
+    float: left;
+    color: white
 }
+
+.form {
+    grid-column: 1 / span 2
+}
+
+.form input {
+    color: black
+
+    
+}
+
