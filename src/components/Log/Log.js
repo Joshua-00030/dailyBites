@@ -91,7 +91,7 @@ const Log = (props) => {
             setCurrentCals(total)
         })
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isAddItem])
+    }, [isAddItem, currentCals])
 
     return (
         <>
@@ -99,7 +99,7 @@ const Log = (props) => {
                 <Searchbar toggleIsAddItem={toggleIsAddItem} items={userItems} setIsAddItem={setIsAddItem} setFilteredItems={setFilteredItems} filteredItems={filteredItems} activeTags={activeTags} />
                 <Tagbar favoriteTags={favoriteTags} activeTags={activeTags} setActiveTags={setActiveTags} />
                 <ItemContainer items={filteredItems} currentCals={currentCals} setCurrentCals={setCurrentCals} token={props.user.token} />
-                <CalorieBar currentCals={currentCals} />
+                <CalorieBar currentCals={currentCals} todaysItems={todaysItems}/>
             </div>
         </>
     )

@@ -22,7 +22,7 @@ const NewModal = ({ toggleIsAddItem }) => {
         {
             name: 'calories',
             value: 0,
-            measurement: 'g'
+            measurement: 'calories'
         }
     ]);
 
