@@ -29,6 +29,7 @@ const exampleItems = [
 const Log = (props) => {
 
     const [currentCals, setCurrentCals] = useState(0)
+    const [totalCals, setTotalCals] = useState(0)
     const [userItems, setUserItems] = useState([])
     const [todaysItems, setTodaysItems] = useState([])
     const [activeTags, setActiveTags] = useState([]);
@@ -75,6 +76,10 @@ const Log = (props) => {
                 setTagBar(initialItems);
                 setFilteredItems(initialItems);
             })
+            userService.setToken(props.user.token)
+            userService.getCalorieTotal(props.user.username).then(res => {
+                setTotalCals(res)
+            })
             
         const sdate = new Date()
         sdate.setHours(0,0,0,0)
@@ -99,7 +104,7 @@ const Log = (props) => {
                 <Searchbar toggleIsAddItem={toggleIsAddItem} items={userItems} setIsAddItem={setIsAddItem} setFilteredItems={setFilteredItems} filteredItems={filteredItems} activeTags={activeTags} />
                 <Tagbar favoriteTags={favoriteTags} activeTags={activeTags} setActiveTags={setActiveTags} />
                 <ItemContainer items={filteredItems} currentCals={currentCals} setCurrentCals={setCurrentCals} token={props.user.token} />
-                <CalorieBar currentCals={currentCals} todaysItems={todaysItems}/>
+                <CalorieBar currentCals={currentCals} todaysItems={todaysItems} totalCals={totalCals}/>
             </div>
         </>
     )
