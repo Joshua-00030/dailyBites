@@ -5,8 +5,7 @@ import ItemContainer from '../ItemContainer/ItemContainer';
 import Searchbar from '../Searchbar/Searchbar';
 import { useState, useEffect } from 'react';
 import userItemService from '../../services/userItem';
-import userService from '../../services/user'
-
+import userService from '../../services/users';
 /*
 const exampleItems = [
     { name: 'hamburger', calories: 350, tags: ['lunch'], id: 1 },
@@ -32,6 +31,7 @@ const Log = (props) => {
     const [currentCals, setCurrentCals] = useState(0)
     const [totalCals, setTotalCals] = useState(0)
     const [userItems, setUserItems] = useState([])
+    const [todaysItems, setTodaysItems] = useState([])
     const [activeTags, setActiveTags] = useState([]);
     const [filteredItems, setFilteredItems] = useState([]);
     const [favoriteTags, setFavoriteTags] = useState([]);
@@ -80,16 +80,31 @@ const Log = (props) => {
             userService.getCalorieTotal(props.user.username).then(res => { 
                 setTotalCals(res)
             })
+            
+        const sdate = new Date()
+        sdate.setHours(0,0,0,0)
+        const edate = new Date()
+        edate.setHours(23, 59, 59, 999)
+        userService.getHistory({sdate:new Date(sdate), edate:new Date(edate)})
+        .then(newItems => {
+            setTodaysItems(newItems)
+            var total = 0
+            //cals should always be index 0. may need to look at if that changes
+            newItems.map((item) =>
+                total += item.nutrition[0].value
+            )
+            setCurrentCals(total)
+        })
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isAddItem])
+    }, [isAddItem, currentCals])
 
     return (
         <>
             <div className="log-container">
                 <Searchbar toggleIsAddItem={toggleIsAddItem} items={userItems} setIsAddItem={setIsAddItem} setFilteredItems={setFilteredItems} filteredItems={filteredItems} activeTags={activeTags} />
                 <Tagbar favoriteTags={favoriteTags} activeTags={activeTags} setActiveTags={setActiveTags} />
-                <ItemContainer items={filteredItems} currentCals={currentCals} setCurrentCals={setCurrentCals} />
-                <CalorieBar currentCals={currentCals} totalCals={totalCals}/>
+                <ItemContainer items={filteredItems} currentCals={currentCals} setCurrentCals={setCurrentCals} token={props.user.token} />
+                <CalorieBar currentCals={currentCals} todaysItems={todaysItems} totalCals={totalCals}/>
             </div>
         </>
     )

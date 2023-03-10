@@ -30,7 +30,7 @@
 .search-hover-border {
     display: flex;
     justify-content: center;
-    margin-right: .25rem;
+
     border: 2px solid #167990;
     height: 35px;
 }

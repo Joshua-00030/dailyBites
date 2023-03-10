@@ -23,11 +23,11 @@ background-color: #474E68; dark purple
   align-items: center;
   color: #e2d9f3;
   gap: .25em;
-  background-color: #432874;
+  background-color: #59359a;
 }
 
 .tag-button:hover {
-  background-color: #59359a;
+  background-color: #502F8A;
   cursor: pointer;
 }
 
