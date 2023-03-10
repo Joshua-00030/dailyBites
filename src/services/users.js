@@ -43,7 +43,7 @@ const updateCalorieLimit = (username, newCalorie) => {
     //     headers: { Authorization: token },
     //   }
       
-    const request = axios.put(`${ baseUrl }/${username}`, {
+    const request = axios.put(`${ baseUrl }/updateCal/${username}`, {
       updateCalorie: newCalorie, 
       myusername: username})
     return request.then(response => response.data)
