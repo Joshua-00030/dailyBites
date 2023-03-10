@@ -1,3 +1,4 @@
+import { click } from '@testing-library/user-event/dist/click';
 import React, { useEffect } from 'react';
 import UserItem from '../UserItem/UserItem'
 import './ItemContainer.css';
@@ -6,10 +7,9 @@ import './ItemContainer.css';
 const ItemContainer = ({items, currentCals, setCurrentCals}) => {
 
     function handleClick(item){
-        
-        const { name, nutrition } = item;
+        const {name, nutrition} = item;
         const calories = nutrition.find((nutrient) => nutrient.name === 'calories')?.value;
-        setCurrentCals(prevCalories => prevCalories + calories)
+        setCurrentCals(prevCalories => prevCalories + calories);
         console.log(`Item ${name} has been clicked!\nThis food has ${calories} calories.`);
     }
 
