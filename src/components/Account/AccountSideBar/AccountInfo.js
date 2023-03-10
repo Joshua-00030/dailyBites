@@ -15,7 +15,7 @@ const AccountInfo = (props) => {
       setInitialCal(res)
     }
     )
-  }, [initialCal]) 
+  }, []) 
 
   function handleChange(event) {
     event.preventDefault()
@@ -28,7 +28,7 @@ const AccountInfo = (props) => {
     }
     setErrMsg(null)
     userService.setToken(props.user.token)
-    userService.updateCalorieLimit(props.user.username, myCalLimit).then(() => {
+    userService.updateCalorieLimit(props.user.username, myCalLimit).then(res => {
       console.log("success")
       setInitialCal(myCalLimit)
     })
