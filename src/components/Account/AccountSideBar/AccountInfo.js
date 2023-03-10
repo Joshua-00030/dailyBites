@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import AcctInfo from "./AccountInfo.module.css"
-import userService from '../../../services/user'
+import userService from '../../../services/users'
 import FeedbackForm from '../../FeedbackForm/FeedbackForm'
 
 const AccountInfo = (props) => {

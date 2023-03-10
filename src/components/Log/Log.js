@@ -77,7 +77,7 @@ const Log = (props) => {
                 setFilteredItems(initialItems);
             })
             userService.setToken(props.user.token)
-            userService.getCalorieTotal(props.user.username).then(res => { 
+            userService.getCalorieTotal(props.user.username).then(res => {
                 setTotalCals(res)
             })
             
