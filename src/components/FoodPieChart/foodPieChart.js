@@ -65,6 +65,8 @@ const FoodPieChart = ({ className, data }) => {
                 nameKey="name"
                 cx="50%"
                 cy="50%"
+                animationBegin={0}
+                animationDuration={1000}
                 outerRadius={120}
                 fill="#8884d8"
             >
