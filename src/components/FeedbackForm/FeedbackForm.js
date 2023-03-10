@@ -16,10 +16,10 @@ const FeedbackForm = () => {
         <hr className={FBFCSS.hr}></hr>
         {submitted ? 
         <div>
-            <h1>
+            <h1 className={FBFCSS.hColor}>
                 Your Response Has Been Submitted!
-            </h1>
-            <h2>The Daily Bites Team Will Respond As Soon As Possible!</h2>
+            </h1> 
+            <h2 className={FBFCSS.hColor}>The Daily Bites Team Will Respond As Soon As Possible!</h2>
 
         </div> : 
         <div>

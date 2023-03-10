@@ -2,30 +2,28 @@ import { click } from '@testing-library/user-event/dist/click';
 import React, { useEffect } from 'react';
 import UserItem from '../UserItem/UserItem'
 import './ItemContainer.css';
+import userService from '../../services/users';
 
+const ItemContainer = ({ items, currentCals, setCurrentCals, token }) => {
 
-const ItemContainer = ({items, currentCals, setCurrentCals}) => {
-
-    function handleClick(item){
-        const {name, nutrition} = item;
-        const calories = nutrition.find((nutrient) => nutrient.name === 'calories')?.value;
-        setCurrentCals(prevCalories => prevCalories + calories);
-        console.log(`Item ${name} has been clicked!\nThis food has ${calories} calories.`);
+    const handleClick = async (item) => {
+        await userService.setToken(token)
+        setCurrentCals(Cals => Cals + item.nutrition[0].value)
+        console.log("Item " + item.name + " has been clicked!\nThis food has " + item.nutrition[0].value + " calories.");
+        console.log("Current Calory Total is: " + (currentCals + item.nutrition[0].value));
+        const eatenItem = { id: item.id, date: new Date()}
+        userService.addItemToHistory(eatenItem)
     }
 
-    useEffect(() => {
-        console.log(`Current Calory Total is: ${currentCals} `);
-    }, [currentCals]);
-    
     return (
         <div className="item-grid-container">
             <div className="entry-cards">
-                {items.map((item) => 
-                    <UserItem  
-                        key={item.id} 
+                {items.map((item) =>
+                    <UserItem
+                        key={item.id}
                         item={item}
-                        onClick={() => handleClick(item)}>
-                    </UserItem>)}
+                        onClick={() => handleClick(item)} />
+                )}
             </div>
         </div>
     )

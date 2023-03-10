@@ -12,11 +12,7 @@ const AccountSideBar = (props) => {
             return ( 
               <li key={key} className={val.cName}>
                 <Link 
-                  to={val.link} 
-                  onClick={(val.title === "Logout") ? props.logout 
-                    : (() => {
-                      props.toggle()
-                    })}>
+                  to={val.link} >
                   {val.icon}
                   <span>{val.title}</span>
                 </Link>

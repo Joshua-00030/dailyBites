@@ -1,25 +1,30 @@
-
 .entered-tag-body {
-    border: 2px solid black;
     display: flex;
-    justify-content:space-between;
+    gap: .25rem;
+    background-color: #5e666f;
     align-items: center;
-    background-color: #167990;
+    padding: .25rem;
+    /*
     gap: .5rem;
     padding: .25rem;
-
+    #4D565F;
+    #167990; blue
+    border: 2px solid black;
+    */
 }
 
 .entered-tag-delete {
     color: red;
     display: flex;
     align-items: center;
+
 }
+
 .entered-tag-delete:hover {
     cursor: pointer;
 }
 
 .entered-tag-label {
-    font-size: 15px;
-    color: white;
+    font-size: 18px;
+    color: black;
 }

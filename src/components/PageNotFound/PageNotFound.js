@@ -2,7 +2,7 @@
 const PageNotFound = () => {
     return (
         <div>
-            <p1>The page you are currently looking for does not exist.</p1>
+            <h2 style={{marginRight: 'auto', marginLeft: 'auto', color: 'white'}}>Page Not Found</h2>
         </div>
     )
   }
