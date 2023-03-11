@@ -33,4 +33,20 @@ const getHistory = async newObject =>{
   
 }
 
-export default { updateNutrients, setToken, addItemToHistory, getHistory }
+const getCalorieTotal = (username) => {
+  const config = { headers: { Authorization: token },  }
+  const request = axios.get(`${baseUrl}/${username}`, config)
+  return request.then(response =>response.data) }
+
+const updateCalorieLimit = (username, newCalorie) => {
+    // const config = {
+    //     headers: { Authorization: token },
+    //   }
+      
+    const request = axios.put(`${ baseUrl }/updateCal/${username}`, {
+      updateCalorie: newCalorie, 
+      myusername: username})
+    return request.then(response => response.data)
+  }
+
+export default { updateNutrients, setToken, addItemToHistory, getHistory, getCalorieTotal, updateCalorieLimit }

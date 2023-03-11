@@ -1,7 +1,7 @@
 import './CalorieBar.css';
 
-const CalorieBar = ({currentCals, todaysItems}) => {
-    const goal = 2000
+const CalorieBar = ({currentCals, todaysItems, totalCals}) => {
+    const goal = totalCals
     const over = (currentCals > goal)
     const rows = over ?  `0fr 1fr` : `${goal -currentCals}fr ${currentCals}fr`
     const style = {display: 'grid', gridTemplateRows: rows}
@@ -16,7 +16,7 @@ const CalorieBar = ({currentCals, todaysItems}) => {
     return (
         <div className="bar-grid" key={currentCals}>
             <div className="CalorieDisplay">
-                {currentCals} / {goal}
+                {currentCals} / {totalCals}
             </div>
             <div className="CalorieBar" style={style}>
                 <div></div>
