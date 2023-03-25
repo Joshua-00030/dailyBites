@@ -3,7 +3,7 @@ import './NewModal.css';
 import EnteredTag from '../EnteredTag/EnteredTag';
 import userItemService from '../../services/userItem';
 import userService from '../../services/users';
-import AddNutientBox from '../AddNutrientBox.js/addNutrientBox.js'
+import AddNutrientBox from '../AddNutrientBox.js/addNutrientBox.js'
 import NutrientBox from '../NutrientBox/nutrientBox';
 import { IconContext } from "react-icons";
 import { FaWindowClose, FaPlusSquare, FaRegWindowClose, FaAngleDown, FaAngleUp } from 'react-icons/fa';
@@ -12,13 +12,13 @@ FaEraser, FaChartPie, FaCarrot, FaUserCircle, FaWindowClose, FaRegWindowClose, F
 FaPlus, FaPortrait, FaHome, FaEdit, FaSearch } from 'react-icons/fa';
 */
 
-const NewModal = ({ toggleIsAddItem }) => {
+const NewModal = ({ toggleIsAddItem, user }) => {
 
     const [modal, setModal] = useState(false);
     const [enteredTags, setEnteredTags] = useState([]);
     const [open, setOpen] = useState(false);
     //const trackedNutrients = ['salt', 'sugar', 'fat', 'protein'];
-    const [trackedNutrients, setTrackedNutrients] = useState([
+    const [trackedNutrients, setTrackedNutrients] = useState( user.trackedNutrients !== [] ? user.trackedNutrients : [
         {
             name: 'calories',
             value: 0,
@@ -134,7 +134,7 @@ const NewModal = ({ toggleIsAddItem }) => {
                                 </div>
 
                             </button>
-                            {open ? <AddNutientBox handleAddNutrient={handleAddNutrient} trackedNutrients={trackedNutrients} 
+                            {open ? <AddNutrientBox handleAddNutrient={handleAddNutrient} trackedNutrients={trackedNutrients} 
                             setTrackedNutrients={setTrackedNutrients}/>
                                 : null}
                             {/*<h3 className="tags-header">Tags:</h3>*/}

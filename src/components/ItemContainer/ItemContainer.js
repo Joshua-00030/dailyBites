@@ -1,3 +1,5 @@
+import { click } from '@testing-library/user-event/dist/click';
+import React, { useEffect } from 'react';
 import UserItem from '../UserItem/UserItem'
 import './ItemContainer.css';
 import userService from '../../services/users';

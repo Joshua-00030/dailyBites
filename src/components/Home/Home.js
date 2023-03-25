@@ -3,7 +3,8 @@ import { useEffect, useState } from 'react';
 import { FaRegCalendarAlt, FaWeight, FaRegChartBar, FaChartPie } from 'react-icons/fa';
 import { IconContext } from "react-icons";
 import FoodPieChart from '../FoodPieChart/foodPieChart';
-import userService from '../../services/users'
+import FoodGraphChart from '../FoodGraphChart/foodGraphChart';
+import userService from '../../services/users';
 
 const Home = () => {
 
@@ -21,11 +22,13 @@ const Home = () => {
     const handleWidgetClick = (value) => {
         setSelectedWidget(value);
     }
+
     const widgetList = [
-        <div>Widget {selectedWidget}</div>,
+        <FoodGraphChart className={"home-main-container"} data={dailyData}/>,
         <FoodPieChart className={"home-main-container"} data={dailyData} />,
         <div>Widget {selectedWidget}</div>,
         <div>Widget {selectedWidget}</div>]
+        
     return (
         <div className="home-page-container">
             <div className="home-grid-container">

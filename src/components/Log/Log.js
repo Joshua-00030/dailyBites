@@ -6,25 +6,6 @@ import Searchbar from '../Searchbar/Searchbar';
 import { useState, useEffect } from 'react';
 import userItemService from '../../services/userItem';
 import userService from '../../services/users';
-/*
-const exampleItems = [
-    { name: 'hamburger', calories: 350, tags: ['lunch'], id: 1 },
-    { name: 'oatmeal', calories: 150, tags: ['breakfast', 'low cal'], id: 2 },
-    { name: 'hamburger', calories: 350, tags: ['lunch'], id: 3 },
-    { name: 'oatmeal', calories: 150, tags: ['breakfast', 'low cal'], id: 4 },
-    { name: 'hamburger', calories: 350, tags: ['lunch'], id: 5 },
-    { name: 'oatmeal', calories: 150, tags: ['breakfast', 'low cal'], id: 6 },
-    { name: 'hamburger', calories: 350, tags: ['lunch'], id: 7 },
-    { name: 'oatmeal', calories: 150, tags: ['breakfast', 'low cal'], id: 8 },
-    { name: 'hamburger', calories: 350, tags: ['lunch'], id: 9 },
-    { name: 'oatmeal', calories: 150, tags: ['breakfast', 'low cal'], id: 10 },
-    { name: 'hamburger', calories: 350, tags: ['lunch'], id: 11 },
-    { name: 'oatmeal', calories: 150, tags: ['breakfast', 'low cal'], id: 12 },
-    { name: 'hamburger', calories: 350, tags: ['lunch'], id: 13 },
-    { name: 'brown sugar oatmeal', calories: 150, tags: ['breakfast', 'low cal', 'oatmeal'], id: 14 },
-    { name: 'hamburger', calories: 350, tags: ['lunch'], id: 15 }
-]
-*/
 
 const Log = (props) => {
 
@@ -101,7 +82,7 @@ const Log = (props) => {
     return (
         <>
             <div className="log-container">
-                <Searchbar toggleIsAddItem={toggleIsAddItem} items={userItems} setIsAddItem={setIsAddItem} setFilteredItems={setFilteredItems} filteredItems={filteredItems} activeTags={activeTags} />
+                <Searchbar toggleIsAddItem={toggleIsAddItem} items={userItems} setIsAddItem={setIsAddItem} setFilteredItems={setFilteredItems} filteredItems={filteredItems} activeTags={activeTags} user={props.user}/>
                 <Tagbar favoriteTags={favoriteTags} activeTags={activeTags} setActiveTags={setActiveTags} />
                 <ItemContainer items={filteredItems} currentCals={currentCals} setCurrentCals={setCurrentCals} token={props.user.token} />
                 <CalorieBar currentCals={currentCals} todaysItems={todaysItems} totalCals={totalCals}/>
