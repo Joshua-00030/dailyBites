@@ -4,7 +4,7 @@ import NewModal from '../NewModal/NewModal';
 import { IconContext } from "react-icons";
 import { FaSearch } from 'react-icons/fa';
 
-const Searchbar = ({ items, setFilteredItems, filteredItems, activeTags, toggleIsAddItem }) => {
+const Searchbar = ({ items, setFilteredItems, filteredItems, activeTags, toggleIsAddItem, user }) => {
 
     const [searchQuery, setSearchQuery] = useState("")
 
@@ -63,7 +63,7 @@ const Searchbar = ({ items, setFilteredItems, filteredItems, activeTags, toggleI
                             </IconContext.Provider>
                         </div>
                     </div>
-                    <NewModal toggleIsAddItem={toggleIsAddItem}></NewModal>
+                    <NewModal toggleIsAddItem={toggleIsAddItem} user={user}></NewModal>
                 </div>
             </div>
         </>

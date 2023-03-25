@@ -82,7 +82,7 @@ const Log = (props) => {
     return (
         <>
             <div className="log-container">
-                <Searchbar toggleIsAddItem={toggleIsAddItem} items={userItems} setIsAddItem={setIsAddItem} setFilteredItems={setFilteredItems} filteredItems={filteredItems} activeTags={activeTags} />
+                <Searchbar toggleIsAddItem={toggleIsAddItem} items={userItems} setIsAddItem={setIsAddItem} setFilteredItems={setFilteredItems} filteredItems={filteredItems} activeTags={activeTags} user={props.user}/>
                 <Tagbar favoriteTags={favoriteTags} activeTags={activeTags} setActiveTags={setActiveTags} />
                 <ItemContainer items={filteredItems} currentCals={currentCals} setCurrentCals={setCurrentCals} token={props.user.token} />
                 <CalorieBar currentCals={currentCals} todaysItems={todaysItems} totalCals={totalCals}/>
