@@ -17,6 +17,7 @@ const Log = (props) => {
     const [filteredItems, setFilteredItems] = useState([]);
     const [favoriteTags, setFavoriteTags] = useState([]);
     const [isAddItem, setIsAddItem] = useState(false);
+    const [editMode, setEditMode] = useState(false)
 
     const toggleIsAddItem = () => {
         setIsAddItem(!isAddItem);
@@ -79,13 +80,18 @@ const Log = (props) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isAddItem, currentCals])
 
+    const handleCheck = () => {
+        setEditMode(!editMode)
+    }
+
     return (
         <>
             <div className="log-container">
-                <Searchbar toggleIsAddItem={toggleIsAddItem} items={userItems} setIsAddItem={setIsAddItem} setFilteredItems={setFilteredItems} filteredItems={filteredItems} activeTags={activeTags} user={props.user}/>
+                <Searchbar toggleIsAddItem={toggleIsAddItem} items={userItems} setIsAddItem={setIsAddItem}
+                 setFilteredItems={setFilteredItems} filteredItems={filteredItems} activeTags={activeTags} user={props.user} handleCheck={handleCheck} />
                 <Tagbar favoriteTags={favoriteTags} activeTags={activeTags} setActiveTags={setActiveTags} />
-                <ItemContainer items={filteredItems} currentCals={currentCals} setCurrentCals={setCurrentCals} token={props.user.token} />
-                <CalorieBar currentCals={currentCals} todaysItems={todaysItems} totalCals={totalCals}/>
+                <ItemContainer items={filteredItems} currentCals={currentCals} setCurrentCals={setCurrentCals} token={props.user.token} handleCheck={handleCheck} user={props.user} checked={editMode}/>
+                <CalorieBar currentCals={currentCals} todaysItems={todaysItems} setCurrentCals={setCurrentCals} totalCals={totalCals}/>
             </div>
         </>
     )

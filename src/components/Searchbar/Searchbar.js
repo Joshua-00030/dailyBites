@@ -4,9 +4,10 @@ import NewModal from '../NewModal/NewModal';
 import { IconContext } from "react-icons";
 import { FaSearch } from 'react-icons/fa';
 
-const Searchbar = ({ items, setFilteredItems, filteredItems, activeTags, toggleIsAddItem, user }) => {
+const Searchbar = ({ items, setFilteredItems, filteredItems, activeTags, toggleIsAddItem, user, handleCheck}) => {
 
     const [searchQuery, setSearchQuery] = useState("")
+
 
     const handleFilter = (e) => {
         const searchWord = e.target.value
@@ -48,6 +49,12 @@ const Searchbar = ({ items, setFilteredItems, filteredItems, activeTags, toggleI
     return (
         <>
             <div className="search">
+                <div>
+                    <form action="/action_page.php">
+                        <input type="checkbox" id="editCheckBox" name="editCheckBox" value="check" onChange={handleCheck}/>
+                        <label for="editCheckBox" style={{color: 'white', marginRight:'20px'}}> Edit Items </label><br />
+                    </form>
+                </div>
                 <div className="searchInputs">
                     <div className="search-hover-border">
 

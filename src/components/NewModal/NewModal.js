@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './NewModal.css';
 import EnteredTag from '../EnteredTag/EnteredTag';
 import userItemService from '../../services/userItem';
@@ -12,19 +12,26 @@ FaEraser, FaChartPie, FaCarrot, FaUserCircle, FaWindowClose, FaRegWindowClose, F
 FaPlus, FaPortrait, FaHome, FaEdit, FaSearch } from 'react-icons/fa';
 */
 
-const NewModal = ({ toggleIsAddItem, user }) => {
+const NewModal = ({ toggleIsAddItem, user, mode, edit }) => {
 
     const [modal, setModal] = useState(false);
     const [enteredTags, setEnteredTags] = useState([]);
     const [open, setOpen] = useState(false);
     //const trackedNutrients = ['salt', 'sugar', 'fat', 'protein'];
-    const [trackedNutrients, setTrackedNutrients] = useState( user.trackedNutrients !== [] ? user.trackedNutrients : [
+    const [trackedNutrients, setTrackedNutrients] = useState(user.trackedNutrients !== [] ? user.trackedNutrients : [
         {
             name: 'calories',
             value: 0,
             measurement: 'calories'
         }
     ]);
+
+    useEffect(() => {
+        if(edit){
+            toggleModal()
+            toggleIsAddItem()
+        }
+    },[edit])
 
     const toggleModal = () => {
         setModal(!modal)
@@ -52,7 +59,7 @@ const NewModal = ({ toggleIsAddItem, user }) => {
 
         const nutrientObject = trackedNutrients
         userService.updateNutrients(nutrientObject)
-        
+
 
         setEnteredTags([]);
         toggleIsAddItem();
@@ -73,7 +80,7 @@ const NewModal = ({ toggleIsAddItem, user }) => {
         if (!newNutrient) {
             return
         }
-        const newEntry = { name: newNutrient, value:0, measurement: newMeasurement }
+        const newEntry = { name: newNutrient, value: 0, measurement: newMeasurement }
         setTrackedNutrients(trackedNutrients.concat(newEntry));
         document.getElementById("new-nutrient-input").value = "";
     }
@@ -86,16 +93,19 @@ const NewModal = ({ toggleIsAddItem, user }) => {
 
     return (
         <>
-            <button
-                className="btn-modal"
-                onClick={toggleModal}>
-                <div className="word-icon-container">
-                    New
-                    <IconContext.Provider value={{ size: "1em" }}>
-                        <FaPlusSquare />
-                    </IconContext.Provider>
-                </div>
-            </button>
+            {mode !== 2 && (
+
+                <button
+                    className="btn-modal"
+                    onClick={toggleModal}>
+                    <div className="word-icon-container">
+                        New
+                        <IconContext.Provider value={{ size: "1em" }}>
+                            <FaPlusSquare />
+                        </IconContext.Provider>
+                    </div>
+                </button>
+            )}
 
             {modal && (
                 <div className="modal">
@@ -116,7 +126,7 @@ const NewModal = ({ toggleIsAddItem, user }) => {
                         </h2>
                         <form className="form" onSubmit={handleSubmit}>
                             <input className="form-input" type="text" name="name" placeholder="Enter item name" />
-                            <NutrientBox label='calories' trackedNutrients={trackedNutrients} setTrackedNutrients={setTrackedNutrients}/>
+                            <NutrientBox label='calories' trackedNutrients={trackedNutrients} setTrackedNutrients={setTrackedNutrients} />
 
                             <button onClick={handleClick} className="nutrient-btn">
 
@@ -134,8 +144,8 @@ const NewModal = ({ toggleIsAddItem, user }) => {
                                 </div>
 
                             </button>
-                            {open ? <AddNutrientBox handleAddNutrient={handleAddNutrient} trackedNutrients={trackedNutrients} 
-                            setTrackedNutrients={setTrackedNutrients}/>
+                            {open ? <AddNutrientBox handleAddNutrient={handleAddNutrient} trackedNutrients={trackedNutrients}
+                                setTrackedNutrients={setTrackedNutrients} />
                                 : null}
                             {/*<h3 className="tags-header">Tags:</h3>*/}
                             <div className="tag-div">
