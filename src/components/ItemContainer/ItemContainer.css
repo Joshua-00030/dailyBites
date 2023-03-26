@@ -1,9 +1,12 @@
 .entry-cards {
+  /*
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
   gap: .25rem;
-  overflow: hidden;
-  overflow-y: auto;
+  */
+  display: flex;
+  gap: .25rem;
+  flex-wrap: wrap;
 }
 
 .entry-cards::-webkit-scrollbar {
@@ -13,4 +16,6 @@
 .item-grid-container {
   margin-left: 2rem;
   margin-right: 2rem;
+  overflow: hidden;
+  overflow-y: auto;
 }
