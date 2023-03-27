@@ -1,7 +1,7 @@
 import './UserItem.css';
 import NewModal from '../NewModal/NewModal';
 import { useState } from 'react';
-const UserItem = ({item, onClick, checked, user}) => {
+const UserItem = ({item, onClick, checked, user, toggleIsAddItem}) => {
     
     const [edit, setEdit] = useState(false);
     const handleClick = () =>{
@@ -22,7 +22,7 @@ const UserItem = ({item, onClick, checked, user}) => {
             </div>
         </div>
         
-        <NewModal toggleIsAddItem={handleClick} user={user} mode={2} edit={edit}/>
+        <NewModal toggleIsAddItem={toggleIsAddItem} user={user} mode={2} edit={edit} item={item} editHandleClick={handleClick}/>
         </>
     )
   }

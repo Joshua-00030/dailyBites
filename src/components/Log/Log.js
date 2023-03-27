@@ -20,7 +20,7 @@ const Log = (props) => {
     const [editMode, setEditMode] = useState(false)
 
     const toggleIsAddItem = () => {
-        setIsAddItem(!isAddItem);
+        setIsAddItem(!isAddItem)
     }
 
     const setTagBar = (items) => {
@@ -50,6 +50,7 @@ const Log = (props) => {
     }
 
     useEffect(() => {
+        if(userItemService.token)
         userItemService.setToken(props.user.token)
         userItemService
             .getAll()
@@ -90,7 +91,7 @@ const Log = (props) => {
                 <Searchbar toggleIsAddItem={toggleIsAddItem} items={userItems} setIsAddItem={setIsAddItem}
                  setFilteredItems={setFilteredItems} filteredItems={filteredItems} activeTags={activeTags} user={props.user} handleCheck={handleCheck} />
                 <Tagbar favoriteTags={favoriteTags} activeTags={activeTags} setActiveTags={setActiveTags} />
-                <ItemContainer items={filteredItems} currentCals={currentCals} setCurrentCals={setCurrentCals} token={props.user.token} handleCheck={handleCheck} user={props.user} checked={editMode}/>
+                <ItemContainer items={filteredItems} currentCals={currentCals} setCurrentCals={setCurrentCals} token={props.user.token} handleCheck={handleCheck} user={props.user} checked={editMode} toggleIsAddItem={toggleIsAddItem}/>
                 <CalorieBar currentCals={currentCals} todaysItems={todaysItems} setCurrentCals={setCurrentCals} totalCals={totalCals}/>
             </div>
         </>

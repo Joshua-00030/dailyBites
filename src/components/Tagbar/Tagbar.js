@@ -13,7 +13,8 @@ const Tagbar = ({ favoriteTags, activeTags, setActiveTags }) => {
                             type="tag-bar"
                             label={tag}
                             activeTags={activeTags}
-                            setActiveTags={setActiveTags} />
+                            setActiveTags={setActiveTags}
+                            favoriteTags={favoriteTags} />
                     )
                 )}
             </div>

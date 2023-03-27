@@ -7,17 +7,16 @@ import { FaSearch } from 'react-icons/fa';
 const Searchbar = ({ items, setFilteredItems, filteredItems, activeTags, toggleIsAddItem, user, handleCheck}) => {
 
     const [searchQuery, setSearchQuery] = useState("")
-
+    const [currentFilteredItems, setCurrentFilteredItems] = useState(items)
 
     const handleFilter = (e) => {
         const searchWord = e.target.value
-        setSearchQuery(searchWord)
+        setSearchQuery(c =>searchWord)
     }
 
     useEffect(() => {
-        let currentFilteredItems = items
         let newFilter = []
-
+        setCurrentFilteredItems(items)
         if (searchQuery) {
             newFilter = currentFilteredItems.filter((value) => {
                 for (let x in value.tags) {
@@ -27,7 +26,7 @@ const Searchbar = ({ items, setFilteredItems, filteredItems, activeTags, toggleI
                 return false
             });
             setFilteredItems(newFilter)
-            currentFilteredItems = newFilter
+            setCurrentFilteredItems(newFilter)
         }
         if (activeTags[0]) {
             for (let i in activeTags) {
@@ -39,7 +38,7 @@ const Searchbar = ({ items, setFilteredItems, filteredItems, activeTags, toggleI
                     return false
                 });
                 setFilteredItems(newFilter)
-                currentFilteredItems = newFilter
+                setCurrentFilteredItems(newFilter)
             }
         }
         setFilteredItems(currentFilteredItems)

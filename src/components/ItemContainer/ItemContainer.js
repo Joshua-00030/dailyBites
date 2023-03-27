@@ -5,7 +5,7 @@ import './ItemContainer.css';
 import userService from '../../services/users';
 import NewModal from '../NewModal/NewModal';
 
-const ItemContainer = ({ items, currentCals, setCurrentCals, token, handleCheck, checked, user }) => {
+const ItemContainer = ({ items, currentCals, setCurrentCals, token, handleCheck, checked, user, toggleIsAddItem }) => {
 
     const handleClick = async (item) => {
         await userService.setToken(token)
@@ -26,7 +26,8 @@ const ItemContainer = ({ items, currentCals, setCurrentCals, token, handleCheck,
                         onClick={() => handleClick(item)}
                         handleCheck={handleCheck}
                         user={user}
-                        checked={checked} />
+                        checked={checked}
+                        toggleIsAddItem={toggleIsAddItem} />
                 )}
             </div>
         </div>

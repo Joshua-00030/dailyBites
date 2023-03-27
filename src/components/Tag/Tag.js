@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { IconContext } from "react-icons";
 import { FaCheckSquare, FaSquare } from 'react-icons/fa';
 
-const Tag = ({ type, label, activeTags, setActiveTags }) => {
+const Tag = ({ type, label, activeTags, setActiveTags, favoriteTags }) => {
 
     const [checked, setChecked] = useState(0);
     /*
@@ -32,7 +32,7 @@ const Tag = ({ type, label, activeTags, setActiveTags }) => {
         //make active to nonactive
         if (checked === 1) {
             setChecked(0);
-            const filterTags = activeTags.filter((value) => {
+            const filterTags = favoriteTags.filter((value) => {
                 return value !== e.target.innerText;
             });
             setActiveTags(filterTags)
