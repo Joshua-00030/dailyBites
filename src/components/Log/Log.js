@@ -24,29 +24,7 @@ const Log = (props) => {
     }
 
     const setTagBar = (items) => {
-
-        let tag_array = [];
-        let tag_dict = [];
-        let count = 0;
-        let i = 0;
-        let j = 0;
-        let x = 0;
-        
-        for (i = 0; i < items.length; i++) {
-            for (j = 0; j < items[i].tags.length; j++) {
-                if (!(tag_dict.includes(items[i].tags[j])) 
-                && !(favoriteTags.includes(items[i].tags[j])))
-                    tag_dict[count] = items[i].tags[j];
-                count++;
-            }
-        }
-
-        for (x = 0; x < count; x++) {
-            if(tag_dict[x]){
-                tag_array.push(tag_dict[x]);
-            }
-        }
-        setFavoriteTags(favoriteTags.concat(tag_array));
+       setFavoriteTags([...new Set(items.flatMap(item => item.tags))])
     }
 
     useEffect(() => {

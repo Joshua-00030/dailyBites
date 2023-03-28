@@ -11,37 +11,16 @@ const Searchbar = ({ items, setFilteredItems, filteredItems, activeTags, toggleI
 
     const handleFilter = (e) => {
         const searchWord = e.target.value
-        setSearchQuery(c =>searchWord)
+        setSearchQuery(searchWord)
     }
 
     useEffect(() => {
-        let newFilter = []
-        setCurrentFilteredItems(items)
-        if (searchQuery) {
-            newFilter = currentFilteredItems.filter((value) => {
-                for (let x in value.tags) {
-                    if (value.tags[x].toLowerCase().includes(searchQuery.toLowerCase()) || value.name.toLowerCase().includes(searchQuery.toLowerCase()))
-                        return true
-                }
-                return false
-            });
-            setFilteredItems(newFilter)
-            setCurrentFilteredItems(newFilter)
-        }
-        if (activeTags[0]) {
-            for (let i in activeTags) {
-                newFilter = currentFilteredItems.filter((value) => {
-                    for (let j in value.tags) {
-                        if (value.tags[j].toLowerCase().includes(activeTags[i].toLowerCase()))
-                            return true
-                    }
-                    return false
-                });
-                setFilteredItems(newFilter)
-                setCurrentFilteredItems(newFilter)
-            }
-        }
-        setFilteredItems(currentFilteredItems)
+        setFilteredItems(items.filter(item => ((item.name.toLowerCase().includes(searchQuery.toLowerCase()))
+        || (item.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()))))
+        && (
+            activeTags.length === 0 || 
+            (item.tags.some(tag=> activeTags.indexOf(tag) >= 0)))
+        ))
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [activeTags, searchQuery])
 
