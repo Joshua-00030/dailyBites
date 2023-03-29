@@ -41,12 +41,15 @@
    background-color: white; */
    display: flex;
    flex-direction: column;
-   background-color: #fff;
-   border-radius: .5em;
+   background-color: #5e666f;
    overflow: hidden;
    white-space: nowrap;
    text-overflow: ellipsis;
+   /*
    border: 3px solid #167990;
+   border-radius: .5em;
+   */
+   padding: 3px 3px 3px 3px;
  }
  
  .card:hover{
@@ -55,7 +58,7 @@
  }
  
  .header {
-   color: lightskyblue;
+   color:skyblue;
    font-size: 1em;
    font-weight:bold;
    align-self: flex-start;

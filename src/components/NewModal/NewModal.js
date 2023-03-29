@@ -1,30 +1,38 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './NewModal.css';
 import EnteredTag from '../EnteredTag/EnteredTag';
 import userItemService from '../../services/userItem';
 import userService from '../../services/users';
-import AddNutientBox from '../AddNutrientBox.js/addNutrientBox.js'
+import AddNutrientBox from '../AddNutrientBox.js/addNutrientBox.js'
 import NutrientBox from '../NutrientBox/nutrientBox';
 import { IconContext } from "react-icons";
-import { FaWindowClose, FaPlusSquare, FaRegWindowClose, FaAngleDown, FaAngleUp } from 'react-icons/fa';
+import { FaWindowClose, FaPlusSquare, FaSave, FaAngleDown, FaAngleUp } from 'react-icons/fa';
 /*import { FaTimes, FaUser, FaUtensils, FaSignOutAlt, FaPen, FaMarker, FaHamburger, FaExpandArrowsAlt,
 FaEraser, FaChartPie, FaCarrot, FaUserCircle, FaWindowClose, FaRegWindowClose, FaSignInAlt, FaPlusSquare,
 FaPlus, FaPortrait, FaHome, FaEdit, FaSearch } from 'react-icons/fa';
 */
 
-const NewModal = ({ toggleIsAddItem }) => {
+const NewModal = ({ toggleIsAddItem, user, mode, edit, item, editHandleClick }) => {
 
     const [modal, setModal] = useState(false);
     const [enteredTags, setEnteredTags] = useState([]);
     const [open, setOpen] = useState(false);
     //const trackedNutrients = ['salt', 'sugar', 'fat', 'protein'];
-    const [trackedNutrients, setTrackedNutrients] = useState([
+    const [trackedNutrients, setTrackedNutrients] = useState(user.trackedNutrients !== [] ? user.trackedNutrients : [
         {
             name: 'calories',
             value: 0,
             measurement: 'calories'
         }
     ]);
+
+    useEffect(() => {
+        if (edit) {
+            toggleModal()
+            setEnteredTags(item.tags)
+            editHandleClick()
+        }
+    }, [edit])
 
     const toggleModal = () => {
         setModal(!modal)
@@ -39,24 +47,25 @@ const NewModal = ({ toggleIsAddItem }) => {
         toggleModal();
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        const time = new Date().toLocaleDateString()
+        
         const userItemObject = {
             name: e.target[0].value,
-            nutrition: trackedNutrients,
+            nutrition: trackedNutrients.filter(nutrient => nutrient.value),
             tags: enteredTags,
-            date: time
+            edit: (item ? true : false),
+            id:(item ? item.id : null)
         }
-        userItemService.create(userItemObject)
 
-        const nutrientObject = trackedNutrients
-        userService.updateNutrients(nutrientObject)
+        await userItemService.create(userItemObject)
+
+        toggleModal();
         
-
+        //const nutrientObject = trackedNutrients
+        //userService.updateNutrients(nutrientObject)
         setEnteredTags([]);
         toggleIsAddItem();
-        toggleModal();
     }
 
     const handleAddTag = (e) => {
@@ -73,9 +82,16 @@ const NewModal = ({ toggleIsAddItem }) => {
         if (!newNutrient) {
             return
         }
-        const newEntry = { name: newNutrient, value:0, measurement: newMeasurement }
+        const newEntry = { name: newNutrient, value: 0, measurement: newMeasurement }
         setTrackedNutrients(trackedNutrients.concat(newEntry));
         document.getElementById("new-nutrient-input").value = "";
+    }
+
+    const handleNBLoad = (props) => {
+        setTrackedNutrients(n => n.map(nutrient =>
+            (nutrient.name === props[0].name)
+                ? { ...nutrient, 'value': props[0].value }
+                : nutrient))
     }
 
     if (modal) {
@@ -86,16 +102,19 @@ const NewModal = ({ toggleIsAddItem }) => {
 
     return (
         <>
-            <button
-                className="btn-modal"
-                onClick={toggleModal}>
-                <div className="word-icon-container">
-                    New
-                    <IconContext.Provider value={{ size: "1em" }}>
-                        <FaPlusSquare />
-                    </IconContext.Provider>
-                </div>
-            </button>
+            {mode !== 2 && (
+
+                <button
+                    className="btn-modal"
+                    onClick={toggleModal}>
+                    <div className="word-icon-container">
+                        New
+                        <IconContext.Provider value={{ size: "1em" }}>
+                            <FaPlusSquare />
+                        </IconContext.Provider>
+                    </div>
+                </button>
+            )}
 
             {modal && (
                 <div className="modal">
@@ -112,13 +131,14 @@ const NewModal = ({ toggleIsAddItem }) => {
                         </button>
                         <br />
                         <h2>
-                            Create New Item
+                            {(mode === 2 ? 'Edit Item' : 'Create New Item')}
                         </h2>
                         <form className="form" onSubmit={handleSubmit}>
-                            <input className="form-input" type="text" name="name" placeholder="Enter item name" />
-                            <NutrientBox label='calories' trackedNutrients={trackedNutrients} setTrackedNutrients={setTrackedNutrients}/>
+                            <input className="form-input" type="text" name="name" defaultValue={(item ? item.name : null)} placeholder={"Enter item name"} />
+                            <NutrientBox label='calories' id='calories' trackedNutrients={trackedNutrients} setTrackedNutrients={setTrackedNutrients}
+                                item={(item ? item : null)} i={0} handleNBLoad={handleNBLoad} />
 
-                            <button onClick={handleClick} className="nutrient-btn">
+                            {mode !== 2 && <button onClick={handleClick} className="nutrient-btn">
 
                                 <div className="word-icon-container">
                                     Add Nutrients
@@ -132,10 +152,10 @@ const NewModal = ({ toggleIsAddItem }) => {
                                         </IconContext.Provider>
                                     )}
                                 </div>
-
                             </button>
-                            {open ? <AddNutientBox handleAddNutrient={handleAddNutrient} trackedNutrients={trackedNutrients} 
-                            setTrackedNutrients={setTrackedNutrients}/>
+                            }
+                            {(open || mode === 2) ? <AddNutrientBox handleAddNutrient={handleAddNutrient} trackedNutrients={trackedNutrients}
+                                setTrackedNutrients={setTrackedNutrients} item={item} handleNBLoad={handleNBLoad} />
                                 : null}
                             {/*<h3 className="tags-header">Tags:</h3>*/}
                             <div className="tag-div">
@@ -164,9 +184,9 @@ const NewModal = ({ toggleIsAddItem }) => {
                                 className="submit-modal btn-modal"
                                 type="submit">
                                 <div className="word-icon-container">
-                                    Create Item
+                                    {mode === 2 ? 'Update':'Create Item'}
                                     <IconContext.Provider value={{ size: "1em", className: "" }}>
-                                        <FaPlusSquare />
+                                        {mode === 2 ? <FaSave /> : <FaPlusSquare/>}
                                     </IconContext.Provider>
 
                                 </div>

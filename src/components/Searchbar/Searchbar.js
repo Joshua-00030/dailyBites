@@ -4,7 +4,7 @@ import NewModal from '../NewModal/NewModal';
 import { IconContext } from "react-icons";
 import { FaSearch } from 'react-icons/fa';
 
-const Searchbar = ({ items, setFilteredItems, filteredItems, activeTags, toggleIsAddItem }) => {
+const Searchbar = ({ items, setFilteredItems, filteredItems, activeTags, toggleIsAddItem, user, handleCheck}) => {
 
     const [searchQuery, setSearchQuery] = useState("")
     const [sortCals, setSortCals] = useState(false)
@@ -65,55 +65,24 @@ const Searchbar = ({ items, setFilteredItems, filteredItems, activeTags, toggleI
     }
 
     useEffect(() => {
-        let currentFilteredItems = items
-        let newFilter = []
-
-        console.log("test")
-
-        
-
-        if (searchQuery[0] == "#") {
-            newFilter = currentFilteredItems.filter((value) => {
-                for (let x in value.tags) {
-                    let tagName = searchQuery.substring(1)
-                    if (value.tags[x].toLowerCase().includes(tagName.toLowerCase()))
-                        return true
-                }
-                return false
-            });
-            setFilteredItems(newFilter)
-            currentFilteredItems = newFilter
-        }
-        else if (searchQuery) {
-            newFilter = currentFilteredItems.filter((value) => {
-                    if (value.name.toLowerCase().includes(searchQuery.toLowerCase()))
-                        return true
-                return false
-            });
-            setFilteredItems(newFilter)
-            currentFilteredItems = newFilter
-        }
-
-        if (activeTags[0]) {
-            for (let i in activeTags) {
-                newFilter = currentFilteredItems.filter((value) => {
-                    for (let j in value.tags) {
-                        if (value.tags[j].toLowerCase().includes(activeTags[i].toLowerCase()))
-                            return true
-                    }
-                    return false
-                });
-                setFilteredItems(newFilter)
-                currentFilteredItems = newFilter
-            }
-        }
-        setFilteredItems(currentFilteredItems)
+        setFilteredItems(items.filter(item => ((item.name.toLowerCase().includes(searchQuery.toLowerCase()))
+        || (item.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()))))
+        && (
+            activeTags.length === 0 || 
+            (item.tags.some(tag=> activeTags.indexOf(tag) >= 0)))
+        ))
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [activeTags, searchQuery])
 
     return (
         <>
             <div className="search">
+                <div>
+                    <form action="/action_page.php">
+                        <input type="checkbox" id="editCheckBox" name="editCheckBox" value="check" onChange={handleCheck}/>
+                        <label for="editCheckBox" style={{color: 'white', marginRight:'20px'}}> Edit Items </label><br />
+                    </form>
+                </div>
                 <div className="searchInputs">
                     <div className="search-hover-border">
 

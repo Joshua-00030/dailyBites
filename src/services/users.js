@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseUrl = 'http://localhost:3001/api/users'
+const baseUrl = 'http://141.148.175.82:3001/api/users'
 
 let token = null
 
@@ -23,6 +23,8 @@ const addItemToHistory = async newObject =>{
   
 }
 
+// used todaysItems from log to get values below
+// newObject should be { id: item.itemId, date: item.date }
 const deleteItemFromToday = async newObject => {
   const config = {
     headers: { Authorization: token },

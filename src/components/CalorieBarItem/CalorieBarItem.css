@@ -1,0 +1,12 @@
+.calorie-bar-item-container {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+   
+}
+
+.qty-icon-container {
+    display: flex;
+    align-items: center;
+    
+}

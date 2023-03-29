@@ -1,12 +1,12 @@
-import {FaPlusSquare, FaRegWindowClose, FaEdit} from 'react-icons/fa';
+import { FaPlusSquare, FaRegWindowClose, FaEdit } from 'react-icons/fa';
 import { IconContext } from "react-icons";
 import NutrientBox from '../NutrientBox/nutrientBox';
 
-const AddNutrientBox = ({ handleAddNutrient, trackedNutrients, setTrackedNutrients }) => {
+const AddNutrientBox = ({ handleAddNutrient, trackedNutrients, setTrackedNutrients, item, handleNBLoad }) => {
 
     return (
         <div className="nutrient-container">
-            <div class="new-nutrient-flexbox">
+            <div className="new-nutrient-flexbox">
                 {/*<h4 className="nutrients-header">Create New Nutrient:</h4>*/}
                 <input className="form-input" id="new-nutrient-input" type="text" name="tags" placeholder="Enter nutrient name" />
                 <select className="measurement-select" id="measurement-select">
@@ -30,9 +30,14 @@ const AddNutrientBox = ({ handleAddNutrient, trackedNutrients, setTrackedNutrien
             {trackedNutrients[1] && (trackedNutrients.slice(1).map((nutrientObject, i) =>
                 <div className="nutrient-input-div" key={i}>
                     <div>
-                        <NutrientBox label={nutrientObject['name']} trackedNutrients={trackedNutrients} setTrackedNutrients={setTrackedNutrients}/>
-                        <span className="measurement-label">{nutrientObject['measurement']}</span>
+                        {item ? (item.nutrition.filter(n => n.name === trackedNutrients[i + 1].name)[0] ?
+                            <label for={nutrientObject['name']} style={{ position: 'absolute', transform: 'translate(0px, -4px)', fontSize: '.8em', color: '#167990' }}>{nutrientObject['name']}</label>
+                            : <></>) : <></>}
+                        <NutrientBox id={nutrientObject['name']} label={nutrientObject['name']} trackedNutrients={trackedNutrients}
+                            setTrackedNutrients={setTrackedNutrients} i={i + 1} item={item ? item : null} handleNBLoad={handleNBLoad} />
+                        <span className="measurement-label">{nutrientObject['unit']}</span>
                     </div>
+                    {/*
 
                     <div className='icons-div'>
                         <div>
@@ -46,6 +51,7 @@ const AddNutrientBox = ({ handleAddNutrient, trackedNutrients, setTrackedNutrien
                             </IconContext.Provider>
                         </div>
                     </div>
+                            */}
                 </div>
             ))}
         </div>
