@@ -64,8 +64,7 @@ const HowTo = (props) => {
                   <li className={HowToCss.li}><em>My Account</em> - User Account Information</li>
                   <li className={HowToCss.li}><em>How-To</em> - Instructions for using Daily Bites</li>                  
                   <li className={HowToCss.li}><em>FAQs</em> - Frequently Asked Questions regarding Daily Bites</li>                  
-                  <li className={HowToCss.li}><em>Settings</em> - ??</li>                  
-                  <li className={HowToCss.li}><em>Logout</em> - Logs the user out and takes them to signin page</li>              
+                  <li className={HowToCss.li}><em>Useful Links</em> - Additional resources regarding nutrition and counting calories.</li>                  
               </label>
             </div>
           </div>
