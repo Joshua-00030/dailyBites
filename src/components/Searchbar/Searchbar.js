@@ -7,9 +7,9 @@ import { FaSearch } from 'react-icons/fa';
 const Searchbar = ({ items, setFilteredItems, filteredItems, activeTags, toggleIsAddItem, user, handleCheck}) => {
 
     const [searchQuery, setSearchQuery] = useState("")
+    const [currentFilteredItems, setCurrentFilteredItems] = useState(items)
     const [sortCals, setSortCals] = useState(false)
     const [sortName, setSortName] = useState(false)
-
 
     const handleFilter = (e) => {
         const searchWord = e.target.value
@@ -60,8 +60,6 @@ const Searchbar = ({ items, setFilteredItems, filteredItems, activeTags, toggleI
             const flip = [...filteredItems.reverse()]
             setFilteredItems(flip)
         }
-
-        console.log(filteredItems)
     }
 
     useEffect(() => {
@@ -98,10 +96,9 @@ const Searchbar = ({ items, setFilteredItems, filteredItems, activeTags, toggleI
                             </IconContext.Provider>
                         </div>
                     </div>
-                    <NewModal toggleIsAddItem={toggleIsAddItem}></NewModal>
-                    <button onClick={sortByCals}>Sort By Cals</button>
-                    <button onClick={sortByName}>Sort By Name</button>
-
+                    <NewModal toggleIsAddItem={toggleIsAddItem} user={user}></NewModal>
+                    <button onClick={sortByName} className="sortName" >Sort by Name</button>
+                    <button onClick={sortByCals} className="sortCals">Sort by Calories</button>
                 </div>
             </div>
         </>

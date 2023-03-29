@@ -7,6 +7,7 @@ const UserItem = ({item, onClick, checked, user, toggleIsAddItem}) => {
     const handleClick = () =>{
     if(checked){
         setEdit(!edit)
+        console.log(edit)
     }
     else{
         onClick()
@@ -16,7 +17,7 @@ const UserItem = ({item, onClick, checked, user, toggleIsAddItem}) => {
     return (
         <>
         <div className="card-hover-border">
-            <div className="card" onClick={handleClick}>
+            <div className={checked ? 'cardEdit' : 'card'} onClick={handleClick}>
                 <div className="header">{item.name}</div>
                 <div className="body">{item.nutrition[0].value}</div>
             </div>
