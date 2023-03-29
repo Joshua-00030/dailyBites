@@ -7,20 +7,76 @@ import { FaSearch } from 'react-icons/fa';
 const Searchbar = ({ items, setFilteredItems, filteredItems, activeTags, toggleIsAddItem }) => {
 
     const [searchQuery, setSearchQuery] = useState("")
+    const [sortCals, setSortCals] = useState(false)
+    const [sortName, setSortName] = useState(false)
+
 
     const handleFilter = (e) => {
         const searchWord = e.target.value
         setSearchQuery(searchWord)
     }
 
+    const sortByCals = () => {
+        const sortByCals = [...items]
+        setSortCals(false)
+
+
+        if (sortCals == false) {
+            setFilteredItems(sortByCals.sort(function (a, b)  {
+                if (a.nutrition[0].value < b.nutrition[0].value) {
+                    return -1;
+                }
+                if (a.nutrition[0].value > b.nutrition[0].value) {
+                    return 1;
+                }
+                return 0
+            }));
+            setSortCals(true)
+        }
+        else {
+            const flip = [...filteredItems.reverse()]
+            setFilteredItems(flip)
+        }
+    }
+
+    const sortByName = () => {
+        const sortByNameArray = [...items]
+        setSortName(false)
+
+        if (sortName == false) {
+            setFilteredItems(sortByNameArray.sort(function (a, b)  {
+                console.log(a.name)
+                if (a.name.toLowerCase() < b.name.toLowerCase()) {
+                    return -1;
+                }
+                if  (a.name.toLowerCase() > b.name.toLowerCase()) {
+                    return 1;
+                }
+                return 0
+            }));
+            setSortName(true)
+        }
+        else {
+            const flip = [...filteredItems.reverse()]
+            setFilteredItems(flip)
+        }
+
+        console.log(filteredItems)
+    }
+
     useEffect(() => {
         let currentFilteredItems = items
         let newFilter = []
 
-        if (searchQuery) {
+        console.log("test")
+
+        
+
+        if (searchQuery[0] == "#") {
             newFilter = currentFilteredItems.filter((value) => {
                 for (let x in value.tags) {
-                    if (value.tags[x].toLowerCase().includes(searchQuery.toLowerCase()) || value.name.toLowerCase().includes(searchQuery.toLowerCase()))
+                    let tagName = searchQuery.substring(1)
+                    if (value.tags[x].toLowerCase().includes(tagName.toLowerCase()))
                         return true
                 }
                 return false
@@ -28,6 +84,16 @@ const Searchbar = ({ items, setFilteredItems, filteredItems, activeTags, toggleI
             setFilteredItems(newFilter)
             currentFilteredItems = newFilter
         }
+        else if (searchQuery) {
+            newFilter = currentFilteredItems.filter((value) => {
+                    if (value.name.toLowerCase().includes(searchQuery.toLowerCase()))
+                        return true
+                return false
+            });
+            setFilteredItems(newFilter)
+            currentFilteredItems = newFilter
+        }
+
         if (activeTags[0]) {
             for (let i in activeTags) {
                 newFilter = currentFilteredItems.filter((value) => {
@@ -64,6 +130,9 @@ const Searchbar = ({ items, setFilteredItems, filteredItems, activeTags, toggleI
                         </div>
                     </div>
                     <NewModal toggleIsAddItem={toggleIsAddItem}></NewModal>
+                    <button onClick={sortByCals}>Sort By Cals</button>
+                    <button onClick={sortByName}>Sort By Name</button>
+
                 </div>
             </div>
         </>

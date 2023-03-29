@@ -6,6 +6,7 @@ import Searchbar from '../Searchbar/Searchbar';
 import { useState, useEffect } from 'react';
 import userItemService from '../../services/userItem';
 import userService from '../../services/users';
+import TodaysItem from '../TodaysItems/TodaysItem';
 /*
 const exampleItems = [
     { name: 'hamburger', calories: 350, tags: ['lunch'], id: 1 },
@@ -105,6 +106,7 @@ const Log = (props) => {
                 <Tagbar favoriteTags={favoriteTags} activeTags={activeTags} setActiveTags={setActiveTags} />
                 <ItemContainer items={filteredItems} currentCals={currentCals} setCurrentCals={setCurrentCals} token={props.user.token} />
                 <CalorieBar currentCals={currentCals} todaysItems={todaysItems} totalCals={totalCals}/>
+                <TodaysItem todaysItems={todaysItems} token={props.user.token} />
             </div>
         </>
     )
