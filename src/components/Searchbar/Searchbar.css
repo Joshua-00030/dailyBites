@@ -58,3 +58,33 @@
     justify-content: center;
     padding: 10px;
 }
+
+.sortName {
+    margin-left: .25rem;
+    background-color: #cfd394;
+    font-size: 12px;
+    color: black;
+    border: none;
+    height: 20px;
+    border: none;
+}
+
+.sortCals {
+    margin-left: .25rem;
+    background-color: #cfd394;
+    font-size: 12px;
+    color: black;
+    border: none;
+    height: 20px;
+    border: none;
+}
+
+.sortCals:hover {
+    background-color: #8e9256;
+    cursor: pointer;
+}
+
+.sortName:hover {
+    background-color: #8e9256;
+    cursor: pointer;
+}

@@ -8,10 +8,58 @@ const Searchbar = ({ items, setFilteredItems, filteredItems, activeTags, toggleI
 
     const [searchQuery, setSearchQuery] = useState("")
     const [currentFilteredItems, setCurrentFilteredItems] = useState(items)
+    const [sortCals, setSortCals] = useState(false)
+    const [sortName, setSortName] = useState(false)
 
     const handleFilter = (e) => {
         const searchWord = e.target.value
         setSearchQuery(searchWord)
+    }
+
+    const sortByCals = () => {
+        const sortByCals = [...items]
+        setSortCals(false)
+
+
+        if (sortCals == false) {
+            setFilteredItems(sortByCals.sort(function (a, b)  {
+                if (a.nutrition[0].value < b.nutrition[0].value) {
+                    return -1;
+                }
+                if (a.nutrition[0].value > b.nutrition[0].value) {
+                    return 1;
+                }
+                return 0
+            }));
+            setSortCals(true)
+        }
+        else {
+            const flip = [...filteredItems.reverse()]
+            setFilteredItems(flip)
+        }
+    }
+
+    const sortByName = () => {
+        const sortByNameArray = [...items]
+        setSortName(false)
+
+        if (sortName == false) {
+            setFilteredItems(sortByNameArray.sort(function (a, b)  {
+                console.log(a.name)
+                if (a.name.toLowerCase() < b.name.toLowerCase()) {
+                    return -1;
+                }
+                if  (a.name.toLowerCase() > b.name.toLowerCase()) {
+                    return 1;
+                }
+                return 0
+            }));
+            setSortName(true)
+        }
+        else {
+            const flip = [...filteredItems.reverse()]
+            setFilteredItems(flip)
+        }
     }
 
     useEffect(() => {
@@ -49,6 +97,8 @@ const Searchbar = ({ items, setFilteredItems, filteredItems, activeTags, toggleI
                         </div>
                     </div>
                     <NewModal toggleIsAddItem={toggleIsAddItem} user={user}></NewModal>
+                    <button onClick={sortByName} className="sortName" >Sort by Name</button>
+                    <button onClick={sortByCals} className="sortCals">Sort by Calories</button>
                 </div>
             </div>
         </>
