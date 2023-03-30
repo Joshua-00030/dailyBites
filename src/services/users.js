@@ -23,6 +23,17 @@ const addItemToHistory = async newObject =>{
   
 }
 
+// used todaysItems from log to get values below
+// newObject should be { id: item.itemId, date: item.date }
+const deleteItemFromToday = async newObject => {
+  const config = {
+    headers: { Authorization: token },
+  }
+
+  const response = await axios.post(`${baseUrl}/deleteItemToday`, newObject, config)
+  return response.data
+}
+
 const getHistory = async newObject =>{
   const config = {
     headers: { Authorization: token },
@@ -49,4 +60,4 @@ const updateCalorieLimit = (username, newCalorie) => {
     return request.then(response => response.data)
   }
 
-export default { updateNutrients, setToken, addItemToHistory, getHistory, getCalorieTotal, updateCalorieLimit }
+export default { updateNutrients, setToken, addItemToHistory, getHistory, getCalorieTotal, updateCalorieLimit, deleteItemFromToday }

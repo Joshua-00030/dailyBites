@@ -1,5 +1,5 @@
 import { BarChart, Bar, CartesianGrid, XAxis, YAxis, Cell, Tooltip, Legend } from 'recharts';
-import './foodGraph.css'; // import the CSS file
+//import './foodGraph.css'; // import the CSS file
 
 const FoodGraphChart = ({ className, data }) =>{
     const d = {}

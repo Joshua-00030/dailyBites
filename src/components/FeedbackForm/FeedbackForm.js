@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 
 const FeedbackForm = () => {
     const [submitted, setSubmitted] = useState(false)
+    const [errMsg, setErrMsg] = useState("")
 
     async function onSubmit() {
         document.body.style.cursor='wait'

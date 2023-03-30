@@ -5,6 +5,7 @@ import { IconContext } from "react-icons";
 import FoodPieChart from '../FoodPieChart/foodPieChart';
 import FoodGraphChart from '../FoodGraphChart/foodGraphChart';
 import userService from '../../services/users';
+import CalWidget from '../CalCalcWidget/CalWidget';
 
 const Home = () => {
 
@@ -26,6 +27,7 @@ const Home = () => {
     const widgetList = [
         <FoodGraphChart className={"home-main-container"} data={dailyData}/>,
         <FoodPieChart className={"home-main-container"} data={dailyData} />,
+        <CalWidget />,
         <div>Widget {selectedWidget}</div>,
         <div>Widget {selectedWidget}</div>]
         
@@ -33,14 +35,13 @@ const Home = () => {
         <div className="home-page-container">
             <div className="home-grid-container">
                 <div className="home-main-container">
-                    <div>
-
+                    {selectedWidget==2 ? "" : <div>
                         <label for="start">Start date:</label>
                         <input type="date" id="start" name="trip-start" value={dateRange.sd} onChange={(event) => setDateRange({ sd: event.target.value, ed: dateRange.ed })} />
                         <br />
                         <label for="end">End date: </label>
                         <input type="date" id="end" name="trip-end" value={dateRange.ed} onChange={(event) => setDateRange({ sd: dateRange.sd, ed: event.target.value })} />
-                    </div>
+                    </div>}
                     {widgetList[selectedWidget]}
                 </div>
 

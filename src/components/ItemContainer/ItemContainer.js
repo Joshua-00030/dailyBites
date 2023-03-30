@@ -3,8 +3,9 @@ import React, { useEffect } from 'react';
 import UserItem from '../UserItem/UserItem'
 import './ItemContainer.css';
 import userService from '../../services/users';
+import NewModal from '../NewModal/NewModal';
 
-const ItemContainer = ({ items, currentCals, setCurrentCals, token }) => {
+const ItemContainer = ({ items, currentCals, setCurrentCals, token, handleCheck, checked, user, toggleIsAddItem }) => {
 
     const handleClick = async (item) => {
         await userService.setToken(token)
@@ -22,7 +23,11 @@ const ItemContainer = ({ items, currentCals, setCurrentCals, token }) => {
                     <UserItem
                         key={item.id}
                         item={item}
-                        onClick={() => handleClick(item)} />
+                        onClick={() => handleClick(item)}
+                        handleCheck={handleCheck}
+                        user={user}
+                        checked={checked}
+                        toggleIsAddItem={toggleIsAddItem} />
                 )}
             </div>
         </div>
