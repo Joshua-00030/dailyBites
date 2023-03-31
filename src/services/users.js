@@ -34,6 +34,15 @@ const deleteItemFromToday = async newObject => {
   return response.data
 }
 
+const deleteUserItem = async newObject => {
+  const config = {
+    headers: { Authorization: token },
+  }
+
+  const response = await axios.post(`${baseUrl}/deleteUserItem`, newObject, config)
+  return response.data
+}
+
 const getHistory = async newObject =>{
   const config = {
     headers: { Authorization: token },
@@ -60,4 +69,4 @@ const updateCalorieLimit = (username, newCalorie) => {
     return request.then(response => response.data)
   }
 
-export default { updateNutrients, setToken, addItemToHistory, getHistory, getCalorieTotal, updateCalorieLimit, deleteItemFromToday }
+export default { updateNutrients, setToken, addItemToHistory, getHistory, getCalorieTotal, updateCalorieLimit, deleteItemFromToday, deleteUserItem }

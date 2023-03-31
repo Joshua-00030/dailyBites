@@ -17,6 +17,7 @@ const NewModal = ({ toggleIsAddItem, user, mode, edit, item, editHandleClick }) 
     const [modal, setModal] = useState(false);
     const [enteredTags, setEnteredTags] = useState([]);
     const [open, setOpen] = useState(false);
+    const [itemDelete, setItemDelete] = useState(false);
     //const trackedNutrients = ['salt', 'sugar', 'fat', 'protein'];
     const [trackedNutrients, setTrackedNutrients] = useState(user.trackedNutrients !== [] ? user.trackedNutrients : [
         {
@@ -49,19 +50,30 @@ const NewModal = ({ toggleIsAddItem, user, mode, edit, item, editHandleClick }) 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
+        console.log(itemDelete)
+        if (itemDelete) {
+            var answer = window.confirm(`Delete ${item.name}? {This will not affect your eaten item history}`);
+            if (answer) {
+                toggleIsAddItem();
+                toggleModal()
+                //some code
+                await userService.deleteUserItem({id: item.id})
+            }
+            return
+        }
+
         const userItemObject = {
             name: e.target[0].value,
             nutrition: trackedNutrients.filter(nutrient => nutrient.value),
             tags: enteredTags,
             edit: (item ? true : false),
-            id:(item ? item.id : null)
+            id: (item ? item.id : null)
         }
 
         await userItemService.create(userItemObject)
 
         toggleModal();
-        
+
         //const nutrientObject = trackedNutrients
         //userService.updateNutrients(nutrientObject)
         setEnteredTags([]);
@@ -179,19 +191,35 @@ const NewModal = ({ toggleIsAddItem, user, mode, edit, item, editHandleClick }) 
 
                             </div>
                             <div><hr /></div>
+                            <div className='new-nutrient-flexbox'>
 
-                            <button
-                                className="submit-modal btn-modal"
-                                type="submit">
-                                <div className="word-icon-container">
-                                    {mode === 2 ? 'Update':'Create Item'}
-                                    <IconContext.Provider value={{ size: "1em", className: "" }}>
-                                        {mode === 2 ? <FaSave /> : <FaPlusSquare/>}
-                                    </IconContext.Provider>
+                                <button
+                                    className="submit-modal btn-modal"
+                                    type="submit" id="create" onClick={() => setItemDelete(false)}>
+                                    <div className="word-icon-container">
+                                        {mode === 2 ? 'Update' : 'Create Item'}
+                                        <IconContext.Provider value={{ size: "1em", className: "" }}>
+                                            {mode === 2 ? <FaSave /> : <FaPlusSquare />}
+                                        </IconContext.Provider>
 
-                                </div>
+                                    </div>
 
-                            </button>
+                                </button>
+                                {mode === 2 &&
+                                    <button
+                                        className="submit-modal btn-modal"
+                                        type="submit" style={{ backgroundColor: 'red' }} id="delete" onClick={() => setItemDelete(true)}>
+                                        <div className="word-icon-container">
+                                            Delete
+                                            <IconContext.Provider value={{ size: "1em", className: "" }}>
+                                                <FaWindowClose />
+                                            </IconContext.Provider>
+
+                                        </div>
+
+                                    </button>
+                                }
+                            </div>
                         </form>
                     </div>
                 </div>

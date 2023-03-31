@@ -31,7 +31,7 @@ const Log = (props) => {
         if(userItemService.token)
         userItemService.setToken(props.user.token)
         userItemService
-            .getAll()
+            .getCurrentItems()
             .then(initialItems => {
                 setUserItems(initialItems);
                 setTagBar(initialItems);
