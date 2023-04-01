@@ -21,7 +21,7 @@ const Searchbar = ({ items, setFilteredItems, filteredItems, activeTags, toggleI
         setSortCals(false)
 
 
-        if (sortCals == false) {
+        if (sortCals === false) {
             setFilteredItems(sortByCals.sort(function (a, b)  {
                 if (a.nutrition[0].value < b.nutrition[0].value) {
                     return -1;
@@ -29,7 +29,7 @@ const Searchbar = ({ items, setFilteredItems, filteredItems, activeTags, toggleI
                 if (a.nutrition[0].value > b.nutrition[0].value) {
                     return 1;
                 }
-                return 0
+                return 0;
             }));
             setSortCals(true)
         }

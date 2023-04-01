@@ -25,7 +25,7 @@ const Tag = ({ label, activeTags, setActiveTags }) => {
 
     return (
         <div
-            onClick={handleClick }
+            onClick={handleClick}
             className="tag-button">
             <div className="tag-label">
                 {label}

@@ -5,6 +5,7 @@ import LoginCSS from "./LoginForm.module.css"
 import userItemService from "../../services/userItem"
 import userService from '../../services/users';
 import loginService from "../../services/login"
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = (props) => {
 
@@ -17,7 +18,7 @@ const LoginForm = (props) => {
         email: ""
     })
     const [errMsg, setErrMsg] = useState(null)
-
+    const navigate = useNavigate();
     /*
     useEffect(() => {
         const loggedUserJSON = window.localStorage.getItem('loggedDietappUser')
@@ -60,9 +61,7 @@ const LoginForm = (props) => {
                         setErrMsg("Sorry, passwords must be at least 10 characters long.  Please try again.")
                         return 
                     }
-                    console.log("what")
                     await loginService.createUser(loginInfo)
-                    console.log("232")
 
                 }else {
                     setErrMsg("Passwords do not match.")
@@ -78,6 +77,7 @@ const LoginForm = (props) => {
             userItemService.setToken(user.token)
             userService.setToken(user.token)
             props.setUser(user)
+            navigate("/");
         } catch (exception) {
             if (exception.response.status == 400)
                 setErrMsg("Username already taken. Please try again.")
