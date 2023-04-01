@@ -11,7 +11,7 @@ const Home = () => {
 
     const [selectedWidget, setSelectedWidget] = useState(0);
     const [dailyData, setDailyData] = useState(null)
-    const [dateRange, setDateRange] = useState({sd: new Date(new Date().setHours(0,0,0,0)).toISOString().split('T')[0], ed: new Date(new Date().setHours(0,0,0,0)).toISOString().split('T')[0]})
+    const [dateRange, setDateRange] = useState({sd: new Date(new Date().setHours(-24*7,0,0,0)).toISOString().split('T')[0], ed: new Date(new Date().setHours(0,0,0,0)).toISOString().split('T')[0]})
 
     useEffect(() => {
         console.log(dateRange.sd)
