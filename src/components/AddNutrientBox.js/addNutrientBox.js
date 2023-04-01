@@ -1,4 +1,4 @@
-import { FaPlusSquare, FaRegWindowClose, FaEdit } from 'react-icons/fa';
+import { FaPlusSquare } from 'react-icons/fa';
 import { IconContext } from "react-icons";
 import NutrientBox from '../NutrientBox/nutrientBox';
 
@@ -30,7 +30,7 @@ const AddNutrientBox = ({ handleAddNutrient, trackedNutrients, setTrackedNutrien
             {trackedNutrients[1] && (trackedNutrients.slice(1).map((nutrientObject, i) =>
                 <div className="nutrient-input-div" key={i}>
                     <div>
-                        {item ? (item.nutrition.filter(n => n.name === trackedNutrients[i + 1].name)[0] ?
+                        {item ? ((item.nutrition.filter(n => n.name === trackedNutrients[i + 1].name)[0] || trackedNutrients[i+1].value )?
                             <label for={nutrientObject['name']} style={{ position: 'absolute', transform: 'translate(0px, -4px)', fontSize: '.8em', color: '#167990' }}>{nutrientObject['name']}</label>
                             : <></>) : <></>}
                         <NutrientBox id={nutrientObject['name']} label={nutrientObject['name']} trackedNutrients={trackedNutrients}
