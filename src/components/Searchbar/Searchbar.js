@@ -8,44 +8,67 @@ const Searchbar = ({ items, setFilteredItems, filteredItems, activeTags, toggleI
 
     const [searchQuery, setSearchQuery] = useState("")
     const [currentFilteredItems, setCurrentFilteredItems] = useState(items)
+    const [sortCals, setSortCals] = useState(false)
+    const [sortName, setSortName] = useState(false)
 
     const handleFilter = (e) => {
         const searchWord = e.target.value
-        //setSearchQuery(c =>searchWord)
         setSearchQuery(searchWord)
+    }
 
+    const sortByCals = () => {
+        const sortByCals = [...items]
+        setSortCals(false)
+
+
+        if (sortCals === false) {
+            setFilteredItems(sortByCals.sort(function (a, b)  {
+                if (a.nutrition[0].value < b.nutrition[0].value) {
+                    return -1;
+                }
+                if (a.nutrition[0].value > b.nutrition[0].value) {
+                    return 1;
+                }
+                return 0;
+            }));
+            setSortCals(true)
+        }
+        else {
+            const flip = [...filteredItems.reverse()]
+            setFilteredItems(flip)
+        }
+    }
+
+    const sortByName = () => {
+        const sortByNameArray = [...items]
+        setSortName(false)
+
+        if (sortName == false) {
+            setFilteredItems(sortByNameArray.sort(function (a, b)  {
+                console.log(a.name)
+                if (a.name.toLowerCase() < b.name.toLowerCase()) {
+                    return -1;
+                }
+                if  (a.name.toLowerCase() > b.name.toLowerCase()) {
+                    return 1;
+                }
+                return 0
+            }));
+            setSortName(true)
+        }
+        else {
+            const flip = [...filteredItems.reverse()]
+            setFilteredItems(flip)
+        }
     }
 
     useEffect(() => {
-        let newFilter = []
-        setCurrentFilteredItems(items)
-        
-        if (searchQuery.localeCompare("") !== 0) {
-            newFilter = currentFilteredItems.filter((value) => {
-                for (let x in value.tags) {
-                    if (value.tags[x].toLowerCase().includes(searchQuery.toLowerCase()) || value.name.toLowerCase().includes(searchQuery.toLowerCase()))
-                        return true
-                }
-                return false
-            });
-            setFilteredItems(newFilter)
-            setCurrentFilteredItems(newFilter)
-        }
-        if (activeTags[0]) {
-            for (let i in activeTags) {
-                newFilter = currentFilteredItems.filter((value) => {
-                    for (let j in value.tags) {
-                        if (value.tags[j].toLowerCase().includes(activeTags[i].toLowerCase()))
-                            return true
-                    }
-                    return false
-                });
-                setFilteredItems(newFilter)
-                setCurrentFilteredItems(newFilter)
-            }
-        }
-        setFilteredItems(currentFilteredItems)
-        console.log(filteredItems)
+        setFilteredItems(items.filter(item => ((item.name.toLowerCase().includes(searchQuery.toLowerCase()))
+        || (item.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()))))
+        && (
+            activeTags.length === 0 || 
+            (item.tags.some(tag=> activeTags.indexOf(tag) >= 0)))
+        ))
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [activeTags, searchQuery])
 
@@ -74,6 +97,8 @@ const Searchbar = ({ items, setFilteredItems, filteredItems, activeTags, toggleI
                         </div>
                     </div>
                     <NewModal toggleIsAddItem={toggleIsAddItem} user={user}></NewModal>
+                    <button onClick={sortByName} className="sortName" >Sort by Name</button>
+                    <button onClick={sortByCals} className="sortCals">Sort by Calories</button>
                 </div>
             </div>
         </>

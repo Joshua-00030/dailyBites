@@ -1,9 +1,12 @@
 import { BarChart, Bar, CartesianGrid, XAxis, YAxis, Cell, Tooltip, Legend } from 'recharts';
 //import './foodGraph.css'; // import the CSS file
 
-const FoodGraphChart = ({ className, data }) =>{
+const FoodGraphChart = ({ className, data, view }) =>{
     const d = {}
     const d2 = []
+    const nutrientValue = {}
+    const nutrientData = []
+    const selection = [d2,nutrientData]
     var total = 0
 
     if (data) {
@@ -14,7 +17,18 @@ const FoodGraphChart = ({ className, data }) =>{
                 d[item.name] = item.nutrition[0].value
             }
                 total += item.nutrition[0].value
+                item.nutrition.slice(1).forEach((nutrient) =>{
+                    if (nutrientValue.hasOwnProperty(nutrient.name)) {
+                        nutrientValue[nutrient.name] = nutrientValue[nutrient.name] += nutrient.value
+                    } else {
+                        nutrientValue[nutrient.name] = nutrient.value
+                    }
+
+                })
             })
+            for (var nutrient in nutrientValue) {
+                nutrientData.push({ name: nutrient, value: nutrientValue[nutrient] })
+        }
             for (var item in d) {
                 d2.push({ name: item, value: d[item] })
         }
@@ -37,7 +51,7 @@ const FoodGraphChart = ({ className, data }) =>{
         <BarChart
             width={950}
             height={300}
-            data={(d2.length > 0 ? d2 : [{ name: 'empty', value: 1 }])}
+            data={(selection[view].length > 0 ? selection[view] : [{ name: 'empty', value: 1 }])}
         >
             <CartesianGrid strokeDasharray="0 0"/>
             <XAxis dataKey="name"/>
@@ -49,7 +63,7 @@ const FoodGraphChart = ({ className, data }) =>{
                 animationBegin={0}
                 animationDuration={1000}
             >
-                {d2.length > 0 ?<>{d2.map((entry, index) => (
+                {selection[view].length > 0 ?<>{selection[view].map((entry, index) => (
                     <Cell
                         key={`cell-${index}`}
                         fill={stringToColour(entry.name)}

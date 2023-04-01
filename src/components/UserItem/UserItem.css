@@ -51,6 +51,37 @@
    */
    padding: 3px 3px 3px 3px;
  }
+
+ .cardEdit {
+  /*  border: 1px solid gray;
+   background-color: white; */
+   display: flex;
+   flex-direction: column;
+   background-color: #e0341e;
+   overflow: hidden;
+   white-space: nowrap;
+   text-overflow: ellipsis;
+   /*
+   border: 3px solid #167990;
+   border-radius: .5em;
+   */
+   padding: 3px 3px 3px 3px;
+   animation: vertical-shaking .5s;
+ }
+
+ @keyframes vertical-shaking {
+  0% { transform: translateY(0) }
+  25% { transform: translateY(2px) }
+  50% { transform: translateY(-2px) }
+  75% { transform: translateY(2px) }
+  100% { transform: translateY(0) }
+  
+}
+
+ .cardEdit:hover {
+    filter:brightness(85%);
+    cursor: pointer;
+ }
  
  .card:hover{
    filter:brightness(85%);

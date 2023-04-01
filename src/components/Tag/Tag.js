@@ -3,29 +3,25 @@ import { useState } from 'react';
 import { IconContext } from "react-icons";
 import { FaCheckSquare, FaSquare } from 'react-icons/fa';
 
-const Tag = ({ label, activeTags, setActiveTags, favoriteTags }) => {
+const Tag = ({ label, activeTags, setActiveTags }) => {
 
-    const [checked, setChecked] = useState(0);
+    const [checked, setChecked] = useState(false);
 
     const handleClick = (e) => {
         //make active to nonactive
-        if (checked === 1) {
-            setChecked(0);
-            const filterTags = favoriteTags.filter((value) => {
-                return value !== e.target.innerText;
+        if (checked) {
+            setChecked(c => ! c);
+            const filterTags = activeTags.filter((value) => {
+                return value !== label;
             });
             setActiveTags(filterTags)
             //make nonactive to active
         } else {
-            setChecked(1);
-            setActiveTags(activeTags.concat(e.target.innerText))
+            setChecked(c => !c);
+            setActiveTags(activeTags.concat(label))
         }
-        console.log(e.target.innerText)
-        console.log('favorites:' + favoriteTags)
-        console.log('actives:' + activeTags)
     }
 
- 
 
     return (
         <div
@@ -35,7 +31,7 @@ const Tag = ({ label, activeTags, setActiveTags, favoriteTags }) => {
                 {label}
             </div>
             <div className="tag-check-icon">
-                {checked === 1 ? (
+                {checked ? (
                     <IconContext.Provider value={{ className: "check-wrapper", size: "1em" }}>
                         <FaCheckSquare />
                     </IconContext.Provider>)

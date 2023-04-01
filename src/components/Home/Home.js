@@ -5,12 +5,14 @@ import { IconContext } from "react-icons";
 import FoodPieChart from '../FoodPieChart/foodPieChart';
 import FoodGraphChart from '../FoodGraphChart/foodGraphChart';
 import userService from '../../services/users';
+import CalWidget from '../CalCalcWidget/CalWidget';
 
 const Home = () => {
 
     const [selectedWidget, setSelectedWidget] = useState(0);
+    const [view, setView] = useState(0);
     const [dailyData, setDailyData] = useState(null)
-    const [dateRange, setDateRange] = useState({sd: new Date().toISOString().split('T')[0], ed: new Date().toISOString().split('T')[0]})
+    const [dateRange, setDateRange] = useState({ sd: new Date(new Date().setHours(-24 * 7, 0, 0, 0)).toISOString().split('T')[0], ed: new Date(new Date().setHours(0, 0, 0, 0)).toISOString().split('T')[0] })
 
     useEffect(() => {
         const sdate = new Date(new Date(dateRange.sd).setMinutes(new Date(dateRange.sd).getTimezoneOffset()))
@@ -18,29 +20,34 @@ const Home = () => {
         userService.getHistory({ sdate: new Date(sdate), edate: new Date(edate) }).then(items =>
             setDailyData(items))
     }, [dateRange.ed, dateRange.sd])
-    
+
     const handleWidgetClick = (value) => {
         setSelectedWidget(value);
     }
 
     const widgetList = [
-        <FoodGraphChart className={"home-main-container"} data={dailyData}/>,
-        <FoodPieChart className={"home-main-container"} data={dailyData} />,
+        <FoodGraphChart className={"home-main-container"} data={dailyData} view={view}/>,
+        <FoodPieChart className={"home-main-container"} data={dailyData} view={view}/>,
+        <CalWidget />,
         <div>Widget {selectedWidget}</div>,
         <div>Widget {selectedWidget}</div>]
-        
+
     return (
         <div className="home-page-container">
             <div className="home-grid-container">
                 <div className="home-main-container">
-                    <div>
-
+                    {selectedWidget == 2 ? "" : <div>
                         <label for="start">Start date:</label>
                         <input type="date" id="start" name="trip-start" value={dateRange.sd} onChange={(event) => setDateRange({ sd: event.target.value, ed: dateRange.ed })} />
                         <br />
                         <label for="end">End date: </label>
                         <input type="date" id="end" name="trip-end" value={dateRange.ed} onChange={(event) => setDateRange({ sd: dateRange.sd, ed: event.target.value })} />
-                    </div>
+                        <br/>
+                        <select name="view" id="view" onChange={(e) => setView(e.target.value)}>
+                            <option value="0">Calories</option>
+                            <option value="1">Nutrients</option>
+                        </select>
+                    </div>}
                     {widgetList[selectedWidget]}
                 </div>
 

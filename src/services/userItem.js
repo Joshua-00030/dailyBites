@@ -12,6 +12,11 @@ const getAll = () => {
   const request = axios.get(baseUrl, config)
   return request.then(response => response.data)
 }
+const getCurrentItems = () => {
+  const config = {    headers: { Authorization: token },  }
+  const request = axios.get(baseUrl+'/currentItems', config)
+  return request.then(response => response.data)
+}
 
 const create = async newObject => {
   const config = {
@@ -27,4 +32,4 @@ const update = (id, newObject) => {
   return request.then(response => response.data)
 }
 
-export default { getAll, create, update, setToken }
+export default { getAll, create, update, setToken, getCurrentItems }
