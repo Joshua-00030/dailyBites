@@ -66,6 +66,10 @@ const NewModal = ({ toggleIsAddItem, user, mode, edit, item, editHandleClick }) 
             }
             return
         }
+        if(!trackedNutrients[0].value){
+            setErrMsg('Calories cannot be empty')
+            return
+        }
 
         const userItemObject = {
             name: e.target[0].value,
@@ -195,7 +199,7 @@ const NewModal = ({ toggleIsAddItem, user, mode, edit, item, editHandleClick }) 
                                     </div>
                                 </button>
                             </div>
-                            {errMsg ? <p style={{"color" : "white", "text-align" : "center"}} >{errMsg}</p>: null}
+                            {errMsg ? <p style={{"color" : "white", "textAlign" : "center"}} >{errMsg}</p>: null}
                             <div className="entered-tags-container">
                                 {enteredTags.map((tag, i) =>
                                     <EnteredTag key={i} label={tag} enteredTags={enteredTags} setEnteredTags={setEnteredTags} />
