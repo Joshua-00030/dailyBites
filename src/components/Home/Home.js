@@ -11,9 +11,10 @@ const Home = () => {
 
     const [selectedWidget, setSelectedWidget] = useState(0);
     const [dailyData, setDailyData] = useState(null)
-    const [dateRange, setDateRange] = useState({sd: new Date().toISOString().split('T')[0], ed: new Date().toISOString().split('T')[0]})
+    const [dateRange, setDateRange] = useState({sd: new Date(new Date().setHours(0,0,0,0)).toISOString().split('T')[0], ed: new Date(new Date().setHours(0,0,0,0)).toISOString().split('T')[0]})
 
     useEffect(() => {
+        console.log(dateRange.sd)
         const sdate = new Date(new Date(dateRange.sd).setMinutes(new Date(dateRange.sd).getTimezoneOffset()))
         const edate = new Date(new Date(dateRange.ed).setMinutes(new Date(dateRange.ed).getTimezoneOffset())).setHours(23, 59, 59, 999)
         userService.getHistory({ sdate: new Date(sdate), edate: new Date(edate) }).then(items =>
