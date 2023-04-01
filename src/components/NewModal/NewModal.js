@@ -26,6 +26,7 @@ const NewModal = ({ toggleIsAddItem, user, mode, edit, item, editHandleClick }) 
             measurement: 'calories'
         }
     ]);
+    const [errMsg, setErrMsg] = useState("")
 
     useEffect(() => {
         if (edit) {
@@ -37,15 +38,19 @@ const NewModal = ({ toggleIsAddItem, user, mode, edit, item, editHandleClick }) 
 
     const toggleModal = () => {
         setModal(!modal)
+        setErrMsg("")
+        setOpen(false)
     }
     const handleClick = (e) => {
         e.preventDefault()
-        setOpen(!open)
+        setOpen(!open)        
     }
 
     const handleClose = () => {
         setEnteredTags([]);
         toggleModal();
+        setErrMsg("")
+        setOpen(false)
     }
 
     const handleSubmit = async (e) => {
@@ -70,7 +75,7 @@ const NewModal = ({ toggleIsAddItem, user, mode, edit, item, editHandleClick }) 
             id: (item ? item.id : null)
         }
 
-        await userItemService.create(userItemObject)
+        await userItemService.create(userItemObject)        
 
         toggleModal();
 
@@ -83,6 +88,12 @@ const NewModal = ({ toggleIsAddItem, user, mode, edit, item, editHandleClick }) 
     const handleAddTag = (e) => {
         e.preventDefault()
         const newTag = document.getElementById("tag-input").value
+
+        if (newTag.length == 0) {
+            setErrMsg("Tag cannot be empty.")
+            return
+        }
+
         setEnteredTags(enteredTags.concat(newTag));
         document.getElementById("tag-input").value = "";
     }
@@ -146,7 +157,7 @@ const NewModal = ({ toggleIsAddItem, user, mode, edit, item, editHandleClick }) 
                             {(mode === 2 ? 'Edit Item' : 'Create New Item')}
                         </h2>
                         <form className="form" onSubmit={handleSubmit}>
-                            <input className="form-input" type="text" name="name" defaultValue={(item ? item.name : null)} placeholder={"Enter item name"} />
+                            <input required className="form-input" type="text" name="name" defaultValue={(item ? item.name : null)} placeholder={"Enter item name"} />
                             <NutrientBox label='calories' id='calories' trackedNutrients={trackedNutrients} setTrackedNutrients={setTrackedNutrients}
                                 item={(item ? item : null)} i={0} handleNBLoad={handleNBLoad} />
 
@@ -184,6 +195,7 @@ const NewModal = ({ toggleIsAddItem, user, mode, edit, item, editHandleClick }) 
                                     </div>
                                 </button>
                             </div>
+                            {errMsg ? <p style={{"color" : "white", "text-align" : "center"}} >{errMsg}</p>: null}
                             <div className="entered-tags-container">
                                 {enteredTags.map((tag, i) =>
                                     <EnteredTag key={i} label={tag} enteredTags={enteredTags} setEnteredTags={setEnteredTags} />

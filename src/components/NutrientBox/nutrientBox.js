@@ -22,7 +22,7 @@ const NutrientBox = ({ label, trackedNutrients, setTrackedNutrients, item, i, ha
 
 
     return (
-        <input className={`form-input ${((nutrition && nutrition.length > 0 && label !== 'calories') || value)? ' add-top' : ''}`} type="text" name={label} placeholder={`Enter ${label}`} 
+        <input className={`form-input ${((nutrition && nutrition.length > 0 && label !== 'calories') || value)? ' add-top' : ''}`} type="number" min="0" name={label} placeholder={`Enter ${label}`} 
         onChange={handleInput} defaultValue={(nutrition && nutrition.length > 0 ? nutrition[0].value: '')}/>
     )
 }
