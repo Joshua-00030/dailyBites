@@ -6,16 +6,16 @@ import { IconContext } from "react-icons";
 const Navbar = (props) => {
     return (
         <nav className="nav">
-            <Link to="/" className="site-title">
+            <Link to="/home" className="site-title">
                 Daily Bites
             </Link>
             <ul>
-                <CustomLink to="/">
+                <CustomLink to="/home">
                     <IconContext.Provider value={{ className: "nav-icon" }}>
                         <FaHome />
                     </IconContext.Provider>
                 </CustomLink>
-                <CustomLink to="/log">Log</CustomLink>
+                <CustomLink to="/">Log</CustomLink>
             </ul>
             <ul>
                 <CustomLink to="/account">

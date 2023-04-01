@@ -3,31 +3,10 @@ import { useState } from 'react';
 import { IconContext } from "react-icons";
 import { FaCheckSquare, FaSquare } from 'react-icons/fa';
 
-const Tag = ({ type, label, activeTags, setActiveTags, favoriteTags }) => {
+const Tag = ({ label, activeTags, setActiveTags, favoriteTags }) => {
 
     const [checked, setChecked] = useState(0);
-    /*
-    const handleClick = (e) => {
-            //make active to nonactive
-            if (e.target.classList.contains("active-tag")) {
-                e.target.classList.remove("active-tag")
-                e.target.classList.add("nonactive-tag")
-                setChecked(0);
-                const filterTags = activeTags.filter((value) => {
-                    return value !== e.target.innerText;
-                });
-                setActiveTags(filterTags)
-    
-    
-                //make nonactive to active
-            } else {
-                e.target.classList.add("active-tag")
-                e.target.classList.remove("nonactive-tag")
-                setChecked(1);
-                setActiveTags(activeTags.concat(e.target.innerText))
-            }
-        }
-    */
+
     const handleClick = (e) => {
         //make active to nonactive
         if (checked === 1) {
@@ -41,15 +20,16 @@ const Tag = ({ type, label, activeTags, setActiveTags, favoriteTags }) => {
             setChecked(1);
             setActiveTags(activeTags.concat(e.target.innerText))
         }
+        console.log(e.target.innerText)
+        console.log('favorites:' + favoriteTags)
+        console.log('actives:' + activeTags)
     }
 
-    const handleAdd = (e) => {
-
-    }
+ 
 
     return (
         <div
-            onClick={type === "tag-bar" ? handleClick : handleAdd}
+            onClick={handleClick}
             className="tag-button">
             <div className="tag-label">
                 {label}

@@ -11,13 +11,16 @@ const Searchbar = ({ items, setFilteredItems, filteredItems, activeTags, toggleI
 
     const handleFilter = (e) => {
         const searchWord = e.target.value
-        setSearchQuery(c =>searchWord)
+        //setSearchQuery(c =>searchWord)
+        setSearchQuery(searchWord)
+
     }
 
     useEffect(() => {
         let newFilter = []
         setCurrentFilteredItems(items)
-        if (searchQuery) {
+        
+        if (searchQuery.localeCompare("") !== 0) {
             newFilter = currentFilteredItems.filter((value) => {
                 for (let x in value.tags) {
                     if (value.tags[x].toLowerCase().includes(searchQuery.toLowerCase()) || value.name.toLowerCase().includes(searchQuery.toLowerCase()))
@@ -42,6 +45,7 @@ const Searchbar = ({ items, setFilteredItems, filteredItems, activeTags, toggleI
             }
         }
         setFilteredItems(currentFilteredItems)
+        console.log(filteredItems)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [activeTags, searchQuery])
 
