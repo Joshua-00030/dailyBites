@@ -58,7 +58,7 @@
     justify-content: center;
     padding: 10px;
 }
-
+/*
 .sortName {
     margin-left: .25rem;
     background-color: #cfd394;
@@ -78,13 +78,21 @@
     height: 20px;
     border: none;
 }
+*/
+.sortBtn {
+    height: 35px;
+    border: none;
+    color: black;
+    font-size: 12px;
+    margin-left: .25rem;
+    cursor: pointer;
+    background-color: #167990; 
+}
 
 .sortCals:hover {
     background-color: #8e9256;
-    cursor: pointer;
 }
 
 .sortName:hover {
     background-color: #8e9256;
-    cursor: pointer;
 }

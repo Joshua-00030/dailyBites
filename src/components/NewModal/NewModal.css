@@ -80,22 +80,22 @@ body.active-modal {
     background-color: #167990;
     cursor: pointer;
 }
-
+/* #59359a; */
 .nutrient-btn {
     margin-bottom: .25rem;
     height: 35px;
     border: none;
-    background-color: #59359a;
+    background-color: #482f8a;
     font-size: 18px;
     color: inherit;
     border: none;
     margin-right: auto;
     margin-left: auto;
 }
-
+/* #502F8A; */
 .nutrient-btn:hover {
     cursor: pointer;
-    background-color: #502F8A;
+    background-color: #39256d;
 }
 
 .form-input {
@@ -160,9 +160,10 @@ h3 {
     align-items: center;
     
 }
+/* #59359a */
 .measurement-select {
     height: 35px;
-    background-color: #59359a;
+    background-color: #482f8a;
     border: none;
     font-size: 18px;
     margin-left: .25rem;
