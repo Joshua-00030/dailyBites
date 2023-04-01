@@ -20,7 +20,7 @@ const UserItem = ({ item, onClick, checked, user, toggleIsAddItem }) => {
             <div className="card-hover-border">
                 <div className={checked ? 'cardEdit' : 'card'} onClick={handleClick}>
                     <div className="header">{item.name}</div>
-                    <div className="body">{item.nutrition[0].value}</div>
+                    <div className="body">{item.nutrition[0] ? item.nutrition[0].value : 0}</div>
                 </div>
             </div>
 
