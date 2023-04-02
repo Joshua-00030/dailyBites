@@ -10,3 +10,9 @@
     align-items: center;
     
 }
+.delete-cal-bar-item {
+    color: black;
+    margin-right: .25rem;
+    cursor: pointer;
+    background-color: red;
+}
