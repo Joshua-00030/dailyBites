@@ -1,5 +1,5 @@
 import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts"
-const FoodPieChart = ({ className, data, view }) => {
+const FoodPieChart = ({ className, data, view, units }) => {
     const d = {}
     const d2 = []
     const nutrientValue = {}
@@ -25,7 +25,7 @@ const FoodPieChart = ({ className, data, view }) => {
                 })
             })
             for (var nutrient in nutrientValue) {
-                nutrientData.push({ name: nutrient, value: nutrientValue[nutrient] })
+                nutrientData.push({ name: nutrient, value: nutrientValue[nutrient], unit: units.find(x =>x.name === nutrient).unit })
         }
             for (var item in d) {
                 d2.push({ name: item, value: d[item] })
@@ -58,8 +58,14 @@ const FoodPieChart = ({ className, data, view }) => {
                 >
                     {selection[view].length > 0 ?
                     <>
+                    {view === '0' ?
+                    <>
                     <label>{`${payload[0].name} : ${(payload[0].value / total * 100).toFixed(2)}%`}</label><br />
                     <label>{`Calories : ${payload[0].value}`}</label>
+                    </>
+                    :
+                    <label>{`${payload[0].name} : ${payload[0].value} ${payload[0].payload.unit}`}</label>
+        }
                 </>
                 :<label>{`No data for date range`}</label>}
                 </div>
@@ -90,7 +96,7 @@ const FoodPieChart = ({ className, data, view }) => {
                 ))}</>: <Cell key='cell-1'fill='#ffffff'/>
 }
             </Pie>
-            <Tooltip content={<CustomTooltip />} />
+            <Tooltip content={<CustomTooltip />} cursor={false} />
             <Legend />
         </PieChart>
     )

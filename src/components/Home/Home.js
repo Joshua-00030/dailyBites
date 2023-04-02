@@ -7,7 +7,7 @@ import FoodGraphChart from '../FoodGraphChart/foodGraphChart';
 import userService from '../../services/users';
 import CalWidget from '../CalCalcWidget/CalWidget';
 
-const Home = () => {
+const Home = ({user}) => {
 
     const [selectedWidget, setSelectedWidget] = useState(0);
     const [view, setView] = useState(0);
@@ -26,8 +26,8 @@ const Home = () => {
     }
 
     const widgetList = [
-        <FoodGraphChart className={"home-main-container"} data={dailyData} view={view}/>,
-        <FoodPieChart className={"home-main-container"} data={dailyData} view={view}/>,
+        <FoodGraphChart className={"home-main-container"} data={dailyData} view={view} units={user.trackedNutrients}/>,
+        <FoodPieChart className={"home-main-container"} data={dailyData} view={view} units={user.trackedNutrients}/>,
         <CalWidget />,
         <div>Widget {selectedWidget}</div>,
         <div>Widget {selectedWidget}</div>]

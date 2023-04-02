@@ -58,7 +58,7 @@ function App() {
         </Route>
         <Route element={<WithNav logout={logout}/>}>
         <Route path="/" element={user.name === null ? <Navigate to='/login'/> : <Log user={user}/>} /> 
-        <Route path="/home" element={user.name === null ? <Navigate to='/login'/> : <Home />} />
+        <Route path="/home" element={user.name === null ? <Navigate to='/login'/> : <Home user={user}/>} />
         <Route path="/account" element={user.name === null ? <Navigate to='/login'/> : <Account user={user}/>} >
           <Route index element={<AccountInfo user={user} />}/>
           <Route path="info" element={<AccountInfo user={user} /> } />

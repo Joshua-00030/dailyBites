@@ -55,7 +55,6 @@ const NewModal = ({ toggleIsAddItem, user, mode, edit, item, editHandleClick }) 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(itemDelete)
         if (itemDelete) {
             var answer = window.confirm(`Delete ${item.name}? {This will not affect your eaten item history}`);
             if (answer) {

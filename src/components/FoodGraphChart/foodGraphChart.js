@@ -1,7 +1,7 @@
 import { BarChart, Bar, CartesianGrid, XAxis, YAxis, Cell, Tooltip, Legend } from 'recharts';
 //import './foodGraph.css'; // import the CSS file
 
-const FoodGraphChart = ({ className, data, view }) =>{
+const FoodGraphChart = ({ className, data, view, units }) =>{
     const d = {}
     const d2 = []
     const nutrientValue = {}
@@ -27,7 +27,7 @@ const FoodGraphChart = ({ className, data, view }) =>{
                 })
             })
             for (var nutrient in nutrientValue) {
-                nutrientData.push({ name: nutrient, value: nutrientValue[nutrient] })
+                nutrientData.push({ name: nutrient, value: nutrientValue[nutrient], unit: units.find(x =>x.name === nutrient).unit })
         }
             for (var item in d) {
                 d2.push({ name: item, value: d[item] })
@@ -45,6 +45,35 @@ const FoodGraphChart = ({ className, data, view }) =>{
             colour += ('00' + value.toString(16)).substr(-2);
         }
     return colour;
+    }
+
+    const CustomTooltip = ({ active, payload, label }) => {
+        if (active) {
+            return (
+                <div
+                    className="custom-tooltip"
+                    style={{
+                        backgroundColor: "#ffff",
+                        padding: "5px",
+                        border: "1px solid #cccc"
+                    }}
+                >
+                    {selection[view].length > 0 ?
+                    <>
+                    {view === '0' ?
+                    <>
+                    <label>{`${payload[0].payload.name} : ${(payload[0].value / total * 100).toFixed(2)}%`}</label><br />
+                    <label>{`Calories : ${payload[0].value}`}</label>
+                    </>
+                    :
+                    <label>{`${payload[0].payload.name} : ${payload[0].value} ${payload[0].payload.unit}`}</label>
+        }
+                </>
+                :<label>{`No data for date range`}</label>}
+                </div>
+            );
+        }
+        return null;
     }
 
     return (
@@ -71,7 +100,7 @@ const FoodGraphChart = ({ className, data, view }) =>{
                 ))}</>: <Cell key='cell-1'fill='#ffffff'/>
                 }
             </Bar>
-            <Tooltip />
+            <Tooltip content={<CustomTooltip />} cursor={false}/>
         </BarChart>
         
     )
