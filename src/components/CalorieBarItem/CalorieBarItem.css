@@ -11,6 +11,8 @@
     
 }
 .delete-cal-bar-item {
-    color: red;
+    color: black;
     margin-right: .25rem;
+    cursor: pointer;
+    background-color: red;
 }
