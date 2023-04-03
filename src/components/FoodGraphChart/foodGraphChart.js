@@ -1,5 +1,4 @@
-import { BarChart, Bar, CartesianGrid, XAxis, YAxis, Cell, Tooltip, Legend } from 'recharts';
-//import './foodGraph.css'; // import the CSS file
+import { BarChart, Bar, XAxis, YAxis, Cell, Tooltip} from 'recharts';
 
 const FoodGraphChart = ({ className, data, view, units }) =>{
     const d = {}
@@ -37,6 +36,29 @@ const FoodGraphChart = ({ className, data, view, units }) =>{
         }
     }
 
+    // Changes the position of the labels under the X-axis
+    // Every other label will appear in a "new line"
+    const CustomTick = ({ x, y, payload, index }) => {
+        if (index % 2 === 0) {
+            return (
+                <g transform={`translate(${x},${y})`}>
+                    <text x={0} y={0} dy={10} textAnchor="middle" fill="#666">
+                        {payload.value}
+                    </text>
+                </g>
+            )
+        }
+
+        return (
+            <g transform={`translate(${x},${y})`}>
+                <text x={0} y={0} dy={25} textAnchor="middle" fill="#666">
+                    {payload.value}
+                </text>
+            </g>
+        )
+    }
+
+
     const stringToColour = (str) => {
         var hash = 0;
         for (var i = 0; i < str.length; i++) {
@@ -47,7 +69,7 @@ const FoodGraphChart = ({ className, data, view, units }) =>{
             var value = (hash >> (i * 8)) & 0xFF;
             colour += ('00' + value.toString(16)).substr(-2);
         }
-    return colour;
+        return colour;
     }
 
     const CustomTooltip = ({ active, payload, label }) => {
@@ -81,12 +103,11 @@ const FoodGraphChart = ({ className, data, view, units }) =>{
 
     return (
         <BarChart
-            width={950}
-            height={300}
+            width={1000}
+            height={350}
             data={(selection[view].length > 0 ? selection[view] : [{ name: 'empty', value: 1 }])}
         >
-            <CartesianGrid strokeDasharray="0 0"/>
-            <XAxis dataKey="name"/>
+            <XAxis dataKey="name" interval={0} tick={< CustomTick />} />
             <YAxis />
             <Bar
                 color="#000000"
@@ -100,12 +121,12 @@ const FoodGraphChart = ({ className, data, view, units }) =>{
                         key={`cell-${index}`}
                         fill={stringToColour(entry.name)}
                     />
-                ))}</>: <Cell key='cell-1'fill='#ffffff'/>
+                ))}</> : <Cell key='cell-1' fill='#ffffff' />
                 }
             </Bar>
             <Tooltip content={<CustomTooltip />} cursor={false}/>
         </BarChart>
-        
+
     )
 }
 
