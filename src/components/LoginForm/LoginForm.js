@@ -101,7 +101,7 @@ const LoginForm = (props) => {
                 </div> : null} 
 
                 <button type="button" className={LoginCSS.button} onClick={createNewAccount}>Create New Account</button>
-                <button type="button" className={LoginCSS.button} onClick={forgotPassChange}>Forgot Password?</button>
+                {/* <button type="button" className={LoginCSS.button} onClick={forgotPassChange}>Forgot Password?</button> */}
 
                 {newAccount ?
                     <div>
