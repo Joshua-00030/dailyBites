@@ -1,8 +1,12 @@
 import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts"
-const FoodPieChart = ({ className, data }) => {
+const FoodPieChart = ({ className, data, view, units }) => {
     const d = {}
     const d2 = []
+    const nutrientValue = {}
+    const nutrientData = []
+    const selection = [d2,nutrientData]
     var total = 0
+
     if (data) {
         data.forEach((item) => {
             if (d.hasOwnProperty(item.name)) {
@@ -10,14 +14,22 @@ const FoodPieChart = ({ className, data }) => {
             } else {
                 d[item.name] = item.nutrition[0].value
             }
-            total += item.nutrition[0].value
-        })
+                total += item.nutrition[0].value
+                item.nutrition.slice(1).forEach((nutrient) =>{
+                    if (nutrientValue.hasOwnProperty(nutrient.name)) {
+                        nutrientValue[nutrient.name] = nutrientValue[nutrient.name] += nutrient.value
+                    } else {
+                        nutrientValue[nutrient.name] = nutrient.value
+                    }
 
-        for (var item in d) {
-            d2.push({ name: item, value: d[item] })
+                })
+            })
+            for (var nutrient in nutrientValue) {
+                nutrientData.push({ name: nutrient, value: nutrientValue[nutrient], unit: units.find(x =>x.name === nutrient).unit })
         }
-
-
+            for (var item in d) {
+                d2.push({ name: item, value: d[item] })
+        }
     }
 
     const stringToColour = (str) => {
@@ -44,10 +56,16 @@ const FoodPieChart = ({ className, data }) => {
                         border: "1px solid #cccc"
                     }}
                 >
-                    {d2.length > 0 ?
+                    {selection[view].length > 0 ?
+                    <>
+                    {view === '0' ?
                     <>
                     <label>{`${payload[0].name} : ${(payload[0].value / total * 100).toFixed(2)}%`}</label><br />
                     <label>{`Calories : ${payload[0].value}`}</label>
+                    </>
+                    :
+                    <label>{`${payload[0].name} : ${payload[0].value} ${payload[0].payload.unit}`}</label>
+        }
                 </>
                 :<label>{`No data for date range`}</label>}
                 </div>
@@ -59,7 +77,7 @@ const FoodPieChart = ({ className, data }) => {
     return (
         <PieChart width={730} height={300}>
             <Pie
-                data={(d2.length > 0 ? d2 : [{ name: 'empty', value: 1 }])}
+                data={(selection[view].length > 0 ? selection[view] : [{ name: 'empty', value: 1 }])}
                 color="#000000"
                 dataKey="value"
                 nameKey="name"
@@ -70,7 +88,7 @@ const FoodPieChart = ({ className, data }) => {
                 outerRadius={120}
                 fill="#8884d8"
             >
-                {d2.length > 0 ?<>{d2.map((entry, index) => (
+                {selection[view].length > 0 ?<>{selection[view].map((entry, index) => (
                     <Cell
                         key={`cell-${index}`}
                         fill={stringToColour(entry.name)}
@@ -78,7 +96,7 @@ const FoodPieChart = ({ className, data }) => {
                 ))}</>: <Cell key='cell-1'fill='#ffffff'/>
 }
             </Pie>
-            <Tooltip content={<CustomTooltip />} />
+            <Tooltip content={<CustomTooltip />} cursor={false} />
             <Legend />
         </PieChart>
     )

@@ -17,6 +17,7 @@ const NewModal = ({ toggleIsAddItem, user, mode, edit, item, editHandleClick }) 
     const [modal, setModal] = useState(false);
     const [enteredTags, setEnteredTags] = useState([]);
     const [open, setOpen] = useState(false);
+    const [itemDelete, setItemDelete] = useState(false);
     //const trackedNutrients = ['salt', 'sugar', 'fat', 'protein'];
     const [trackedNutrients, setTrackedNutrients] = useState(user.trackedNutrients !== [] ? user.trackedNutrients : [
         {
@@ -25,6 +26,7 @@ const NewModal = ({ toggleIsAddItem, user, mode, edit, item, editHandleClick }) 
             measurement: 'calories'
         }
     ]);
+    const [errMsg, setErrMsg] = useState("")
 
     useEffect(() => {
         if (edit) {
@@ -36,32 +38,50 @@ const NewModal = ({ toggleIsAddItem, user, mode, edit, item, editHandleClick }) 
 
     const toggleModal = () => {
         setModal(!modal)
+        setErrMsg("")
+        setOpen(false)
     }
     const handleClick = (e) => {
         e.preventDefault()
-        setOpen(!open)
+        setOpen(!open)        
     }
 
     const handleClose = () => {
         setEnteredTags([]);
         toggleModal();
+        setErrMsg("")
+        setOpen(false)
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
+        if (itemDelete) {
+            var answer = window.confirm(`Delete ${item.name}? {This will not affect your eaten item history}`);
+            if (answer) {
+                toggleIsAddItem();
+                toggleModal()
+                //some code
+                await userService.deleteUserItem({id: item.id})
+            }
+            return
+        }
+        if(!trackedNutrients[0].value){
+            setErrMsg('Calories cannot be empty')
+            return
+        }
+
         const userItemObject = {
             name: e.target[0].value,
             nutrition: trackedNutrients.filter(nutrient => nutrient.value),
             tags: enteredTags,
             edit: (item ? true : false),
-            id:(item ? item.id : null)
+            id: (item ? item.id : null)
         }
 
-        await userItemService.create(userItemObject)
+        await userItemService.create(userItemObject)        
 
         toggleModal();
-        
+
         //const nutrientObject = trackedNutrients
         //userService.updateNutrients(nutrientObject)
         setEnteredTags([]);
@@ -71,6 +91,12 @@ const NewModal = ({ toggleIsAddItem, user, mode, edit, item, editHandleClick }) 
     const handleAddTag = (e) => {
         e.preventDefault()
         const newTag = document.getElementById("tag-input").value
+
+        if (newTag.length == 0) {
+            setErrMsg("Tag cannot be empty.")
+            return
+        }
+
         setEnteredTags(enteredTags.concat(newTag));
         document.getElementById("tag-input").value = "";
     }
@@ -134,7 +160,7 @@ const NewModal = ({ toggleIsAddItem, user, mode, edit, item, editHandleClick }) 
                             {(mode === 2 ? 'Edit Item' : 'Create New Item')}
                         </h2>
                         <form className="form" onSubmit={handleSubmit}>
-                            <input className="form-input" type="text" name="name" defaultValue={(item ? item.name : null)} placeholder={"Enter item name"} />
+                            <input required className="form-input" type="text" name="name" defaultValue={(item ? item.name : null)} placeholder={"Enter item name"} />
                             <NutrientBox label='calories' id='calories' trackedNutrients={trackedNutrients} setTrackedNutrients={setTrackedNutrients}
                                 item={(item ? item : null)} i={0} handleNBLoad={handleNBLoad} />
 
@@ -172,6 +198,7 @@ const NewModal = ({ toggleIsAddItem, user, mode, edit, item, editHandleClick }) 
                                     </div>
                                 </button>
                             </div>
+                            {errMsg ? <p style={{"color" : "white", "textAlign" : "center"}} >{errMsg}</p>: null}
                             <div className="entered-tags-container">
                                 {enteredTags.map((tag, i) =>
                                     <EnteredTag key={i} label={tag} enteredTags={enteredTags} setEnteredTags={setEnteredTags} />
@@ -179,19 +206,35 @@ const NewModal = ({ toggleIsAddItem, user, mode, edit, item, editHandleClick }) 
 
                             </div>
                             <div><hr /></div>
+                            <div className='new-nutrient-flexbox'>
 
-                            <button
-                                className="submit-modal btn-modal"
-                                type="submit">
-                                <div className="word-icon-container">
-                                    {mode === 2 ? 'Update':'Create Item'}
-                                    <IconContext.Provider value={{ size: "1em", className: "" }}>
-                                        {mode === 2 ? <FaSave /> : <FaPlusSquare/>}
-                                    </IconContext.Provider>
+                                <button
+                                    className="submit-modal btn-modal"
+                                    type="submit" id="create" onClick={() => setItemDelete(false)}>
+                                    <div className="word-icon-container">
+                                        {mode === 2 ? 'Update' : 'Create Item'}
+                                        <IconContext.Provider value={{ size: "1em", className: "" }}>
+                                            {mode === 2 ? <FaSave /> : <FaPlusSquare />}
+                                        </IconContext.Provider>
 
-                                </div>
+                                    </div>
 
-                            </button>
+                                </button>
+                                {mode === 2 &&
+                                    <button
+                                        className="submit-modal btn-modal"
+                                        type="submit" style={{ backgroundColor: 'red' }} id="delete" onClick={() => setItemDelete(true)}>
+                                        <div className="word-icon-container">
+                                            Delete
+                                            <IconContext.Provider value={{ size: "1em", className: "" }}>
+                                                <FaWindowClose />
+                                            </IconContext.Provider>
+
+                                        </div>
+
+                                    </button>
+                                }
+                            </div>
                         </form>
                     </div>
                 </div>

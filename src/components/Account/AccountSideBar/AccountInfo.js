@@ -76,6 +76,7 @@ const AccountInfo = (props) => {
                 onChange={handleInputChange}
                 value={myCalLimit}
                 type="number"
+                min="0"
                 />
             <button type="submit" value="submit"> Submit</button>
             {errMsg ? <p style={{"color" : "white", "text-align" : "center"}} >{errMsg}</p>: null}
