@@ -15,7 +15,7 @@ const CalorieBar = ({ currentCals, todaysItems, totalCals, setCurrentCals }) => 
     todaysItems.forEach((item, i) => {
         itemStyle.gridTemplateRows += (item.nutrition[0].value > 75 ? `${item.nutrition[0].value}fr ` : '20px ')
         itemBoxs.push(
-            <CalorieBarItem item={item} id={i} setCurrentCals={setCurrentCals}/>
+            <CalorieBarItem item={item} id={i} setCurrentCals={setCurrentCals} height={(item.nutrition[0].value > 75 ? `${item.nutrition[0].value}fr ` : '20px ')}/>
         )
     })
 

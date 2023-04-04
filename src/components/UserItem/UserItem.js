@@ -17,13 +17,10 @@ const UserItem = ({ item, onClick, checked, user, toggleIsAddItem }) => {
     }
     return (
         <>
-            <div className="card-hover-border">
-                <div className={checked ? 'cardEdit' : 'card'} onClick={handleClick}>
-                    <div className="header">{item.name}</div>
+                <div className={checked ? 'card cardEdit' : 'card'} onClick={handleClick}>
+                   <div className="header">{item.name}</div>
                     <div className="body">{item.nutrition[0] ? item.nutrition[0].value : 0}</div>
                 </div>
-            </div>
-
             {open && <NewModal toggleIsAddItem={toggleIsAddItem} user={user} mode={2} edit={edit} item={item} editHandleClick={handleClick} />}
         </>
     )
