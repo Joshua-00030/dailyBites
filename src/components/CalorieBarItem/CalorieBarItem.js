@@ -20,12 +20,12 @@ const CalorieBarItem = ({ item, items, setCurrentCals, id, height }) => {
                     {item.name}
                    {/* maxHeight: '20px' */}
                 </div>
-                <div style={{ display: 'flex', marginLeft: '.25rem', marginRight: '.25rem', justifyContent: 'flex-end' }}>
+                <div style={{ display: 'flex', marginLeft: '.25rem', marginRight: '.25rem', justifyContent: 'flex-end', maxHeight: height }}>
                     
-                    <span style={{ maxHeight: '20px' }}>{item.nutrition[0].value}</span>
+                    <span>{item.nutrition[0].value}</span>
                 </div>
-                <div style={{  height:'100%', display:'flex', justifyContent: 'flex-end'}}>
-                    <span style={{ maxHeight: '20px' }} onClick={(e) => handleDelete({ id: item.itemId, date: item.date })}>
+                <div style={{  height:'100%', display:'flex', justifyContent: 'flex-end', maxHeight: height}}>
+                    <span onClick={(e) => handleDelete({ id: item.itemId, date: item.date })}>
                         <IconContext.Provider value={{ className: "delete-cal-bar-item", size: "1.4em" }}>
                             <FaRegWindowClose />
                         </IconContext.Provider></span>
