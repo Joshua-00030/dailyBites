@@ -72,9 +72,9 @@ const CalWidget = () => {
                 <div className="gridBox">
                     <p className="subHeader">Please Select your Gender:</p>
                     <input  className="radioBtn" required type="radio" id="male" name="gender" value="male" onChange={handleChange}></input>
-                    <label className="radioText" for="html">Male</label><br></br >
+                    <label className="radioText" htmlFor="html">Male</label><br></br >
                     <input className="radioBtn" type="radio" id="female" name="gender" value="female" onChange={handleChange}></input>
-                    <label className="radioText" for="css">Female</label><br></br>
+                    <label className="radioText" htmlFor="css">Female</label><br></br>
                 </div>
 
                 <div className="gridBox">
@@ -117,15 +117,15 @@ const CalWidget = () => {
                     <p className="subHeader">Please Select How Active Are You?</p>
                 
                     <input className="radioBtn" required type="radio" id="sed" name="activity" value="1.2" onChange={handleChange}></input>
-                    <label className="radioText" for="html">Sedentary (Little or No Exercise)</label><br></br>
+                    <label className="radioText" htmlFor="html">Sedentary (Little or No Exercise)</label><br></br>
                     <input className="radioBtn" type="radio" id="LA" name="activity" value="1.375" onChange={handleChange}></input>
-                    <label className="radioText" for="css">Light Activity (Exercise 1-3 days/week)</label><br></br>
+                    <label className="radioText" htmlFor="css">Light Activity (Exercise 1-3 days/week)</label><br></br>
                     <input className="radioBtn" type="radio" id="MA" name="activity" value="1.55" onChange={handleChange}></input>
-                    <label className="radioText" for="html">Moderate Activity (Exercise 3-5 days/week)</label><br></br>
+                    <label className="radioText" htmlFor="html">Moderate Activity (Exercise 3-5 days/week)</label><br></br>
                     <input className="radioBtn" type="radio" id="A" name="activity" value="1.725" onChange={handleChange}></input>
-                    <label className="radioText" for="html">Active (Exercise 6-7 days/week)</label><br></br>
+                    <label className="radioText" htmlFor="html">Active (Exercise 6-7 days/week)</label><br></br>
                     <input className="radioBtn"type="radio" id="VA" name="activity" value="1.9" onChange={handleChange}></input>
-                    <label className="radioText" for="css">Very Active (Hard Exercise 6-7 days/week)</label><br></br>
+                    <label className="radioText" htmlFor="css">Very Active (Hard Exercise 6-7 days/week)</label><br></br>
                 </div>
                 <input className="gridSubmit" type="submit" value="Calculate"></input>
             </form>

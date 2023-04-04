@@ -31,7 +31,7 @@ const AddNutrientBox = ({ handleAddNutrient, trackedNutrients, setTrackedNutrien
                 <div className="nutrient-input-div" key={i}>
                     <div>
                         {item ? ((item.nutrition.filter(n => n.name === trackedNutrients[i + 1].name)[0] || trackedNutrients[i+1].value )?
-                            <label for={nutrientObject['name']} style={{ position: 'absolute', transform: 'translate(0px, -4px)', fontSize: '.8em', color: '#167990' }}>{nutrientObject['name']}</label>
+                            <label htmlFor={nutrientObject['name']} style={{ position: 'absolute', transform: 'translate(0px, -4px)', fontSize: '.8em', color: '#167990' }}>{nutrientObject['name']}</label>
                             : <></>) : <></>}
                         <NutrientBox id={nutrientObject['name']} label={nutrientObject['name']} trackedNutrients={trackedNutrients}
                             setTrackedNutrients={setTrackedNutrients} i={i + 1} item={item ? item : null} handleNBLoad={handleNBLoad} />

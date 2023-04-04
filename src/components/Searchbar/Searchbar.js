@@ -167,7 +167,7 @@ const Searchbar = ({ items, setFilteredItems, filteredItems, activeTags, toggleI
                 <div>
                     <form action="/action_page.php">
                         <input type="checkbox" id="editCheckBox" name="editCheckBox" value="check" onChange={handleCheck}/>
-                        <label for="editCheckBox" style={{color: 'white', marginRight:'20px'}}> Edit Items </label><br />
+                        <label htmlFor="editCheckBox" style={{color: 'white', marginRight:'20px'}}> Edit Items </label><br />
                     </form>
                 </div>
                 <div className="searchInputs">
@@ -187,7 +187,7 @@ const Searchbar = ({ items, setFilteredItems, filteredItems, activeTags, toggleI
                     </div>
                     <NewModal toggleIsAddItem={toggleIsAddItem} user={user}></NewModal>
                     
-                    <select class="sortBtn"onChange={(e) => setSortType(e.target.value)}>
+                    <select className="sortBtn"onChange={(e) => setSortType(e.target.value)}>
                         <option value = "0" selected>Select Sort By</option>
                         <option value="1" >Alpabetical</option>
                         <option value="2" >Reverse Alpabetical</option>

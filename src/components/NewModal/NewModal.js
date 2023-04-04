@@ -58,10 +58,10 @@ const NewModal = ({ toggleIsAddItem, user, mode, edit, item, editHandleClick }) 
         if (itemDelete) {
             var answer = window.confirm(`Delete ${item.name}? {This will not affect your eaten item history}`);
             if (answer) {
+                await userService.deleteUserItem({id: item.id})
                 toggleIsAddItem();
                 toggleModal()
                 //some code
-                await userService.deleteUserItem({id: item.id})
             }
             return
         }

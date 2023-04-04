@@ -46,10 +46,10 @@ const Home = ({ user }) => {
             <div className="home-grid-container">
                 <div className="home-main-container">
                     {selectedWidget === 2 ? "" : <div>
-                        <label for="start">Start date:</label>
+                        <label htmlFor="start">Start date:</label>
                         <input type="date" id="start" name="trip-start" value={dateRange.sd} onChange={(event) => setDateRange({ sd: event.target.value, ed: dateRange.ed })} />
                         <br />
-                        <label for="end">End date: </label>
+                        <label htmlFor="end">End date: </label>
                         <input type="date" id="end" name="trip-end" value={dateRange.ed} onChange={(event) => setDateRange({ sd: dateRange.sd, ed: event.target.value })} />
                         {selectedWidget > 2 ? "" :
                             <>
