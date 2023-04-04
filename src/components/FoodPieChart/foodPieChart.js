@@ -6,6 +6,9 @@ const FoodPieChart = ({ className, data, view, units }) => {
     const nutrientData = []
     const selection = [d2,nutrientData]
     var total = 0
+    const f = (n) =>{
+        return units.find(x =>x.name === n)
+    }
 
     if (data) {
         data.forEach((item) => {
@@ -25,7 +28,7 @@ const FoodPieChart = ({ className, data, view, units }) => {
                 })
             })
             for (var nutrient in nutrientValue) {
-                nutrientData.push({ name: nutrient, value: nutrientValue[nutrient], unit: units.find(x =>x.name === nutrient).unit })
+                nutrientData.push({ name: nutrient, value: nutrientValue[nutrient], unit: f(nutrient).unit })
         }
             for (var item in d) {
                 d2.push({ name: item, value: d[item] })

@@ -58,7 +58,7 @@ const getCalorieTotal = (username) => {
   const request = axios.get(`${baseUrl}/${username}`, config)
   return request.then(response =>response.data) }
 
-const updateCalorieLimit = (username, newCalorie) => {
+  const updateCalorieLimit = (username, newCalorie) => {
     // const config = {
     //     headers: { Authorization: token },
     //   }
@@ -69,4 +69,28 @@ const updateCalorieLimit = (username, newCalorie) => {
     return request.then(response => response.data)
   }
 
-export default { updateNutrients, setToken, addItemToHistory, getHistory, getCalorieTotal, updateCalorieLimit, deleteItemFromToday, deleteUserItem }
+  const addWeightEntry = async (username, newWeight) => {
+    const config = {
+      headers: { Authorization: token },
+    }
+    const newEntry = {
+      weight: newWeight, 
+      myusername: username,
+      date: new Date()}
+
+    const response = await axios.put(`${ baseUrl }/addWeight/${username}`, newEntry, config)
+    return response.data
+  }
+  
+  const getWeightHistory = async newObject =>{
+    const config = {
+      headers: { Authorization: token },
+    }
+  
+    const response = await axios.post(`${baseUrl}/getWeightHistory`, newObject, config)
+    return response.data
+    
+  }
+
+export default { updateNutrients, setToken, addItemToHistory, getHistory, getCalorieTotal, updateCalorieLimit,
+   deleteItemFromToday, deleteUserItem, addWeightEntry, getWeightHistory }
