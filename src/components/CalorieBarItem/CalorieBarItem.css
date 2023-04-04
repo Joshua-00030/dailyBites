@@ -1,9 +1,3 @@
-.calorie-bar-item-container {
-    border: 1px solid black;
-    display: flex;
-    flex-direction: column;
-   
-}
 
 .qty-icon-container {
     display: flex;
@@ -15,4 +9,18 @@
     margin-right: .25rem;
     cursor: pointer;
     background-color: red;
+    
 }
+.calorie-item-border {
+    border-bottom: 1px solid black;
+  }
+  .calorie-item-container {
+    display: grid;
+    grid-template-columns: 4fr 1fr 1fr; 
+    grid-row-gap: 10px;
+    overflow-wrap: break-word;
+    white-space: normal;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow-x: hidden;
+  }

@@ -43,33 +43,22 @@
    purple 8368dd*/
    /* sapphire #0F52BA; */
    /* turq #0f5464 */
-   display: flex;
+   display:flex;
    flex-direction: column;
+   justify-content: space-between;
    background-color: #008080;
+   overflow-wrap: break-word;
+   white-space: normal;
    overflow: hidden;
-   white-space: nowrap;
-   text-overflow: ellipsis;
    /*
+   min-width: 1%; add if long text overflowing
    border: 3px solid #167990;
    border-radius: .5em;
    */
-   padding: 3px 3px 3px 3px;
  }
 
  .cardEdit {
-  /*  border: 1px solid gray;
-   background-color: white; */
-   display: flex;
-   flex-direction: column;
-   background-color: #D2042D;
-   overflow: hidden;
-   white-space: nowrap;
-   text-overflow: ellipsis;
-   /*
-   border: 3px solid #167990;
-   border-radius: .5em;
-   */
-   padding: 3px 3px 3px 3px;
+   background-color: #D2042D!important;
    animation: vertical-shaking .5s;
  }
 
@@ -96,17 +85,14 @@
    color: #c8eef7;
    font-size: 1em;
    font-weight:bold;
-   align-self: flex-start;
-   margin: auto;
-   margin-left: .25em;
-   margin-bottom: .25em;
+   padding-left: 2px;
  }
  /* light purple #C3B1E1 */
  .body {
-   display: block;
    color: #c8eef7;
    font-weight: bold;
    align-self:flex-end;
+   padding-right: 2px;
  }
  
  .hide {
