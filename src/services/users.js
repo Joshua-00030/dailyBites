@@ -69,6 +69,17 @@ const getCalorieTotal = (username) => {
     return request.then(response => response.data)
   }
 
+  const updateHeight = async (username, newHeight) => {
+      const config = {
+        headers: { Authorization: token },
+      }
+      
+      const response = await axios.put(`${ baseUrl }/updateHeight/${username}`, {
+      updateHeight: newHeight, 
+      myusername: username}, config)
+      return response.data
+  }
+
   const addWeightEntry = async (username, newWeight) => {
     const config = {
       headers: { Authorization: token },
@@ -93,4 +104,4 @@ const getCalorieTotal = (username) => {
   }
 
 export default { updateNutrients, setToken, addItemToHistory, getHistory, getCalorieTotal, updateCalorieLimit,
-   deleteItemFromToday, deleteUserItem, addWeightEntry, getWeightHistory }
+   deleteItemFromToday, deleteUserItem, addWeightEntry, getWeightHistory, updateHeight }

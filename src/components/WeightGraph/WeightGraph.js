@@ -3,9 +3,13 @@ import {
     Tooltip, Legend, ResponsiveContainer
 } from 'recharts';
 const WeightGraph = ({ data }) => {
-    const min = data !== null ? data.reduce((prev, curr) => prev.weight < curr.weight ? prev : curr).weight : null
-    const minTime = data !== null ? data.reduce((prev, curr) => prev.date < curr.date ? prev : curr).date : null
-    const time = data !== null ? data.map(d => new Date(d.date).getTime()) : null
+    const test  = data !== null && data.length > 0
+    if(!test){
+        return
+    }
+    const min =     test ? data.reduce((prev, curr) => prev.weight < curr.weight ? prev : curr).weight : null
+    const minTime = test ? data.reduce((prev, curr) => prev.date < curr.date ? prev : curr).date : null
+    const time =    test ? data.map(d => new Date(d.date).getTime()) : null
     const newData = time !== null ? time.map(function (m, i) { return { date: m, weight: data[i].weight, legend: data[i].date.split('T')[0] } }) : null
 
     const CustomTick = ({ x, y, payload, index }) => {
@@ -38,7 +42,15 @@ const WeightGraph = ({ data }) => {
         }
         return null;
     }
-
+    const height = 64;
+    const bmiData = newData.map( (entry) => 
+            ({ 
+                date: entry.date,
+                bmi: (703 * entry.weight / (height * height) )
+            })
+    
+    )
+    console.log(bmiData)
 
     return (
         <ResponsiveContainer width="80%" height="100%">
@@ -52,11 +64,17 @@ const WeightGraph = ({ data }) => {
             >
                 <CartesianGrid />
                 <XAxis type="number" dataKey="date" name="Date" unit="seconds" domain={[minTime, 'auto']} tick={< CustomTick payload={newData} />} />
-                <YAxis type="number" dataKey="weight" name="Weight" unit=" lbs" domain={[min / 1.02, 'auto']} />
+                <YAxis yAxisId="left" type="number" dataKey="weight"
+                 name="Weight" unit=" lbs" domain={[min / 1.02, 'auto']} />
+                <YAxis yAxisId="right" type="number" dataKey="bmi" 
+                name="BMI" unit="BMI" orientation="right" domain={[min / 1.02, 'auto']} />
                 <ZAxis type="number" range={[100]} />
                 <Tooltip cursor={{ strokeDasharray: '3 3' }} content={<CustomTooltip />} />
-                <Scatter name="Weight" data={newData} fill="#82ca9d"
+                <Scatter yAxisId="left" name="Weight" data={newData} fill="#82ca9d"
                     lineJointType='monotoneX' line shape="diamond" />
+                <Scatter yAxisId="right" name="BMI" data={bmiData} fill="#0096FF"
+                    lineJointType='monotoneX' line shape="diamond" />
+                    <Legend />
             </ScatterChart>
         </ResponsiveContainer>
     );

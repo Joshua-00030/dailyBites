@@ -10,6 +10,8 @@ const AccountInfo = (props) => {
   const [errMsg, setErrMsg] = useState(null)
   const [errMsg2, setErrMsg2] = useState(null)
   const [newWeight, setNewWeight] = useState(null)
+  const [feet, setFeet] = useState(null)
+  const [inches, setInches] = useState(null)
   const today = (new Date(new Date().setHours(0, 0, 0, 0)).toISOString().split('T')[0]).slice(2).replaceAll('-','/')
 
   useEffect(() => {
@@ -53,9 +55,16 @@ const AccountInfo = (props) => {
     }
     userService.setToken(props.user.token)
     userService.addWeightEntry(props.user.username, newWeight)
-    
-
   }
+
+  const addHeight = (event) => {
+    event.preventDefault()
+    const height = (feet * 12) + inches
+    userService.setToken(props.user.token)
+    const response = userService.updateHeight(props.user.username, height)
+    console.log(response)
+  }
+  
 
   return (
     <div>
@@ -110,9 +119,33 @@ const AccountInfo = (props) => {
             min="0"
           />
           <button type="submit" value="submit"> Submit</button>
-          {errMsg2 ? <p style={{ "color": "white", "text-align": "center" }} >{errMsg2}</p> : null}
         </form>
-
+<form onSubmit={addHeight} className={AcctInfo.form}>
+<label className={AcctInfo.label}>My Height</label>
+                <select className={AcctInfo.heightBox} name="hFeet" onChange={(e) => setFeet(Number(e.target.value)) }>
+                    <option name="hFeet" value="3">3 ft</option>
+                    <option name="hFeet" value="4">4 ft</option>
+                    <option name="hFeet" value="5">5 ft</option>
+                    <option name="hFeet" value="6">6 ft</option>
+                    <option name="hFeet" value="7">7 ft</option>
+                    <option name="hFeet" value="8">8 ft</option>
+                </select>
+                <select className={AcctInfo.heightBox}  name="hIn"  onChange={(e) => setInches(Number(e.target.value)) }>
+                    <option name="hIn" value="0">0 in</option>
+                    <option name="hIn" value="1">1 in</option>
+                    <option name="hIn" value="2">2 in</option>
+                    <option name="hIn" value="3">3 in</option>
+                    <option name="hIn" value="4">4 in</option>
+                    <option name="hIn" value="5">5 in</option>
+                    <option name="hIn" value="6">6 in</option>
+                    <option name="hIn" value="7">7 in</option>
+                    <option name="hIn" value="8">8 in</option>
+                    <option name="hIn" value="9">9 in</option>
+                    <option name="hIn" value="10">10 in</option>
+                    <option name="hIn" value="11">11 in</option>
+                </select>
+                <button style={{float: 'right' }} type="submit" value="submit"> Submit</button>
+</form>
       </div>
       <FeedbackForm />
     </div>
