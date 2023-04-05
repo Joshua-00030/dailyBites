@@ -37,8 +37,9 @@ const Home = ({ user }) => {
 
     const widgetList = [
         <FoodGraphChart className={"home-main-container"} data={dailyData} view={view} units={user.trackedNutrients} />,
-        <FoodPieChart className={"home-main-container"} data={dailyData} view={view} units={user.trackedNutrients} />, <CalWidget />,
-        <WeightGraph data={weightData} />]
+        <FoodPieChart className={"home-main-container"} data={dailyData} view={view} units={user.trackedNutrients} />,
+        <CalWidget />,
+        <WeightGraph data={weightData} height={user.height}/>]
 
     return (
         <div className="home-page-container">

@@ -10,9 +10,9 @@ const AccountInfo = (props) => {
   const [errMsg, setErrMsg] = useState(null)
   const [errMsg2, setErrMsg2] = useState(null)
   const [newWeight, setNewWeight] = useState(null)
-  const [feet, setFeet] = useState(null)
-  const [inches, setInches] = useState(null)
-  const today = (new Date(new Date().setHours(0, 0, 0, 0)).toISOString().split('T')[0]).slice(2).replaceAll('-','/')
+  const [feet, setFeet] = useState(-1)
+  const [inches, setInches] = useState(-1)
+  const today = (new Date(new Date().setHours(0, 0, 0, 0)).toISOString().split('T')[0]).slice(2).replaceAll('-', '/')
 
   useEffect(() => {
     userService.setToken(props.user.token)
@@ -20,6 +20,13 @@ const AccountInfo = (props) => {
       setInitialCal(res)
     }
     )
+    userService.getHeight().then(res => {
+      console.log(res)
+      if(res){
+      setFeet(Math.trunc(res / 12))
+      setInches(res % 12)
+      }
+    })
   }, [])
 
   function handleChange(event) {
@@ -45,26 +52,28 @@ const AccountInfo = (props) => {
     setNewCalLimit(val)
   }
 
-  const addWeight = (event) =>{
+  const addWeight = (event) => {
     event.preventDefault()
     if (newWeight <= 0) {
       setErrMsg2("New Weight must be greater than 0.")
       return
-    }else{
+    } else {
       setErrMsg2(`New Weight of ${newWeight} added on ${today}`)
     }
     userService.setToken(props.user.token)
     userService.addWeightEntry(props.user.username, newWeight)
   }
 
-  const addHeight = (event) => {
+  const addHeight = async (event) => {
     event.preventDefault()
     const height = (feet * 12) + inches
     userService.setToken(props.user.token)
-    const response = userService.updateHeight(props.user.username, height)
-    console.log(response)
+    const response = await userService.updateHeight(props.user.username, height)
+    if(response.matchedCount === 1){
+      props.setUser(u => ({...u, height: height}))
+    }
   }
-  
+
 
   return (
     <div>
@@ -112,7 +121,7 @@ const AccountInfo = (props) => {
           <input
             name="addWeightEntry"
             placeholder="0"
-            onChange={(e) => setNewWeight(Number(e.target.value)) }
+            onChange={(e) => setNewWeight(Number(e.target.value))}
             className={AcctInfo.input}
             value={newWeight}
             type="number"
@@ -120,32 +129,34 @@ const AccountInfo = (props) => {
           />
           <button type="submit" value="submit"> Submit</button>
         </form>
-<form onSubmit={addHeight} className={AcctInfo.form}>
-<label className={AcctInfo.label}>My Height</label>
-                <select className={AcctInfo.heightBox} name="hFeet" onChange={(e) => setFeet(Number(e.target.value)) }>
-                    <option name="hFeet" value="3">3 ft</option>
-                    <option name="hFeet" value="4">4 ft</option>
-                    <option name="hFeet" value="5">5 ft</option>
-                    <option name="hFeet" value="6">6 ft</option>
-                    <option name="hFeet" value="7">7 ft</option>
-                    <option name="hFeet" value="8">8 ft</option>
-                </select>
-                <select className={AcctInfo.heightBox}  name="hIn"  onChange={(e) => setInches(Number(e.target.value)) }>
-                    <option name="hIn" value="0">0 in</option>
-                    <option name="hIn" value="1">1 in</option>
-                    <option name="hIn" value="2">2 in</option>
-                    <option name="hIn" value="3">3 in</option>
-                    <option name="hIn" value="4">4 in</option>
-                    <option name="hIn" value="5">5 in</option>
-                    <option name="hIn" value="6">6 in</option>
-                    <option name="hIn" value="7">7 in</option>
-                    <option name="hIn" value="8">8 in</option>
-                    <option name="hIn" value="9">9 in</option>
-                    <option name="hIn" value="10">10 in</option>
-                    <option name="hIn" value="11">11 in</option>
-                </select>
-                <button style={{float: 'right' }} type="submit" value="submit"> Submit</button>
-</form>
+        <form onSubmit={addHeight} className={AcctInfo.form}>
+          <label className={AcctInfo.label}>My Height</label>
+          <select className={AcctInfo.heightBox} name="hFeet" value={feet} onChange={(e) => setFeet(Number(e.target.value))}>
+            <option value="-1" disabled>Enter Feet</option>
+            <option name="hFeet" value="3">3 ft</option>
+            <option name="hFeet" value="4">4 ft</option>
+            <option name="hFeet" value="5">5 ft</option>
+            <option name="hFeet" value="6">6 ft</option>
+            <option name="hFeet" value="7">7 ft</option>
+            <option name="hFeet" value="8">8 ft</option>
+          </select>
+          <select className={AcctInfo.heightBox} name="hIn" value={inches} onChange={(e) => setInches(Number(e.target.value))}>
+            <option value="-1" disabled>Enter Inches</option>
+            <option name="hIn" value="0">0 in</option>
+            <option name="hIn" value="1">1 in</option>
+            <option name="hIn" value="2">2 in</option>
+            <option name="hIn" value="3">3 in</option>
+            <option name="hIn" value="4">4 in</option>
+            <option name="hIn" value="5">5 in</option>
+            <option name="hIn" value="6">6 in</option>
+            <option name="hIn" value="7">7 in</option>
+            <option name="hIn" value="8">8 in</option>
+            <option name="hIn" value="9">9 in</option>
+            <option name="hIn" value="10">10 in</option>
+            <option name="hIn" value="11">11 in</option>
+          </select>
+          <button style={{ float: 'right' }} type="submit" value="submit"> Submit</button>
+        </form>
       </div>
       <FeedbackForm />
     </div>

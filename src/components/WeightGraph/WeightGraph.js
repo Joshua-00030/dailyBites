@@ -2,7 +2,7 @@ import {
     ScatterChart, Scatter, XAxis, YAxis, ZAxis, CartesianGrid,
     Tooltip, Legend, ResponsiveContainer
 } from 'recharts';
-const WeightGraph = ({ data }) => {
+const WeightGraph = ({ data, height }) => {
     const test  = data !== null && data.length > 0
     if(!test){
         return
@@ -42,11 +42,10 @@ const WeightGraph = ({ data }) => {
         }
         return null;
     }
-    const height = 64;
     const bmiData = newData.map( (entry) => 
             ({ 
                 date: entry.date,
-                bmi: (703 * entry.weight / (height * height) )
+                bmi: height ? (703 * entry.weight / (height * height) ) : null
             })
     
     )
@@ -67,7 +66,7 @@ const WeightGraph = ({ data }) => {
                 <YAxis yAxisId="left" type="number" dataKey="weight"
                  name="Weight" unit=" lbs" domain={[min / 1.02, 'auto']} />
                 <YAxis yAxisId="right" type="number" dataKey="bmi" 
-                name="BMI" unit="BMI" orientation="right" domain={[min / 1.02, 'auto']} />
+                name="BMI" unit=" BMI" orientation="right" domain={[min / 1.02, 'auto']} />
                 <ZAxis type="number" range={[100]} />
                 <Tooltip cursor={{ strokeDasharray: '3 3' }} content={<CustomTooltip />} />
                 <Scatter yAxisId="left" name="Weight" data={newData} fill="#82ca9d"
