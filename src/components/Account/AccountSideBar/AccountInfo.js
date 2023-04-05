@@ -9,7 +9,7 @@ const AccountInfo = (props) => {
   const [myCalLimit, setNewCalLimit] = useState(0)
   const [errMsg, setErrMsg] = useState(null)
   const [errMsg2, setErrMsg2] = useState(null)
-  const [newWeight, setNewWeight] = useState(null)
+  const [newWeight, setNewWeight] = useState(0)
   const [feet, setFeet] = useState(-1)
   const [inches, setInches] = useState(-1)
   const today = (new Date(new Date().setHours(0, 0, 0, 0)).toISOString().split('T')[0]).slice(2).replaceAll('-', '/')
