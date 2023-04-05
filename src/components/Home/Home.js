@@ -39,7 +39,7 @@ const Home = ({ user }) => {
         <FoodGraphChart className={"home-main-container"} data={dailyData} view={view} units={user.trackedNutrients} />,
         <FoodPieChart className={"home-main-container"} data={dailyData} view={view} units={user.trackedNutrients} />,
         <CalWidget />,
-        <WeightGraph data={weightData} />]
+        <WeightGraph data={weightData} height={user.height}/>]
 
     return (
         <div className="home-page-container">
@@ -84,7 +84,7 @@ const Home = ({ user }) => {
 
                 <div className="home-widget-grid">
                     <div></div>
-                    <div className="home-widget" onClick={() => handleWidgetClick(2)}>
+                    <div className="home-widget" onClick={() => handleWidgetClick(3)}>
                         <IconContext.Provider value={{ className: "home-widget-icon" }}>
                             <FaWeight />
                         </IconContext.Provider>
@@ -92,7 +92,7 @@ const Home = ({ user }) => {
                 </div>
 
                 <div className="home-widget-grid">
-                    <div className="home-widget" onClick={() => handleWidgetClick(3)}>
+                    <div className="home-widget" onClick={() => handleWidgetClick(2)}>
                         <IconContext.Provider value={{ className: "home-widget-icon" }}>
                             <FaRegCalendarAlt />
                         </IconContext.Provider>
