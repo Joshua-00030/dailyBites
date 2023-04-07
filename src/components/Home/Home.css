@@ -34,6 +34,14 @@
     justify-content: center;
 }
 
+.home-widget-selected {
+    background-color: inherit;
+    border: 2px solid #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .home-widget:hover {
     background-color: #167990;
     cursor: pointer;
@@ -46,4 +54,9 @@
 
 .home-widget-icon {
     font-size:  4rem;
+}
+
+.home-widget-icon-selected {
+    font-size:  4rem;
+    color: white;
 }

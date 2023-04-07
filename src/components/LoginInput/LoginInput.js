@@ -13,6 +13,7 @@ const LoginInput = (props) => {
   return (
     <div>
         <input 
+            type={props.type}
             name={props.name}
             placeholder={props.placeholder}
             className={LoginCSS.logininput}

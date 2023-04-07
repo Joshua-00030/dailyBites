@@ -106,10 +106,10 @@ const LoginForm = (props) => {
                 {newAccount ?
                     <div>
                         <PasswordInput placeholder="Confirm Password" name="cPassword" handleChange={handleInputChange} value={FormData.cPassword} />
-                        <LoginInput placeholder="Email Address" name="email" handleChange={handleInputChange} value={formDetails.email} />
+                        <LoginInput type="email" placeholder="Email Address" name="email" handleChange={handleInputChange} value={formDetails.email} />
                     </div> : null}
 
-                <input type="submit" className={LoginCSS.submit} value="Submit"></input>
+                <input type="submit" className={LoginCSS.submit} value={newAccount ? "Submit" : "Login"}></input>
                 {setErrMsg ? 
                 <p style={{"color" : "white"}} >{errMsg}</p> : null}
             </form>
