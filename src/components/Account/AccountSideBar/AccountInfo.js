@@ -9,6 +9,7 @@ const AccountInfo = (props) => {
   const [myCalLimit, setNewCalLimit] = useState(0)
   const [errMsg, setErrMsg] = useState(null)
   const [errMsg2, setErrMsg2] = useState(null)
+  const [errMsg3, setErrMsg3] = useState(null)
   const [newWeight, setNewWeight] = useState(0)
   const [feet, setFeet] = useState(-1)
   const [inches, setInches] = useState(-1)
@@ -44,6 +45,10 @@ const AccountInfo = (props) => {
       console.log("success")
       setInitialCal(myCalLimit)
     })
+
+    if (myCalLimit > 0) {
+      setErrMsg("Calorie limit updated to " + String(myCalLimit) + "!")
+    }
   }
 
   function handleInputChange(event) {
@@ -71,6 +76,7 @@ const AccountInfo = (props) => {
     const response = await userService.updateHeight(props.user.username, height)
     if(response.matchedCount === 1){
       props.setUser(u => ({...u, height: height}))
+      setErrMsg3("Height Updated!")
     }
   }
 
@@ -128,6 +134,8 @@ const AccountInfo = (props) => {
             min="0"
           />
           <button type="submit" value="submit"> Submit</button>
+          {errMsg2 ? <p style={{ "color": "white", "text-align": "center" }} >{errMsg2}</p> : null}
+
         </form>
         <form onSubmit={addHeight} className={AcctInfo.form}>
           <label className={AcctInfo.label}>My Height</label>
@@ -157,6 +165,7 @@ const AccountInfo = (props) => {
           </select>
           <button style={{ float: 'right' }} type="submit" value="submit"> Submit</button>
         </form>
+        {errMsg3 ? <p style={{ "color": "white", "text-align": "center" }} >{errMsg3}</p> : null}
       </div>
       <FeedbackForm />
     </div>
