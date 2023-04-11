@@ -13,13 +13,13 @@ export const FAQSData = [
     {
         question: "How can I find and add a food item?",
         answer: "Users can easily find a food item by utilizing the Search Bar found at the top of the Log Page.  Here users can type in a specific food item " +
-                    "and see that it gets populated onto the dashboard!  The user can then select that food item, and select on Add to include it in their " +
+                    "and see that it gets populated onto the dashboard!  The user can then select that food item box and have it added it to their" +
                     " daily total caloric goal."
     },
     {
-        question: "My food item does not exist, can I create it?",
-        answer: "Yes!  Daily Bites allows users to create their own unique food items that meets their needs.  This can be done by going to the Log Page, " + 
-                    "selecting on the New Item button at the top, and then filling out the fields to complete their food itme.  The food item will now be " + 
+        question: "How do I create my own food items?",
+        answer: "Daily Bites allows users to create their own unique food items to meets their needs.  This can be done by going to the Log Page, " + 
+                    "selecting on the New Item button at the top, and then filling out the fields to complete their food item.  The food item will now be " + 
                     "accesible to the user for all future uses."
     },
     {

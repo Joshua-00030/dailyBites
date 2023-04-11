@@ -23,9 +23,37 @@ const HowTo = (props) => {
             <div className={HowToCss.section}>
               <label className={HowToCss.headerlabel}>Home Page</label>
               <label className={HowToCss.label}>
-                  To begin, lets start by looking at the Home Page.  When users log into
-                  <em> Daily Bites</em>, they will immediately be directed to the Home Page!  The Home Page
-                  will display all basic information for the user.
+                  To begin, lets start by looking at the Home Page.
+                  Here, the Home page provides users with a variety of different widgets that offer
+                  unique functionality to the user!  This includes viewing calorie consumption data, 
+                  calculating one's daily estimated calorie limit, and tracking their weight goals.  
+                  The widgets are defined below:
+
+                  <label className={HowToCss.subheaderlabel}>Bar-Chart History (Top-Left) </label>
+                  <label className={HowToCss.sublabel}>
+                  Selecting this widget will display the user's history in a bar graph.  
+                  Users can then select the date range to view all food items that they have consumed 
+                  throughout that time and how they have contributed towards their caloric intake.
+                  </label>
+                  <label className={HowToCss.subheaderlabel}>Pie-Chart History (Top-Right)</label>
+                  <label className={HowToCss.sublabel}>
+                  Selecting this widget will display the user's total food items in a pie chart graph.  
+                  Users can then select the date range to view all food items that they have consumed 
+                  throughout that time.
+                  </label>
+                  <label className={HowToCss.subheaderlabel}>Weight-BMI Graph (Bottom-Left)</label>
+                  <label className={HowToCss.sublabel}>
+                  Selecting this widget will display the user’s entered weights in the specified date range.  
+                  Users can then select the date range to view all weights they have entered throughout that time.  
+                  This helps the user keep track of their weights and compare them to the foods that were leading 
+                  up to each weight entry. BMI will be displayed if the user has entered a height into their profile.
+                  </label>
+                  <label className={HowToCss.subheaderlabel}>Estimated Calorie Calculator (Bottom-Right)</label>
+                  <label className={HowToCss.sublabel}>
+                  Selecting this widget will display a form to the user. They can complete and submit the form to 
+                  determine how many calories they should consume in a day.  This calculation is based on the 
+                  formula provided by verywellfit.com.
+                  </label>
               </label>
             </div>
 
@@ -33,9 +61,9 @@ const HowTo = (props) => {
               <label className={HowToCss.headerlabel}>Log Page</label>
               <label className={HowToCss.label}>
                   The Log Page is where the magic happens!  Here, users will see an assortment of The
-                  different food items that they have consumed for the day.  As you can see looking at image
-                  to the right, we can observe a grid of many food item cards!  Each card indicates a food
-                  item that a user has consumed for this given day.
+                  different food items that they have consumed for the day.  Users can take advantage
+                  of many features here such as creating new food items, deleting/editing food items,
+                  adding food items to their daily tracker, and searching for food items. 
               </label>
               <label className={HowToCss.label}>
                   As users include more and more food items, they will notice the calorie bar on the right of
@@ -43,18 +71,58 @@ const HowTo = (props) => {
                   consumed for this given day.  As the day goes by, users should know observe the bar changing
                   as they consume their calories!
               </label>
-                <label className={HowToCss.subheaderlabel}>Searching for an item</label>
+              <label className={HowToCss.subheaderlabel}>Creating a new food item</label>
+                <label className={HowToCss.sublabel}>
+                    User's can create a new food item by selecting on the <em>New</em> button.  A pop-up box will be
+                    displayed asking users to provide the nutrional information for a food item.  A food item must include
+                    a name and calories.  The user can give it optional tag(s) and/or optional additional nutrional information.
+                    Once done, select on the <em>Create Item</em> to successfully create the new food item and add it your account!
+                </label>
+                
+                <label className={HowToCss.subheaderlabel}>Searching for a food item</label>
                 <label className={HowToCss.sublabel}>
                     One of the benefits of using <em>Daily Bites </em> is the ability to search for desired food items!
                     Located at the top, a search bar allows users to easily find food items that they have consumed.  Users
                     can search based on tag values or specific keywords to find a food item!
                 </label>
-                <label className={HowToCss.subheaderlabel}>Adding an item</label>
+
+                <label className={HowToCss.subheaderlabel}>Sorting food items</label>
+                <label className={HowToCss.sublabel}>
+                    If a user desires to sort their food items by calories or name, they can do so!  Select on the <em>Select Sort By</em>
+                    drop-down to reveal sort options.  User's will be able to sort by increasing or decreasing values of name or calories.
+                </label>
+
+                <label className={HowToCss.subheaderlabel}>Adding a food item to today's tracker</label>
                 <label className={HowToCss.sublabel}>
                     Once a user has located a food item, they can easily add it to their total daily calorie intake
-                    by selecting on the <em> Add Food Item </em> button for that item.  Users will immediately notice
-                    that the Log Page is update with that food item AND the calorie bar increasing as well.
+                    by simply selecting on the food-item button/container for that item.  Users will immediately notice
+                    that the calorie tracker will update with that food item.  This data will be tracked into the users database.
                 </label>
+
+                <label className={HowToCss.subheaderlabel}>Removing a food item from today's tracker</label>
+                <label className={HowToCss.sublabel}>
+                    Observing the calorie bar-tracker, user's food items that they have consumed for the day will be displayed
+                    with a corresponding X-button.  Selecing on the X-button (delete) will remove that food item from the user's 
+                    daily calorie limit and update the graph.
+                </label>
+
+                <label className={HowToCss.subheaderlabel}>Editing a Food Item</label>
+                <label className={HowToCss.sublabel}>
+                    Select on the <em>Edit Items</em> checkbox button to enter edit mode.  Here, the users will notice a change
+                    in color of the food boxes.  This is to indicate that the users are editing food items and not adding them.  
+                    Select on the desired food item to edit.  This will cause a pop-up box to display containing the values of that
+                    selected food item.  Users can then update the values and save the results!
+                </label>
+
+                <label className={HowToCss.subheaderlabel}>Deleting a Food Item</label>
+                <label className={HowToCss.sublabel}>
+                    Select on the <em>Edit Items</em> checkbox button to enter edit mode.  Here, the users will notice a change
+                    in color of the food boxes.  This is to indicate that the users are editing food items and not adding them.  
+                    Select on the desired food item to delete.  This will cause a pop-up box to display.  At the bottom, select 
+                    on the <em>Delete</em> button to remove that food item from your account.  If the food item has been consumed
+                    today or previously, it will remain in the users consumed-history for graphing purposes.
+                </label>
+                
             </div>
 
             <div className={HowToCss.section}>
