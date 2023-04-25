@@ -211,7 +211,7 @@ const NewModal = ({ toggleIsAddItem, user, mode, edit, item, editHandleClick }) 
                                 <button
                                     className="submit-modal btn-modal"
                                     type="submit" id="create" onClick={() => setItemDelete(false)}>
-                                    <div className="word-icon-container" title="Create Item">
+                                    <div className="word-icon-container" title={mode === 2 ? 'Update' : 'Create Item'}>
                                         {mode === 2 ? 'Update' : 'Create Item'}
                                         <IconContext.Provider value={{ size: "1em", className: "" }}>
                                             {mode === 2 ? <FaSave /> : <FaPlusSquare />}
