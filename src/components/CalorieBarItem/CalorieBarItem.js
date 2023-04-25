@@ -5,6 +5,8 @@ import userServices from "../../services/users"
 
 const CalorieBarItem = ({ item, items, setCurrentCals, id, height }) => {
 
+
+    const deleteTxt = "Remove " + item.name
     const handleDelete = async (e) => {
         //e.preventDefault()
         await userServices.deleteItemFromToday(e)
@@ -27,7 +29,7 @@ const CalorieBarItem = ({ item, items, setCurrentCals, id, height }) => {
                 <div style={{  height:'100%', display:'flex', justifyContent: 'flex-end', maxHeight: height}}>
                     <span onClick={(e) => handleDelete({ id: item.itemId, date: item.date })}>
                         <IconContext.Provider value={{ className: "delete-cal-bar-item", size: "1.4em" }}>
-                            <FaRegWindowClose />
+                            <FaRegWindowClose title={deleteTxt}/>
                         </IconContext.Provider></span>
                     {(item.nutrition[0].value > 100 ? <br /> : <></>)}
                     

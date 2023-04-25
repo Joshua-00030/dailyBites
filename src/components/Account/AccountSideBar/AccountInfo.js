@@ -119,7 +119,7 @@ const AccountInfo = (props) => {
             type="number"
             min="0"
           />
-          <button type="submit" value="submit"> Submit</button>
+          <button type="submit" title="Submit" value="submit"> Submit</button>
           {errMsg ? <p style={{ "color": "white", "text-align": "center" }} >{errMsg}</p> : null}
         </form>
         <form onSubmit={addWeight} className={AcctInfo.form}>
@@ -133,7 +133,7 @@ const AccountInfo = (props) => {
             type="number"
             min="0"
           />
-          <button type="submit" value="submit"> Submit</button>
+          <button type="submit" title="Submit" value="submit"> Submit</button>
           {errMsg2 ? <p style={{ "color": "white", "text-align": "center" }} >{errMsg2}</p> : null}
 
         </form>
@@ -163,7 +163,7 @@ const AccountInfo = (props) => {
             <option name="hIn" value="10">10 in</option>
             <option name="hIn" value="11">11 in</option>
           </select>
-          <button style={{ float: 'right' }} type="submit" value="submit"> Submit</button>
+          <button style={{ float: 'right' }} title="Submit" type="submit" value="submit"> Submit</button>
         </form>
         {errMsg3 ? <p style={{ "color": "white", "text-align": "center" }} >{errMsg3}</p> : null}
       </div>

@@ -133,10 +133,10 @@ const NewModal = ({ toggleIsAddItem, user, mode, edit, item, editHandleClick }) 
                 <button
                     className="btn-modal"
                     onClick={toggleModal}>
-                    <div className="word-icon-container">
+                    <div className="word-icon-container" title="New">
                         New
                         <IconContext.Provider value={{ size: "1em" }}>
-                            <FaPlusSquare />
+                            <FaPlusSquare title="New"/>
                         </IconContext.Provider>
                     </div>
                 </button>
@@ -152,7 +152,7 @@ const NewModal = ({ toggleIsAddItem, user, mode, edit, item, editHandleClick }) 
                             className="close-modal"
                             onClick={handleClose}>
                             <IconContext.Provider value={{ size: "2.5em", className: "" }}>
-                                <FaWindowClose />
+                                <FaWindowClose title="Close"/>
                             </IconContext.Provider>
                         </button>
                         <br />
@@ -166,7 +166,7 @@ const NewModal = ({ toggleIsAddItem, user, mode, edit, item, editHandleClick }) 
 
                             {mode !== 2 && <button onClick={handleClick} className="nutrient-btn">
 
-                                <div className="word-icon-container">
+                                <div className="word-icon-container" title="Add Nutrients">
                                     Add Nutrients
                                     {open === false ? (
                                         <IconContext.Provider value={{ size: "1em", className: "" }}>
@@ -190,7 +190,7 @@ const NewModal = ({ toggleIsAddItem, user, mode, edit, item, editHandleClick }) 
                                 <button
                                     className="btn-modal"
                                     onClick={handleAddTag}>
-                                    <div className="word-icon-container">
+                                    <div className="word-icon-container" title="Add Tag">
                                         Add Tag
                                         <IconContext.Provider value={{ size: "1em", className: "" }}>
                                             <FaPlusSquare />
@@ -211,7 +211,7 @@ const NewModal = ({ toggleIsAddItem, user, mode, edit, item, editHandleClick }) 
                                 <button
                                     className="submit-modal btn-modal"
                                     type="submit" id="create" onClick={() => setItemDelete(false)}>
-                                    <div className="word-icon-container">
+                                    <div className="word-icon-container" title="Create Item">
                                         {mode === 2 ? 'Update' : 'Create Item'}
                                         <IconContext.Provider value={{ size: "1em", className: "" }}>
                                             {mode === 2 ? <FaSave /> : <FaPlusSquare />}
@@ -224,7 +224,7 @@ const NewModal = ({ toggleIsAddItem, user, mode, edit, item, editHandleClick }) 
                                     <button
                                         className="submit-modal btn-modal"
                                         type="submit" style={{ backgroundColor: 'red' }} id="delete" onClick={() => setItemDelete(true)}>
-                                        <div className="word-icon-container">
+                                        <div className="word-icon-container" title="Delete Food Item">
                                             Delete
                                             <IconContext.Provider value={{ size: "1em", className: "" }}>
                                                 <FaWindowClose />

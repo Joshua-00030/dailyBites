@@ -17,7 +17,7 @@ const UserItem = ({ item, onClick, checked, user, toggleIsAddItem }) => {
     }
     return (
         <>
-                <div className={checked ? 'card cardEdit' : 'card'} onClick={handleClick}>
+                <div className={checked ? 'card cardEdit' : 'card'} title={"Add " + item.name} onClick={handleClick}>
                    <div className="header">{item.name}</div>
                     <div className="body">{item.nutrition[0] ? item.nutrition[0].value : 0}</div>
                 </div>

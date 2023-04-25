@@ -33,7 +33,7 @@ const FeedbackForm = () => {
                 cols={20}
                 >
                 </textarea>
-            <button className={FBFCSS.button} type="button" onClick={onSubmit}>Submit</button>
+            <button className={FBFCSS.button} type="button" title="Submit" onClick={onSubmit}>Submit</button>
             </form>
         </div>
 }

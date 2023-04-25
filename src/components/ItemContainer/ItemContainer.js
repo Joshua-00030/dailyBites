@@ -27,7 +27,8 @@ const ItemContainer = ({ items, currentCals, setCurrentCals, token, handleCheck,
                         handleCheck={handleCheck}
                         user={user}
                         checked={checked}
-                        toggleIsAddItem={toggleIsAddItem} />
+                        toggleIsAddItem={toggleIsAddItem} 
+                        />
                 )}
             </div>
         </div>

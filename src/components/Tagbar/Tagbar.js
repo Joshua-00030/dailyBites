@@ -14,7 +14,8 @@ const Tagbar = ({ favoriteTags, activeTags, setActiveTags }) => {
                             label={tag}
                             activeTags={activeTags}
                             setActiveTags={setActiveTags}
-                            favoriteTags={favoriteTags} />
+                            favoriteTags={favoriteTags} 
+                            />
                     )
                 )}
             </div>

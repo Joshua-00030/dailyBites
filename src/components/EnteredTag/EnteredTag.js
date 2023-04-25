@@ -18,7 +18,7 @@ const EnteredTag = ({ label, enteredTags, setEnteredTags }) => {
                 className="entered-tag-delete"
                 onClick={deleteTag}>
                 <IconContext.Provider value={{ className: "", size: "1.5em" }}>
-                    <FaRegWindowClose />
+                    <FaRegWindowClose title={"Remove " + label }/>
                 </IconContext.Provider>
             </div>
         </div>

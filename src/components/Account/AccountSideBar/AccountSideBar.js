@@ -12,6 +12,7 @@ const AccountSideBar = (props) => {
             return ( 
               <li key={key} className={val.cName}>
                 <Link 
+                  title={val.title}
                   to={val.link} 
                   onClick={() => {
                     props.toggle()

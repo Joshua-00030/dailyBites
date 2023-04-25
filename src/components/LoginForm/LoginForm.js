@@ -100,7 +100,7 @@ const LoginForm = (props) => {
                     <PasswordInput placeholder="Password" name="password" handleChange={handleInputChange} value={formDetails.password} />
                 </div> : null} 
 
-                <button type="button" className={LoginCSS.button} onClick={createNewAccount}>Create New Account</button>
+                <button title="Create New Account" type="button" className={LoginCSS.button} onClick={createNewAccount}>Create New Account</button>
                 {/* <button type="button" className={LoginCSS.button} onClick={forgotPassChange}>Forgot Password?</button> */}
 
                 {newAccount ?
@@ -109,7 +109,7 @@ const LoginForm = (props) => {
                         <LoginInput type="email" placeholder="Email Address" name="email" handleChange={handleInputChange} value={formDetails.email} />
                     </div> : null}
 
-                <input type="submit" className={LoginCSS.submit} value={newAccount ? "Submit" : "Login"}></input>
+                <input title={newAccount ? "Submit" : "Login"} type="submit" className={LoginCSS.submit} value={newAccount ? "Submit" : "Login"}></input>
                 {setErrMsg ? 
                 <p style={{"color" : "white"}} >{errMsg}</p> : null}
             </form>

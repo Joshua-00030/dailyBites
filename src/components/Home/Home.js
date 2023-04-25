@@ -64,37 +64,37 @@ const Home = ({ user }) => {
                     {widgetList[selectedWidget]}
                 </div>
 
-                <div className="home-widget-grid">
+                <div className="home-widget-grid" title="Bar Chart History">
                     <div></div>
                     <div className={selectedWidget == 0 ? "home-widget-selected" : "home-widget" } onClick={() => handleWidgetClick(0)}>
                         <IconContext.Provider value={selectedWidget == 0 ? { className: "home-widget-icon-selected" } : { className: "home-widget-icon" }}>
-                            <FaRegChartBar />
+                            <FaRegChartBar title="Bar Chart History"/>
                         </IconContext.Provider>
                     </div>
                 </div>
 
-                <div className="home-widget-grid">
+                <div className="home-widget-grid" title="Pie Chart History">
                     <div className={selectedWidget == 1 ? "home-widget-selected" : "home-widget" } onClick={() => handleWidgetClick(1)}>
                         <IconContext.Provider value={selectedWidget == 1 ? { className: "home-widget-icon-selected" } : { className: "home-widget-icon" }}>
-                            <FaChartPie />
+                            <FaChartPie title="Pie Chart History"/>
                         </IconContext.Provider>
                     </div>
                     <div></div>
                 </div>
 
-                <div className="home-widget-grid">
+                <div className="home-widget-grid" title="Weight Graph">
                     <div></div>
                     <div className={selectedWidget == 3 ? "home-widget-selected" : "home-widget" } onClick={() => handleWidgetClick(3)}>
                         <IconContext.Provider value={selectedWidget == 3 ? { className: "home-widget-icon-selected" } : { className: "home-widget-icon" }}>
-                            <FaWeight />
+                            <FaWeight title="Weight Graph"/>
                         </IconContext.Provider>
                     </div>
                 </div>
 
-                <div className="home-widget-grid">
+                <div className="home-widget-grid" title="Calorie Calculator">
                     <div className={selectedWidget == 2 ? "home-widget-selected" : "home-widget" } onClick={() => handleWidgetClick(2)}>
                         <IconContext.Provider value={selectedWidget == 2 ? { className: "home-widget-icon-selected" } : { className: "home-widget-icon" }}>
-                            <FaCalculator />
+                            <FaCalculator title="Calorie Calculator"/>
                         </IconContext.Provider>
                     </div>
                     <div></div>

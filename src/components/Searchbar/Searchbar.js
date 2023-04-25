@@ -166,8 +166,8 @@ const Searchbar = ({ items, setFilteredItems, filteredItems, activeTags, toggleI
             <div className="search">
                 <div>
                     <form action="/action_page.php">
-                        <input type="checkbox" id="editCheckBox" name="editCheckBox" value="check" onChange={handleCheck}/>
-                        <label htmlFor="editCheckBox" style={{color: 'white', marginRight:'20px'}}> Edit Items </label><br />
+                        <input type="checkbox" id="editCheckBox" title="Edit Items" name="editCheckBox" value="check" onChange={handleCheck}/>
+                        <label htmlFor="editCheckBox"  title="Edit Items" style={{color: 'white', marginRight:'20px'}}> Edit Items </label><br />
                     </form>
                 </div>
                 <div className="searchInputs">
@@ -178,16 +178,17 @@ const Searchbar = ({ items, setFilteredItems, filteredItems, activeTags, toggleI
                             type="search"
                             id="search"
                             placeholder="Entry name / Tag"
-                            onChange={handleFilter} />
+                            onChange={handleFilter} 
+                            title="Search for Food Item"/>
                         <div className="searchIcon">
                             <IconContext.Provider value={{ size: "1em" }}>
-                                <FaSearch />
+                                <FaSearch title="Search for Food Item" />
                             </IconContext.Provider>
                         </div>
                     </div>
                     <NewModal toggleIsAddItem={toggleIsAddItem} user={user}></NewModal>
                     
-                    <select className="sortBtn"onChange={(e) => setSortType(e.target.value)}>
+                    <select title="Sort Foods" className="sortBtn"onChange={(e) => setSortType(e.target.value)}>
                         <option value = "0" selected>Select Sort By</option>
                         <option value="1" >Alpabetical</option>
                         <option value="2" >Reverse Alpabetical</option>
