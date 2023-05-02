@@ -1,0 +1,11 @@
+.log-container {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 0;
+    max-width: 100%;
+    min-height: 80vh;
+    padding-right: 15px;
+    display: grid;
+    grid-template: 1fr 10fr / .7fr 5fr 1fr;
+}

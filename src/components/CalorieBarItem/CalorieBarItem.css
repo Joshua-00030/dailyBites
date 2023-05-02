@@ -1,0 +1,26 @@
+
+.qty-icon-container {
+    display: flex;
+    align-items: center;
+    
+}
+.delete-cal-bar-item {
+    color: black;
+    margin-right: .25rem;
+    cursor: pointer;
+    background-color: red;
+    
+}
+.calorie-item-border {
+    border-bottom: 1px solid black;
+  }
+  .calorie-item-container {
+    display: grid;
+    grid-template-columns: 4fr 2fr .5fr; 
+    grid-row-gap: 10px;
+    overflow-wrap: break-word;
+    white-space: normal;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow-x: hidden;
+  }

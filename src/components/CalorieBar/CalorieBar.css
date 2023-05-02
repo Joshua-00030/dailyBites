@@ -1,0 +1,26 @@
+
+.CalorieBar{
+    background-color: inherit;
+    border: 2px solid #167990;
+    max-height: 90vh;
+  }
+  
+  .CalorieDisplay {
+    display: flex;
+    justify-content: center;
+    color: #167990;
+    border-radius: 4px;
+    padding: 0px;
+
+  }
+  
+  .bar-grid {
+    display: grid;
+    grid-template-rows: .5fr 8fr;
+    grid-row: span 3;
+
+  }
+/* grid-template-columns: 4fr 1fr; 
+grid-template-columns: repeat(4, minmax(0, 1fr));
+*/
+

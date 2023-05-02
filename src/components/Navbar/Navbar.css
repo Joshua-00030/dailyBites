@@ -1,0 +1,45 @@
+.nav {
+  background-color: #13667a;
+  color: #c8eef7;
+  display: flex;
+  align-items: stretch;
+  gap: 2rem;
+  padding: 10px 10px;
+  justify-content: space-between;
+}
+
+.site-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #fff!important;
+}
+
+.nav ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+.nav a {
+  color: inherit;
+  text-decoration: none;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: .25rem;
+}
+
+.nav li.active {
+  background-color: #0f5464;
+}
+
+.nav li:hover {
+  text-decoration: underline;
+  color: #fff;
+}
+
+.nav-icon {
+  font-size: 1.5em;
+}

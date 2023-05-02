@@ -1,0 +1,29 @@
+.tag-container{
+
+    /*
+    background-color: #1F2022;
+    border-radius: 4px;
+    height: 40px;
+    margin-bottom: 10px;
+     gap: .25rem;
+         border: 3px solid black;
+    */
+    grid-column: 1;
+  }
+
+  .tag-container button:hover {
+    cursor: pointer;
+    /*
+    filter: brightness(90%);
+    filter: brightness(150%);
+    gap: .25rem;
+    */
+  }
+
+  .tag-container-border {
+    display: flex;
+    flex-direction: column; 
+    max-height: 500px;
+    overflow: auto;
+    max-width: 200px;
+  }
