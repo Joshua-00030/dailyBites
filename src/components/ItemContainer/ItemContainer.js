@@ -18,7 +18,7 @@ const ItemContainer = ({ items, currentCals, setCurrentCals, token, handleCheck,
 
     return (
         <div className="item-grid-container">
-            <div className="entry-cards">
+            <div className={(window.innerWidth > 500 ? 'entry-cards' : ' mobile-entry-cards')}>
                 {items.map((item) =>
                     <UserItem
                         key={item.id}

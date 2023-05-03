@@ -50,13 +50,23 @@
    overflow-wrap: break-word;
    white-space: normal;
    overflow: hidden;
-   min-width: 69px;
-   min-height: 74px;
    /*
    min-width: 1%; add if long text overflowing
    border: 3px solid #167990;
    border-radius: .5em;
    */
+ }
+
+ .mobile-card{
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #008080;
+  overflow-wrap: break-word;
+  white-space: normal;
+  overflow: hidden;
+  min-width: 69px;
+  min-height: 74px;
  }
 
  .cardEdit {

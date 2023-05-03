@@ -18,7 +18,8 @@ const Log = (props) => {
     const [favoriteTags, setFavoriteTags] = useState([]);
     const [isAddItem, setIsAddItem] = useState(false);
     const [editMode, setEditMode] = useState(false)
-
+    const [width, setWidth] = useState(window.innerWidth);
+    console.log(width)
     const toggleIsAddItem = () => {
         setIsAddItem(!isAddItem)
     }
