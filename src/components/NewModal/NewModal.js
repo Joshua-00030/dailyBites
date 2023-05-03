@@ -36,10 +36,6 @@ const NewModal = ({ toggleIsAddItem, user, mode, edit, item, editHandleClick }) 
         }
     }, [edit])
 
-    useEffect(() => {
-        console.log(trackedNutrients);
-    },[trackedNutrients])
-
     const toggleModal = () => {
         setModal(!modal)
         setErrMsg("")

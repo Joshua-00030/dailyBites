@@ -50,6 +50,8 @@
    overflow-wrap: break-word;
    white-space: normal;
    overflow: hidden;
+   min-width: 69px;
+   min-height: 74px;
    /*
    min-width: 1%; add if long text overflowing
    border: 3px solid #167990;
